@@ -1,6 +1,6 @@
 NAME = ft_containers
 
-SRCS = main_test.cpp
+SRCS = main_test.cpp	tests/test_vector.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 

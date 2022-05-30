@@ -31,8 +31,8 @@
 #define MAGENTA		"\033[35m"
 #define CYAN		"\033[36m"
 #define WHITE		"\033[37m"
-#define SUCS        "✅"
-#define FAIL        "❌"
+#define SUCS        "\033[1m\033[32mOK\033[0m"        //✅"
+#define FAIL        "\033[1m\033[31mKO\033[0m"        //❌"
 
 int     test_vector();
 // int     test_list();
