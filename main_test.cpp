@@ -10,14 +10,14 @@ int main(void)
 	std::cin >> input;
 	for (unsigned int i = 0; i < input.size(); i++)
 		input[i] = (char)toupper(input[i]);
-	std::cout << input << std::endl << std::endl; // delete
+	//std::cout << input << std::endl << std::endl; // delete
 	while (1){
 		if (input == "VECTOR"){
 			test_vector();
 			break ;
         }
 		else if (input == "STACK"){
-            //test_stack();
+            test_stack();
             break ;
 		}
 		else if (input == "QUEUE"){
@@ -29,7 +29,7 @@ int main(void)
 			break ;
 		}
 		else if (input == "MAP"){
-            //test_map();
+            test_map();
             break ;
 		}
 		else if (input == "ALL"){

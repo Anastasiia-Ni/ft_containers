@@ -36,8 +36,8 @@
 
 int     test_vector();
 // int     test_list();
-// int     test_map();
+int     test_map();
 // int     test_queue();
-// int     test_stack();
+int     test_stack();
 
 #endif
