@@ -11,14 +11,14 @@ namespace ft
 			typedef Key                                     key_type;
 			typedef T                                       mapped_type;
 			typedef ft::pair<const key_type, mapped_type>	value_type;
-            //size_type;
+            typedef size_t									size_type;
             //difference_type
             //key_compare
             //allocator_type
-            //reference
-            //const_reference
-            //pointer
-            //const_pointer
+            typedef T&										reference;
+            typedef T const & 								const_reference;
+            typedef T*										pointer;
+            typedef const T*								const_pointer;
             //iterator
             //const_iterator
             //reverse_iterator
@@ -35,96 +35,187 @@ namespace ft
 			map() {
 
 			}
+
 			~map() {
 
 			}
-			operator=() {
+
+			map& operator=(const map& other) {
 
 			}
-			get_allocator(){
+
+			allocator_type get_allocator() const{
 
 			}
-			at(){
+
+			T& at(const Key& key){
 
 			}
-			operator[]() {
+
+			const T& at(const Key& key) const {
 
 			}
-			begin() {
+
+			T& operator[](const Key& key) {
 
 			}
-			end() {
+
+			iterator begin() {
 
 			}
-			rbegin() {
+
+			const_iterator begin() const {
 
 			}
-			rend() {
+
+			iterator end() {
 
 			}
-			empty() {
+
+			const_iterator end() const {
 
 			}
-			size() {
+
+			reverse_iterator rbegin() {
 
 			}
-			max_size() {
+
+			const_reverse_iterator rbegin() const {
 
 			}
-			clear() {
+
+			reverse_iterator rend() {
 
 			}
-			insert() {
+
+			const_reverse_iterator rend() const {
 
 			}
-			erase() {
+
+			bool empty() const {
 
 			}
-			swap() {
+
+			size_type size() const {
 
 			}
-			count() {
+
+			size_type max_size() const {
 
 			}
-			find() {
+
+			void clear() {
 
 			}
-			equal_range() {
+			ft::pair<iterator, bool> insert(const value_type& value) {
 
 			}
-			lower_bound() {
+
+			iterator insert(iterator hint, const value_type& value) {
 
 			}
-			upper_bound() {
+
+			template <class InputIt>
+			void insert( InputIt first, InputIt last ){
 
 			}
-			key_comp() {
+
+			void erase(iterator pos) {
 
 			}
-			value_comp() {
+
+			void erase(iterator first, iterator last) {
+
+			}
+
+			size_type erase( const Key& key ) {
+
+			}
+
+			void swap(map& other) {
+
+			}
+
+			size_type count(const Key& key) const {
+
+			}
+
+			iterator find(const Key& key) {
+
+			}
+
+			const_iterator find(const Key& key) const {
+
+			}
+
+			ft::pair<iterator,iterator> equal_range(const Key& key) {
+
+			}
+
+			ft::pair<const_iterator,const_iterator> equal_range( const Key& key ) const {
+
+			}
+
+			iterator lower_bound(const Key& key) {
+
+			}
+
+			const_iterator lower_bound(const Key& key) const {
+
+			}
+
+			iterator upper_bound(const Key& key) {
+
+			}
+
+			const_iterator upper_bound(const Key& key) const {
+
+			}
+			
+			key_compare key_comp() const {
+
+			}
+
+			std::map::value_compare value_comp() const {
 
 			}
     };
+	template <class Key, class T, class Compare, class Alloc>
+	bool operator==(const std::map<Key,T,Compare,Alloc>& lhs,
+					const std::map<Key,T,Compare,Alloc>& rhs) {
+
+	}
+
+	template <class Key, class T, class Compare, class Alloc>
+	bool operator!=(const std::map<Key,T,Compare,Alloc>& lhs,
+					const std::map<Key,T,Compare,Alloc>& rhs){
+
+	}
+
+	template <class Key, class T, class Compare, class Alloc>
+	bool operator<(const std::map<Key,T,Compare,Alloc>& lhs,
+					const std::map<Key,T,Compare,Alloc>& rhs){
+
+	}
+
+	template <class Key, class T, class Compare, class Alloc>
+	bool operator<=(const std::map<Key,T,Compare,Alloc>& lhs,
+					const std::map<Key,T,Compare,Alloc>& rhs){
+
+	}
+
+	template <class Key, class T, class Compare, class Alloc>
+	bool operator>(const std::map<Key,T,Compare,Alloc>& lhs,
+					const std::map<Key,T,Compare,Alloc>& rhs){
+
+	}
+
+	template <class Key, class T, class Compare, class Alloc>
+	bool operator>=(const std::map<Key,T,Compare,Alloc>& lhs,
+					const std::map<Key,T,Compare,Alloc>& rhs){
+
+	}
 };
-
-operator==(){
-
-}
-operator!=(){
-
-}
-operator<() {
-
-}
-operator<=() {
-
-}
-operator>() {
-
-}
-operator>=() {
-
-}
 
 swap
 
