@@ -19,8 +19,6 @@
 #include "vector.hpp"
 #include "map.hpp"
 #include "stack.hpp"
-//#include "list.hpp"
-//#include "Queue.hpp"
 
 #define RESET		"\033[0m"
 #define BLACK		"\033[30m"
@@ -35,9 +33,7 @@
 #define FAIL        "\033[1m\033[31mKO\033[0m"        //❌"
 
 int     test_vector();
-// int     test_list();
 int     test_map();
-// int     test_queue();
 int     test_stack();
 
 #endif
