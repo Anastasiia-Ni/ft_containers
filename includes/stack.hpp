@@ -19,30 +19,36 @@ namespace ft
 
 		virtual ~stack(){};
 
-		stack &operator=(Stack const &other){
+		stack &operator=(stack const &other){
 			this->_contr = other._contr;
 				return (*this);
 		}
 
-		//stack(const Stack &copy){_contr = copy._contr;}; ???
+		stack(const stack &copy){
+			this->_contr = copy._contr;
+		}
 
-		reference top();
-		const_reference top() const;
+		reference top() {		//check reference type
+			return (this->_contr.back());
+		}
+		const_reference top() const {	//check reference type
+			return (this->_contr.back());
+		}
 		
 		bool empty() const {
-			return (_contr.empty());
+			return (this->_contr.empty());
 		}
 
 		size_type size() const {
-			return (_contr.size());
+			return (this->_contr.size());
 		}
 
 		void push( const value_type& value ) {
-			return (_contr.push_back(val));
+			return (this->_contr.push_back(val));
 		}
 
 		void pop() {
-			return (_contr.pop_back());
+			return (this->_contr.pop_back());
 		}
 
 		template <class T, class Container>

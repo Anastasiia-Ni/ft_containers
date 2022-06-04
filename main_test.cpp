@@ -5,7 +5,7 @@ int main(void)
 {
 	std::string input;
 	std::cout << MAGENTA << "\n\t\tEnter the name of the container:" << std::endl;
-	std::cout << "\t\tLIST, STACK, VECTOR, QUEUE, MAP, ALL" << std::endl;
+	std::cout << "\t\tSTACK, VECTOR, MAP, SET, ALL" << std::endl;
 	std::cout << "\n>>  ";
 	std::cin >> input;
 	for (unsigned int i = 0; i < input.size(); i++)
@@ -20,24 +20,19 @@ int main(void)
             test_stack();
             break ;
 		}
-		else if (input == "QUEUE"){
-            //test_queue();
+		else if (input == "SET"){
+            //test_set();
             break ;
-		}
-		else if (input == "LIST"){
-            //test_list();
-			break ;
 		}
 		else if (input == "MAP"){
             test_map();
             break ;
 		}
 		else if (input == "ALL"){
-            // test_list();
-            // test_map();
-            // test_vector();
-            // test_queue();
-            // test_stack();
+            test_vector();
+            test_stack();
+            test_map();
+            // test_set();
 			break ;
         }
 		else{
