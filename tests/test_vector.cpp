@@ -1,43 +1,62 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_vector.cpp                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: anifanto <anifanto@student.42abudhabi.a    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/05 16:42:05 by anifanto          #+#    #+#             */
+/*   Updated: 2022/06/06 18:18:33 by anifanto         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/containers.hpp"
-//#include "../includes/vector.hpp"
 
 static void	test_constructor(){
 	std::cout << "Test default constructor:\t";
-	   
+
 	size_t n = 10;
-    std::vector<int>std_vec(n);
-    ft::vector<int>my_vec(n);
-    if (std_vec.size() != my_vec.size())
+	std::vector<int>std_vec(n);
+	ft::vector<int>my_vec(n);
+	if (std_vec.size() != my_vec.size()) {
 		std::cout << FAIL << std::endl;
+		return ;
+	}
 	// if (!test_iterator(std_vec, my_vec)){
 	// 	std::cout << FAIL << std::endl;
 	// 	return ;
 	// }
-    // std::vector<int>std_vec1(5, 21);
-    // ft::vector<int>my_vec1(5, 21);
-    // if (s_vec1.size() != my_vec1.size())
-    //     std::cout << FAIL << std::endl;
-    // if (!iter_test(s_vec1, my_vec1)){
-    //     std::cout << FAIL << std::endl;
-    //     return ;
+	std::vector<int>std_vec1(5, 21);
+	ft::vector<int>my_vec1(5, 21);
+	if (std_vec1.size() != my_vec1.size()) {
+		std::cout << FAIL << std::endl;
+		return ;
+	}
+	// if (!iter_test(std_vec1, my_vec1)){
+	// 	std::cout << FAIL << std::endl;
+	// 	return ;
 	// }
-    // std::vector<std::string>std_vec2(5, "A");
-    // ft::Vector<std::string>my_vec2(5, "A");
-    // if (s_vec2.size() != my_vec2.size())
-    //     std::cout << FAIL << std::endl;
+	std::vector<std::string>std_vec2(5, "A");
+	ft::vector<std::string>my_vec2(5, "A");
+	if (std_vec2.size() != my_vec2.size()) {
+		std::cout << FAIL << std::endl;
+		return ;
+	}
     // if (!iter_test(s_vec2, my_vec2)){
     //     std::cout << FAIL << std::endl;
     //     return ;
 	// }
-    // std::vector<int> std_vec1(std_vec);
-    // ft::vector<int> my_vec1(my_vec);
-    // if (std_vec1.size() != my_vec1.size())
-    //     std::cout << FAIL << std::endl;
-    // if (!iter_test(s_vec1, my_vec1)){
+	// std::vector<int> std_vec3(std_vec);
+	// ft::vector<int> my_vec3(my_vec);
+	// if (std_vec3.size() != my_vec3.size()) {
+	// 	std::cout << FAIL << std::endl;
+	// 	return ;
+	// }
+    // if (!iter_test(s_vec3, my_vec3)){
     //     std::cout << FAIL << std::endl;
     //     return ;
 	// }
-    std::cout << SUCS << std::endl;
+	std::cout << SUCS << std::endl;
 }
 
 static void	test_iterator(){
@@ -45,7 +64,7 @@ static void	test_iterator(){
 }
 
 static void	test_size(){
-	std::cout << "Size test:\t\t\t";  
+	std::cout << "Size test:\t\t\t";
 	size_t n = 42;
 	std::vector<int>std_vec(n);
 	ft::vector<int>my_vec(n);
@@ -67,7 +86,7 @@ static void	test_begin_end(){
 }
 
 static void	test_capacity(){
-    std::cout << "Capacity test:\t\t\t"; 
+    std::cout << "Capacity test:\t\t\t";
 	size_t n = 142;
 	std::vector<int>std_vec(n);
 	ft::vector<int>my_vec(n);
@@ -88,29 +107,26 @@ static void	test_at(){
 	std::cout << "At test:\t\t\t";
 	std::vector<int>std_vec;
 	ft::vector<int>my_vec;
-	//size_t n = 20;
-	// for (size_t i = 0; i < n; i++) {
-	// 	std_vec.push_back(i);
-	// 	my_vec.push_back(i);
-	// }
-	// try{
-	// 	std_vec.at(n * 2);
-	// 	std::cout << FAIL << std::endl;
-	// } 
-	// catch (std::exception &e){
-	// 	//count += 1;
-	// }
-	// try{
-	// 	my_vec.at(n * 2);
-	// 	std::cout << FAIL << std::endl;
-	// } 
-	// catch (std::exception &e){
-	// 	//count += 1;
-	// }
-	// if (std_vec.at(2)) != my_vec.at(2)){
-	// 	std::cout << FAIL << std::endl;
-	// 	return ;
-	// }
+	size_t n = 20;
+	for (size_t i = 0; i < n; i++) {
+		std_vec.push_back(i);
+		my_vec.push_back(i);
+	}
+	try{
+		std_vec.at(n * 2);
+		std::cout << FAIL << std::endl;
+	}
+	catch (std::exception &e){ }
+	try{
+		my_vec.at(n * 2);
+		std::cout << FAIL << std::endl;
+	}
+	catch (std::exception &e){}
+
+	if (std_vec.at(2) != my_vec.at(2)) {
+		std::cout << FAIL << std::endl;
+		return ;
+	}
 	std::cout << SUCS << std::endl;
 }
 
@@ -119,24 +135,24 @@ static void	test_operator(){
 }
 
 static void	test_push_back(){
-	std::cout << "Push_back test:\t\t\t"; 
-	//size_t n = 42;
+	std::cout << "Push_back test:\t\t\t";
+	size_t n = 42;
 	std::vector<int>std_vec;
 	ft::vector<int>my_vec;
-	// for (size_t i = 0; i < n / 2; i++) {
-	// 	std_vec.push_back(i);
-	// 	my_vec.push_back(i);
-	// }
+	for (size_t i = 0; i < n / 2; i++) {
+		std_vec.push_back(i);
+		my_vec.push_back(i);
+	}
 	if (std_vec.size() != my_vec.size()){
 		std::cout << FAIL << std::endl;
 		return ;
 	}
-	// std_vec.push_back(n);
-	// my_vec.push_back(n);
-	// if (std_vec.size() != my_vec.size()){
-	// 	std::cout << FAIL << std::endl;
-	// 	return ;
-	// }
+	std_vec.push_back(n);
+	my_vec.push_back(n);
+	if (std_vec.size() != my_vec.size()){
+		std::cout << FAIL << std::endl;
+		return ;
+	}
 	std::cout << SUCS << std::endl;
 }
 
@@ -170,12 +186,10 @@ static void	test_clear(){
 
 
 int test_vector( void ){
-    std::cout << MAGENTA << "-------------------------------" << std::endl;
-    std::cout << "     VECTOR TESTER IS HERE" << std::endl;
-    std::cout << "-------------------------------" << RESET << std::endl;
+	std::cout << MAGENTA << "------------------------------------" << std::endl;
+	std::cout << "\tVECTOR TESTER IS HERE" << std::endl;
+	std::cout << "------------------------------------" << RESET << std::endl;
 
-    std::vector<int> std_vec;
-	ft::vector<int> ft_vec;
 	test_constructor();
 	test_iterator();
 	test_size();
@@ -191,7 +205,7 @@ int test_vector( void ){
 	test_assign();
 	test_swap();
 	test_clear();
-    // test_front();
-    // test_back();
+	// test_front();
+	// test_back();
 	return (0);
 }

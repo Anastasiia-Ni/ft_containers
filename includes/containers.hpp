@@ -1,7 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   containers.hpp                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: anifanto <anifanto@student.42abudhabi.a    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/05 16:42:47 by anifanto          #+#    #+#             */
+/*   Updated: 2022/06/06 12:56:08 by anifanto         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CONTAINERS_HPP
 # define CONTAINERS_HPP
-
-//#pragma once
 
 #include <iostream>
 #include <string>
@@ -15,11 +25,13 @@
 #include <limits>
 #include <utility>
 #include <functional>
+#include <stdexcept>
 
 #include "vector.hpp"
 #include "map.hpp"
 #include "stack.hpp"
 #include "iterators.hpp"
+#include "utils.hpp"
 
 #define RESET		"\033[0m"
 #define BLACK		"\033[30m"
@@ -30,11 +42,11 @@
 #define MAGENTA		"\033[35m"
 #define CYAN		"\033[36m"
 #define WHITE		"\033[37m"
-#define SUCS        "\033[1m\033[32mOK\033[0m"        //✅"
-#define FAIL        "\033[1m\033[31mKO\033[0m"        //❌"
+#define SUCS		"\033[1m\033[32mOK\033[0m"        //✅"
+#define FAIL		"\033[1m\033[31mKO\033[0m"        //❌"
 
-int     test_vector();
-int     test_map();
-int     test_stack();
+int		test_vector();
+int		test_map();
+int		test_stack();
 
 #endif
