@@ -12,53 +12,6 @@
 
 #include "../includes/containers.hpp"
 
-static void	test_constructor(){
-	std::cout << "Default constructor test:\t";
-
-	size_t n = 10;
-	std::vector<int>std_vec(n);
-	ft::vector<int>my_vec(n);
-	if (std_vec.size() != my_vec.size()) {
-		std::cout << FAIL << std::endl;
-		return ;
-	}
-	// if (!test_iterator(std_vec, my_vec)){
-	// 	std::cout << FAIL << std::endl;
-	// 	return ;
-	// }
-	std::vector<int>std_vec1(5, 21);
-	ft::vector<int>my_vec1(5, 21);
-	if (std_vec1.size() != my_vec1.size()) {
-		std::cout << FAIL << std::endl;
-		return ;
-	}
-	// if (!iter_test(std_vec1, my_vec1)){
-	// 	std::cout << FAIL << std::endl;
-	// 	return ;
-	// }
-	std::vector<std::string>std_vec2(5, "A");
-	ft::vector<std::string>my_vec2(5, "A");
-	if (std_vec2.size() != my_vec2.size()) {
-		std::cout << FAIL << std::endl;
-		return ;
-	}
-    // if (!iter_test st_vec2, my_vec2)){
-    //     std::cout << FAIL << std::endl;
-    //     return ;
-	// }
-	// std::vector<int> std_vec3(std_vec);
-	// ft::vector<int> my_vec3(my_vec);
-	// if (std_vec3.size() != my_vec3.size()) {
-	// 	std::cout << FAIL << std::endl;
-	// 	return ;
-	// }
-    // if (!iter_test st_vec3, my_vec3)){
-    //     std::cout << FAIL << std::endl;
-    //     return ;
-	// }
-	std::cout << SUCS << std::endl;
-}
-
 template <typename T>
 static bool check_iterator(std::vector<T> &std_vec, ft::vector<T> &my_vec) {
     typename std::vector<T>::iterator it_st1 = std_vec.begin();
@@ -91,6 +44,54 @@ static bool check_iterator(std::vector<T> &std_vec, ft::vector<T> &my_vec) {
     // }
     return true;
 }
+
+static void	test_constructor(){
+	std::cout << "Default constructor test:\t";
+
+	size_t n = 10;
+	std::vector<int>std_vec(n);
+	ft::vector<int>my_vec(n);
+	if (std_vec.size() != my_vec.size()) {
+		std::cout << FAIL << std::endl;
+		return ;
+	}
+	if (!check_iterator(std_vec, my_vec)){
+		std::cout << FAIL << std::endl;
+		return ;
+	}
+	std::vector<int>std_vec1(5, 21);
+	ft::vector<int>my_vec1(5, 21);
+	if (std_vec1.size() != my_vec1.size()) {
+		std::cout << FAIL << std::endl;
+		return ;
+	}
+	if (!check_iterator(std_vec1, my_vec1)){
+		std::cout << FAIL << std::endl;
+		return ;
+	}
+	std::vector<std::string>std_vec2(5, "A");
+	ft::vector<std::string>my_vec2(5, "A");
+	if (std_vec2.size() != my_vec2.size()) {
+		std::cout << FAIL << std::endl;
+		return ;
+	}
+    if (!check_iterator(std_vec2, my_vec2)){
+        std::cout << FAIL << std::endl;
+        return ;
+	}
+	std::vector<int> std_vec3(std_vec);
+	ft::vector<int> my_vec3(my_vec);
+	if (std_vec3.size() != my_vec3.size()) {
+		std::cout << FAIL << std::endl;
+		return ;
+	}
+    if (!check_iterator (std_vec3, my_vec3)){
+        std::cout << FAIL << std::endl;
+        return ;
+	}
+	std::cout << SUCS << std::endl;
+}
+
  
 static void	test_iterator() {
 	std::cout << "Iterator test:\t\t\t";
@@ -287,28 +288,28 @@ static void	test_push_back(){
 }
 
 static void	test_pop_back(){
-	// std::cout << "Pop_back test:\t\t\t";
-	// std::vector<int>st_vec;
-	// ft::vector<int>my_vec;
-    // st_vec.push_back(42);
-    // my_vec.push_back(42);
-    // st_vec.push_back(11);
-    // my_vec.push_back(11);
-    // st_vec.push_back(100);
-    // my_vec.push_back(100); 
-    // if (st_vec.size() != my_vec.size()) 
-    // {
-    //     std::cout << FAIL << std::endl;
-    //     return ;
-    // }
+	std::cout << "Pop_back test:\t\t\t";
+	std::vector<int>st_vec;
+	ft::vector<int>my_vec;
+    st_vec.push_back(42);
+    my_vec.push_back(42);
+    st_vec.push_back(11);
+    my_vec.push_back(11);
+    st_vec.push_back(100);
+    my_vec.push_back(100); 
+    if (st_vec.size() != my_vec.size()) 
+    {
+        std::cout << FAIL << std::endl;
+        return ;
+    }
     // st_vec.pop_back();
     // my_vec.pop_back();
-    // if (st_vec.size() != my_vec.size()) 
-    // {
-    //     std::cout << FAIL << std::endl;
-    //     return ;
-    // }
-    // std::cout << SUCS << std::endl; 
+    if (st_vec.size() != my_vec.size()) 
+    {
+        std::cout << FAIL << std::endl;
+        return ;
+    }
+    std::cout << SUCS << std::endl; 
 }
 
 static void	test_insert() {
@@ -342,7 +343,6 @@ static void	test_insert() {
     //     return ;        
     // }        
     // std::cout << SUCS << std::endl; 
-
 }
 
 static void	test_emty() {
@@ -363,32 +363,32 @@ static void	test_emty() {
 }
 
 static void	test_erase(){
-	// std::cout << "Erase test:\t\t\t";
-	// std::vector<int>st_vec(10);
-	// ft::vector<int>my_vec(10);
-	// std::vector<int>::iterator it_st = st_vec.begin();
-	// ft::vector<int>::iterator it_my = my_vec.begin();
-    // st_vec.erase(++it_st);
-    // my_vec.erase(++it_my);
-    // if (st_vec.size() != my_vec.size()){
-    //     std::cout << FAIL << std::endl;
-    //     return ;
-    // }
-    // if (!check_iterator(st_vec, my_vec)){
-    //     std::cout << FAIL << std::endl;
-    //     return ;        
-    // }
-    // st_vec.erase(++it_st, st_vec.end());
-    // my_vec.erase(++it_my, my_vec.end());
-    // if (st_vec.size() != my_vec.size()){
-    //     std::cout << FAIL << std::endl;
-    //     return ;
-    // }
-    // if (!check_iterator(st_vec, my_vec)){
-    //     std::cout << FAIL << std::endl;
-    //     return ;        
-    // }
-    // std::cout << SUCS << std::endl;
+	std::cout << "Erase test:\t\t\t";
+	std::vector<int>st_vec(10);
+	ft::vector<int>my_vec(10);
+	std::vector<int>::iterator it_st = st_vec.begin();
+	ft::vector<int>::iterator it_my = my_vec.begin();
+    st_vec.erase(++it_st);
+    my_vec.erase(++it_my);
+    if (st_vec.size() != my_vec.size()){
+        std::cout << FAIL << std::endl;
+        return ;
+    }
+    if (!check_iterator(st_vec, my_vec)){
+        std::cout << FAIL << std::endl;
+        return ;        
+    }
+    st_vec.erase(++it_st, st_vec.end());
+    my_vec.erase(++it_my, my_vec.end());
+    if (st_vec.size() != my_vec.size()){
+        std::cout << FAIL << std::endl;
+        return ;
+    }
+    if (!check_iterator(st_vec, my_vec)){
+        std::cout << FAIL << std::endl;
+        return ;        
+    }
+    std::cout << SUCS << std::endl;
 }
 
 // static void	test_assign(){
@@ -438,8 +438,8 @@ static void	test_clear() {
 		st_vec.push_back(i * 5);
 		my_vec.push_back(i * 5);
 	}
-    // my_vec.clear();
-    // st_vec.clear();
+    my_vec.clear();
+    st_vec.clear();
     if (st_vec.size() != my_vec.size()) 
     {
         std::cout << FAIL << std::endl;
@@ -471,36 +471,36 @@ static void test_compare() {
 		st_vec1.push_back(i * 3);
 		my_vec1.push_back(i * 3);
 	}
-    // if ((my_vec == my_vec1) != (st_vec == st_vec1))
-    // {
-    //     std::cout << FAIL << std::endl;
-    //     return ;
-    // }
-    // if ((my_vec != my_vec1) != (st_vec != st_vec1))
-    // {
-    //     std::cout << FAIL << std::endl;
-    //     return ;
-    // }
-    // if ((my_vec > my_vec1) != (st_vec > st_vec1))
-    // {
-    //     std::cout << FAIL << std::endl;
-    //     return ;
-    // }
-    // if ((my_vec >= my_vec1) != (st_vec >= st_vec1))
-    // {
-    //     std::cout << FAIL << std::endl;
-    //     return ;
-    // }
-    // if ((my_vec < my_vec1) !=  (st_vec < st_vec1))
-    // {
-    //     std::cout << FAIL << std::endl;
-    //     return ;
-    // }
-    // if ((my_vec <= my_vec1) !=  (st_vec <= st_vec1))
-    // {
-    //     std::cout << FAIL << std::endl;
-    //     return ;
-    // }
+    if ((my_vec == my_vec1) != (st_vec == st_vec1))
+    {
+        std::cout << FAIL << std::endl;
+        return ;
+    }
+    if ((my_vec != my_vec1) != (st_vec != st_vec1))
+    {
+        std::cout << FAIL << std::endl;
+        return ;
+    }
+    if ((my_vec > my_vec1) != (st_vec > st_vec1))
+    {
+        std::cout << FAIL << std::endl;
+        return ;
+    }
+    if ((my_vec >= my_vec1) != (st_vec >= st_vec1))
+    {
+        std::cout << FAIL << std::endl;
+        return ;
+    }
+    if ((my_vec < my_vec1) !=  (st_vec < st_vec1))
+    {
+        std::cout << FAIL << std::endl;
+        return ;
+    }
+    if ((my_vec <= my_vec1) !=  (st_vec <= st_vec1))
+    {
+        std::cout << FAIL << std::endl;
+        return ;
+    }
     std::cout << SUCS << std::endl; 
 }
 

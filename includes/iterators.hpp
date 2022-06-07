@@ -120,7 +120,7 @@ namespace ft
 		random_access_iterator operator+ (difference_type n) const {
 			return (this->_i + n);
 		}
-		//operator+ 2 parametrs
+		//operator+ 2 parametrs 
 
 		random_access_iterator& operator-= (difference_type n) {
 			this->_i -= n;
@@ -130,6 +130,7 @@ namespace ft
 		pointer operator->(void) const {
 			return (this->_i);
 		}
+
 		random_access_iterator operator- (difference_type n) const {
 			return (this->_i + n);
 		}
@@ -147,7 +148,36 @@ namespace ft
 		operator ft::random_access_iterator<const T>() const {
 			return ft::random_access_iterator<const T>(_i);
 		}
+
+
+/* ниже переписать функцию !!! без friends*/
+		friend bool operator==(const random_access_iterator& lhs, const random_access_iterator& rhs) { 
+			return (lhs.base() == rhs.base()); 
+		}
+
+		friend bool operator!=(const random_access_iterator& lhs, const random_access_iterator& rhs) { 
+			return (lhs.base() != rhs.base()); 
+		}
 	};
+
+
+	template<typename ItLrs, typename ItRhs>
+	typename random_access_iterator<ItLrs>::difference_type
+	operator-(const random_access_iterator<ItLrs> &lhs, const random_access_iterator<ItRhs> &rhs) { 
+		return (lhs.base() - rhs.base()); 
+	}
+
+	template<typename It>
+	typename random_access_iterator<It>::difference_type
+	operator-(const random_access_iterator<It> &lhs, const random_access_iterator<It> &rhs) { 
+		return (lhs.base() - rhs.base()); 
+	}
+
+	template<typename It>
+	random_access_iterator<It>
+	operator+(typename random_access_iterator<It>::difference_type n, const random_access_iterator<It> &i) {
+		return (random_access_iterator<It>(i.base() + n)); 
+	}
 
 	template <class iterator>
 	class reverse_iterator {
@@ -201,6 +231,8 @@ namespace ft
 		}
 		// to be continue...
 	};
+
+
 
 
 	template <class Iterator> // maybe move to utils
