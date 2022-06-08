@@ -12,8 +12,6 @@
 
 #include "../includes/containers.hpp"
 
-//template <class stack>
-
 static void empty_test() {
 	std::cout << "Test empty:\t\t\t";
 	std::stack<int, std::vector<int> > std_stack;
@@ -67,13 +65,13 @@ static void top_test() {
 	}
 	std_stack.push(42);
 	my_stack.push(42);
-	// if (std_stack.top() != my_stack.top())
-	// {
-	// 	std::cout << "Std Stack top - " << std_stack.top() << std::endl;
-	// 	std::cout << "My Stack top - " << my_stack.top() << std::endl;
-	// 	std::cout << FAIL << std::endl;
-	// 	return ;
-	// }
+	if (std_stack.top() != my_stack.top())
+	{
+		std::cout << "std stack top - " << std_stack.top() << std::endl; // delete
+		std::cout << "my stack top - " << my_stack.top() << std::endl; // delete
+		std::cout << FAIL << std::endl;
+		return ;
+	}
 	std::cout << SUCS << std::endl;
 }
 
@@ -90,10 +88,10 @@ static void pop_test() {
 		std::cout << FAIL << std::endl;
 		return ;
 	}
-	// my_stack.pop();
-	// std_stack.pop();
-	// my_stack.pop();
-	// std_stack.pop();
+	my_stack.pop();
+	std_stack.pop();
+	my_stack.pop();
+	std_stack.pop();
 	if (std_stack.empty() != my_stack.empty())
 	{
 		std::cout << FAIL << std::endl;
@@ -134,36 +132,36 @@ static void compare_test() {
 	std_stack1.push(42);
 	my_stack2.push(11);
 	std_stack2.push(11);
-	// if ((my_stack1 == my_stack2) != (std_stack1 == std_stack2))
-	// {
-	// 	std::cout << FAIL << std::endl;
-	// 	return ;
-	// }
-	// if ((my_stack1 != my_stack2) != (std_stack1 != std_stack2))
-	// {
-	// 	std::cout << FAIL << std::endl;
-	// 	return ;
-	// }
-	// if ((my_stack1 > my_stack2) != (std_stack1 > std_stack2))
-	// {
-	// 	std::cout << FAIL << std::endl;
-	// 	return ;
-	// }
-	// if ((my_stack1 >= my_stack2) != (std_stack1 >= std_stack2))
-	// {
-	// 	std::cout << FAIL << std::endl;
-	// 	return ;
-	// }
-	// if ((my_stack1 < my_stack2) != (std_stack1 < std_stack2))
-	// {
-	// 	std::cout << FAIL << std::endl;
-	// 	return ;
-	// }
-	// if ((my_stack1 <= my_stack2) != (std_stack1 <= std_stack2))
-	// {
-	// 	std::cout << FAIL << std::endl;
-	// 	return ;
-	// }
+	if ((my_stack1 == my_stack2) != (std_stack1 == std_stack2))
+	{
+		std::cout << FAIL << std::endl;
+		return ;
+	}
+	if ((my_stack1 != my_stack2) != (std_stack1 != std_stack2))
+	{
+		std::cout << FAIL << std::endl;
+		return ;
+	}
+	if ((my_stack1 > my_stack2) != (std_stack1 > std_stack2))
+	{
+		std::cout << FAIL << std::endl;
+		return ;
+	}
+	if ((my_stack1 >= my_stack2) != (std_stack1 >= std_stack2))
+	{
+		std::cout << FAIL << std::endl;
+		return ;
+	}
+	if ((my_stack1 < my_stack2) != (std_stack1 < std_stack2))
+	{
+		std::cout << FAIL << std::endl;
+		return ;
+	}
+	if ((my_stack1 <= my_stack2) != (std_stack1 <= std_stack2))
+	{
+		std::cout << FAIL << std::endl;
+		return ;
+	}
 	std::cout << SUCS << std::endl;
 }
 
@@ -182,15 +180,15 @@ int test_stack( void ){
 	std::cout << BLUE << "MY STACK" << RESET << std::endl;
 	ft::vector<int> my_vec(100);
 	ft::stack<int, ft::vector<int> > my_stack1;
-	//ft::stack<int, ft::vector<int> > my_stack2(my_vec);
+	ft::stack<int, ft::vector<int> > my_stack2(my_vec);
 	std::cout << "Size of first: " << my_stack1.size() << std::endl;
-	//std::cout << "Size of second: " << my_stack2.size() << std::endl;
-
-	std::cout << "Test default constructor:\t\t\t";
-	// if (std_stack2.size() != my_stack2.size())
-	// 	std::cout << FAIL << std::endl;
-	// else
-	// 	std::cout << SUCS << std::endl;
+	std::cout << "Size of second: " << my_stack2.size() << std::endl;
+	std::cout << BLUE << "------------------------------------" << RESET << std::endl;
+	std::cout << "Test default constructor:\t";
+	if (std_stack2.size() != my_stack2.size())
+		std::cout << FAIL << std::endl;
+	else
+		std::cout << SUCS << std::endl;
 	empty_test();
 	size_test();
 	top_test();

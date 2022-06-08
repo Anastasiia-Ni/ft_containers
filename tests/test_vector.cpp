@@ -134,6 +134,37 @@ static void	test_iterator() {
     std::cout << SUCS << std::endl;  
 }
 
+static void test_assign() {
+	std::cout << "Assign test:\t\t\t";
+	std::vector<int>st_vec;
+	ft::vector<int>my_vec;
+    st_vec.assign(10, 42);
+    my_vec.assign(10, 42);
+	if (st_vec.size() != my_vec.size()){
+        std::cout << FAIL << std::endl;
+        return ;
+	}
+    if (!check_iterator(st_vec, my_vec)){
+        std::cout << FAIL << std::endl;
+        return ;
+	}
+	// std::vector<int>st_vec1;
+	// ft::vector<int>my_vec1;
+    // std::vector<int>::iterator it_s = st_vec.begin();
+    // ft::vector<int>::iterator it_m = my_vec.begin();
+    // st_vec1.assign(it_s, st_vec.end());
+    // my_vec1.assign(it_m, my_vec.end());
+	// if (st_vec1.size() != my_vec1.size()){
+    //     std::cout << FAIL << std::endl;
+    //     return ;
+	// }
+    // if (!check_iterator(st_vec1, my_vec1)){
+    //     std::cout << FAIL << std::endl;
+    //     return ;
+	// }
+    std::cout << SUCS << std::endl;  
+}
+
 static void	test_size() {
 	std::cout << "Size test:\t\t\t";
 	size_t n = 42;
@@ -219,8 +250,7 @@ static void	test_at(){
 }
 
 static void	test_operator(){
-    std::cout << "Operator test\t\t\t";
-
+	std::cout << "Operator test\t\t\t";
 	std::vector<int>std_vec;
 	ft::vector<int>my_vec;
     int count = 0;
@@ -302,8 +332,8 @@ static void	test_pop_back(){
         std::cout << FAIL << std::endl;
         return ;
     }
-    // st_vec.pop_back();
-    // my_vec.pop_back();
+    st_vec.pop_back();
+    my_vec.pop_back();
     if (st_vec.size() != my_vec.size()) 
     {
         std::cout << FAIL << std::endl;
@@ -313,13 +343,25 @@ static void	test_pop_back(){
 }
 
 static void	test_insert() {
-	// std::cout << "Insert test:\t\t\t";
-	// std::vector<int>st_vec(10);
-    // ft::vector<int>my_vec(10);
-    // std::vector<int>::iterator it_st = st_vec.begin();
-    // ft::vector<int>::iterator it_my = my_vec.begin();
-    // st_vec.insert(++it_st, 5);
-    // my_vec.insert(++it_my, 5);
+	std::cout << "Insert test:\t\t\t";
+	std::vector<int>st_vec(10);
+    ft::vector<int>my_vec(10);
+    std::vector<int>::iterator it_st = st_vec.begin();
+    ft::vector<int>::iterator it_my = my_vec.begin();
+    st_vec.insert(++it_st, 42);
+    my_vec.insert(++it_my, 42);
+    if (st_vec.size() != my_vec.size()){
+        std::cout << FAIL << std::endl;
+        return ;
+    }
+    if (!check_iterator(st_vec, my_vec)){
+        std::cout << FAIL << std::endl;
+        return ;        
+    }
+	//std::cout << "\nstd cap " << st_vec.capacity() << " size " << st_vec.size() << std::endl; // delete
+	//std::cout << "my cap  " << my_vec.capacity() << " size " << my_vec.size() << std::endl;	//delete
+	// st_vec.insert(++it_st, 12, 11);
+	// my_vec.insert(++it_my, 12, 11);
     // if (st_vec.size() != my_vec.size()){
     //     std::cout << FAIL << std::endl;
     //     return ;
@@ -342,7 +384,7 @@ static void	test_insert() {
     //     std::cout << FAIL << std::endl;
     //     return ;        
     // }        
-    // std::cout << SUCS << std::endl; 
+    std::cout << SUCS << std::endl; 
 }
 
 static void	test_emty() {
@@ -391,43 +433,39 @@ static void	test_erase(){
     std::cout << SUCS << std::endl;
 }
 
-// static void	test_assign(){
-
-// }
-
 static void	test_swap(){
-// 	std::cout << "Swap test:\t\t\t";
-//     std::vector<int> st_vec;
-//     std::vector<int> st_vec1;
-//     ft::vector<int> my_vec;
-//     ft::vector<int> my_vec1;
-// 	for (int i = 0; i < 5; i++) {
-// 		st_vec.push_back(1);
-// 		my_vec.push_back(1);
-// 	}
-// 	for (int i = 0; i < 5; i++) {
-// 		st_vec1.push_back(42);
-// 		my_vec1.push_back(42);
-// 	}
-//     st_vec.swap(st_vec1);
-//     my_vec.swap(my_vec1);
-//     if (st_vec.size() != my_vec.size()){
-//         std::cout << FAIL << std::endl;
-//         return ;
-//     }
-//     if (!check_iterator(st_vec, my_vec)){
-//         std::cout << FAIL << std::endl;
-//         return ;        
-//     }
-//     if (st_vec1.size() != my_vec1.size()){
-//         std::cout << FAIL << std::endl;
-//         return ;
-//     }
-//     if (!check_iterator(st_vec1, my_vec1)){
-//         std::cout << FAIL << std::endl;
-//         return ;        
-//     }
-//     std::cout << SUCS << std::endl;
+	std::cout << "Swap test:\t\t\t";
+    std::vector<int> st_vec;
+    std::vector<int> st_vec1;
+    ft::vector<int> my_vec;
+    ft::vector<int> my_vec1;
+	for (int i = 0; i < 5; i++) {
+		st_vec.push_back(1);
+		my_vec.push_back(1);
+	}
+	for (int i = 0; i < 5; i++) {
+		st_vec1.push_back(42);
+		my_vec1.push_back(42);
+	}
+    st_vec.swap(st_vec1);
+    my_vec.swap(my_vec1);
+    if (st_vec.size() != my_vec.size()){
+        std::cout << FAIL << std::endl;
+        return ;
+    }
+    if (!check_iterator(st_vec, my_vec)){
+        std::cout << FAIL << std::endl;
+        return ;        
+    }
+    if (st_vec1.size() != my_vec1.size()){
+        std::cout << FAIL << std::endl;
+        return ;
+    }
+    if (!check_iterator(st_vec1, my_vec1)){
+        std::cout << FAIL << std::endl;
+        return ;        
+    }
+    std::cout << SUCS << std::endl;
 }
 
 static void	test_clear() {
@@ -512,6 +550,7 @@ int test_vector( void ){
 
 	test_constructor();
 	test_iterator();
+	test_assign();
 	test_size();
 	test_begin_end();
 	test_capacity();
@@ -523,7 +562,6 @@ int test_vector( void ){
 	test_insert();
 	test_emty();
 	test_erase();
-	// test_assign();
 	test_swap();
 	test_clear();
 	test_compare();
