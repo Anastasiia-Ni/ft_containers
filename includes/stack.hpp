@@ -22,74 +22,74 @@ namespace ft
 	{
 	public:
 		typedef T			value_type;
-		typedef Container	container_type;
 		typedef size_t		size_type;
+		typedef Container	container_type;
 
 	private:
-		container_type		_contr;
+		container_type		_cont;
 
 	public:
-		explicit stack (const container_type& ctnr = container_type()) : _contr(ctnr) {}
+		explicit stack (const container_type& ctnr = container_type()) : _cont(ctnr) {}
 
 		virtual ~stack(){};
 
 		stack &operator=(stack const &other){
-			this->_contr = other._contr;
+			this->_cont = other._cont;
 				return (*this);
 		}
 
 		stack(const stack &copy){
-			this->_contr = copy._contr;
+			this->_cont = copy._cont;
 		}
 
-		// reference top() {		//check reference type
-		// 	return (this->_contr.back());
-		// }
-
-		// const_reference top() const {	//check reference type
-		// 	return (this->_contr.back());
-		// }
-
-		bool empty() const {
-			return (this->_contr.empty());
+		value_type& top(void) {
+			return (this->_cont.back());
 		}
 
-		size_type size() const {
-			return (this->_contr.size());
+		const value_type	& top() const {
+			return (this->_cont.back());
+		}
+
+		bool empty(void) const {
+			return (this->_cont.empty());
+		}
+
+		size_type size(void) const {
+			return (this->_cont.size());
 		}
 
 		void push( const value_type& value ) {
-			return (this->_contr.push_back(value));
+			return (this->_cont.push_back(value));
 		}
 
-		// void pop() {
-		// 	return (this->_contr.pop_back());
-		// }
+		void pop(void) {
+			return (this->_cont.pop_back());
+		}
 
-		// template <class T, class Container>
-		// bool operator==(const stack<T,Container>& lhs, const stack<T,Container>& rhs) {
-		// 	return (lhs._contr == _rhs.contr);
-		// }
+	/* !!!!!!!!! double check friend*/
+		friend bool operator==(const stack<T,Container>& lhs, const stack<T,Container>& rhs) {
+			return (lhs._cont == rhs._cont);
+		}
 
-		// bool operator!=(const stack<T,Container>& lhs, const stack<T,Container>& rhs) {
-		// 	return (lhs.contr != rhs.contr);
-		// }
+		friend bool operator!=(const stack<T,Container>& lhs, const stack<T,Container>& rhs) {
+			return (lhs._cont != rhs._cont);
+		}
 
-		// bool operator<(const stack<T,Container>& lhs, const stack<T,Container>& rhs) {
-		// 	return (lhs.contr < rhs.contr);
-		// }
+		friend bool operator<(const stack<T,Container>& lhs, const stack<T,Container>& rhs) {
+			return (lhs._cont < rhs._cont);
+		}
 
-		// bool operator<=(const stack<T,Container>& lhs, const stack<T,Container>& rhs) {
-		// 	return (lhs.contr <= rhs.contr);
-		// }
+		friend bool operator<=(const stack<T,Container>& lhs, const stack<T,Container>& rhs) {
+			return (lhs._cont <= rhs._cont);
+		}
 
-		// bool operator>(const stack<T,Container>& lhs, const stack<T,Container>& rhs) {
-		// 	return (lhs.contr > rhs.contr);
-		// }
+		friend bool operator>(const stack<T,Container>& lhs, const stack<T,Container>& rhs) {
+			return (lhs._cont > rhs._cont);
+		}
 
-		// bool operator>=(const stack<T,Container>& lhs, const stack<T,Container>& rhs) {
-		// 	return (lhs.contr >= rhs.contr);
-		// }
+		friend bool operator>=(const stack<T,Container>& lhs, const stack<T,Container>& rhs) {
+			return (lhs._cont >= rhs._cont);
+		}
     };
 };
 

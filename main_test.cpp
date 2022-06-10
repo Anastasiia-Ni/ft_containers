@@ -59,9 +59,9 @@ int main(void)
 	//run_tests();
 
 	std::cout << MAGENTA << "\nTIME TEST:" << std::endl << std::endl;
-	// time_tests_map();
 	// time_tests_vector();
 	// time_tests_stack();
+	// time_tests_map();
 	//sleep(10);
 	//std::vector<int> ar = {1, 2, 3, 4, 5};
 	std::vector<int>::reverse_iterator ptr;
