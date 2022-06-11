@@ -5,10 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: anifanto <anifanto@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/24 19:32:29 by anifanto          #+#    #+#             */
-/*   Updated: 2022/06/11 15:32:38 by anifanto         ###   ########.fr       */
+/*   Created: 2022/06/11 19:11:51 by anifanto          #+#    #+#             */
+/*   Updated: 2022/06/11 19:49:59 by anifanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+
 
 # ifndef VECTOR_HPP
 #define VECTOR_HPP
@@ -125,10 +127,11 @@ namespace ft
 				this->operator=(src);
 			}
 
-			vector &operator=(const vector &rhs) {
+			vector &operator=(const vector &rhs) { // - broblem is here
 				if (this == &rhs)
 					return (*this);
 				clear();
+				this->_alloc = rhs._alloc;
 				this->_arr = this->_alloc.allocate(rhs.size());
 				this->_end = this->_arr;
 				this->_capacity = rhs.size();
@@ -378,7 +381,7 @@ namespace ft
 				*this = other;
 				other = vec;
 			};
-    };
+	};
 
 	template <class T, class Alloc>
 	bool operator== (const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs)

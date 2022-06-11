@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: anifanto <anifanto@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/05 16:42:15 by anifanto          #+#    #+#             */
-/*   Updated: 2022/06/06 18:18:43 by anifanto         ###   ########.fr       */
+/*   Created: 2022/06/11 19:11:10 by anifanto          #+#    #+#             */
+/*   Updated: 2022/06/11 19:25:52 by anifanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ static void pop_test() {
 }
 
 static void push_test() {
-    std::cout << "Test push:\t\t\t";
+	std::cout << "Test push:\t\t\t";
 	std::stack<int, std::vector<int> > std_stack;
 	ft::stack<int, ft::vector<int> > my_stack;
 	std_stack.push(42);
@@ -165,11 +165,7 @@ static void compare_test() {
 	std::cout << SUCS << std::endl;
 }
 
-int test_stack( void ){
-	std::cout << MAGENTA << "------------------------------------" << std::endl;
-	std::cout << "\tSTACK TESTER IS HERE" << std::endl;
-	std::cout << "------------------------------------" << RESET << std::endl;
-
+static void default_test () {
 	std::cout << BLUE << "STD STACK" << RESET << std::endl;
 	std::vector<int> std_vec(100);
 	std::stack<int, std::vector<int> > std_stack1;
@@ -179,9 +175,9 @@ int test_stack( void ){
 
 	std::cout << BLUE << "MY STACK" << RESET << std::endl;
 	ft::vector<int> my_vec(100);
-	ft::stack<int, ft::vector<int> > my_stack1;
+	ft::stack<int, ft::vector<int> > my_stack1; // - leaks
 	ft::stack<int, ft::vector<int> > my_stack2(my_vec);
-	std::cout << "Size of first: " << my_stack1.size() << std::endl;
+	//std::cout << "Size of first: " << my_stack1.size() << std::endl;
 	std::cout << "Size of second: " << my_stack2.size() << std::endl;
 	std::cout << BLUE << "------------------------------------" << RESET << std::endl;
 	std::cout << "Test default constructor:\t";
@@ -189,6 +185,15 @@ int test_stack( void ){
 		std::cout << FAIL << std::endl;
 	else
 		std::cout << SUCS << std::endl;
+
+}
+
+int test_stack( void ){
+	std::cout << MAGENTA << "------------------------------------" << std::endl;
+	std::cout << "\tSTACK TESTER IS HERE" << std::endl;
+	std::cout << "------------------------------------" << RESET << std::endl;
+
+	default_test ();
 	empty_test();
 	size_test();
 	top_test();

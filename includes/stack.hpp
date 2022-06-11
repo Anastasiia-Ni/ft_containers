@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: anifanto <anifanto@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/05 16:42:35 by anifanto          #+#    #+#             */
-/*   Updated: 2022/06/06 18:23:44 by anifanto         ###   ########.fr       */
+/*   Created: 2022/06/11 19:12:10 by anifanto          #+#    #+#             */
+/*   Updated: 2022/06/11 19:22:39 by anifanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,15 +31,16 @@ namespace ft
 	public:
 		explicit stack (const container_type& ctnr = container_type()) : _cont(ctnr) {}
 
-		virtual ~stack(){};
-
-		stack &operator=(stack const &other){
-			this->_cont = other._cont;
-				return (*this);
-		}
-
 		stack(const stack &copy){
 			this->_cont = copy._cont;
+		}
+
+		virtual ~stack(){};
+
+		stack &operator=(stack const &rhs){
+			if (&rhs != this)
+				this->_cont = rhs._cont;
+			return (*this);
 		}
 
 		value_type& top(void) {
@@ -90,7 +91,7 @@ namespace ft
 		friend bool operator>=(const stack<T,Container>& lhs, const stack<T,Container>& rhs) {
 			return (lhs._cont >= rhs._cont);
 		}
-    };
+	};
 };
 
 #endif
