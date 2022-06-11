@@ -20,7 +20,11 @@ namespace ft
 	template <class value_type>
 	struct rb_tree
 	{
-
+		value_type		_value;
+		rb_tree			*_parent_node;
+		rb_tree			*_left_node;
+		rb_tree			*_right_node;
+		bool			black;
 	};
 };
 

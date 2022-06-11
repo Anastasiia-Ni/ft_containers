@@ -175,9 +175,9 @@ static void default_test () {
 
 	std::cout << BLUE << "MY STACK" << RESET << std::endl;
 	ft::vector<int> my_vec(100);
-	ft::stack<int, ft::vector<int> > my_stack1; // - leaks
+	ft::stack<int, ft::vector<int> > my_stack1; // - leaks, check again
 	ft::stack<int, ft::vector<int> > my_stack2(my_vec);
-	//std::cout << "Size of first: " << my_stack1.size() << std::endl;
+	std::cout << "Size of first: " << my_stack1.size() << std::endl;
 	std::cout << "Size of second: " << my_stack2.size() << std::endl;
 	std::cout << BLUE << "------------------------------------" << RESET << std::endl;
 	std::cout << "Test default constructor:\t";

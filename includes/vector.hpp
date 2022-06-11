@@ -127,11 +127,10 @@ namespace ft
 				this->operator=(src);
 			}
 
-			vector &operator=(const vector &rhs) { // - broblem is here
+			vector &operator=(const vector &rhs) { // - broblem is here, try again
 				if (this == &rhs)
 					return (*this);
 				clear();
-				this->_alloc = rhs._alloc;
 				this->_arr = this->_alloc.allocate(rhs.size());
 				this->_end = this->_arr;
 				this->_capacity = rhs.size();
@@ -377,9 +376,19 @@ namespace ft
 			}
 
 			void swap(vector& other) {
-				vector<T, Alloc> vec = *this;		//check the methon on leaks
-				*this = other;
-				other = vec;
+				allocator_type  alloc_tmp = other._alloc;
+				pointer         arr_tmp = other._arr;
+				pointer         end_tmp = other._end;
+				size_t			cap_tmp = other._capacity;
+
+				other._alloc = this->_alloc;
+				other._arr = this->_arr;
+				other._end = this->_end;
+				other._capacity = this->_capacity;
+				this->_alloc = alloc_tmp;
+				this->_arr = arr_tmp;
+				this->_end = end_tmp;
+				this->_capacity = cap_tmp;
 			};
 	};
 
