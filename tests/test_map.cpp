@@ -6,7 +6,7 @@
 /*   By: anifanto <anifanto@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 16:42:20 by anifanto          #+#    #+#             */
-/*   Updated: 2022/06/06 18:18:26 by anifanto         ###   ########.fr       */
+/*   Updated: 2022/06/11 11:02:39 by anifanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,31 +31,31 @@ static void		test_constructor() {
     // ft::map<int, int> my_map;
     // if (st_map.size() != my_map.size()){
     //     std::cout << FAIL << std::endl;
-    //     return ;        
+    //     return ;
     // }
     // if (!check_iterator(st_map, my_map)){
     //     std::cout << FAIL << std::endl;
-    //     return ;         
+    //     return ;
     // }
     // std::map<std::string, std::string> st_map1;
     // ft::map<std::string, std::string> my_map1;
     // if (st_map1.size() != my_map1.size()){
     //     std::cout << FAIL << std::endl;
-    //     return ;        
+    //     return ;
     // }
     // if (!check_iterator(st_map1, my_map1)){
     //     std::cout << FAIL << std::endl;
-    //     return ;         
+    //     return ;
     // }
     // std::map<int, int> st_map2(st_map.begin(), st_map.end());
     // ft::map<int, int> my_map2(my_map.begin(), my_map.end());
     // if (st_map2.size() != my_map2.size()){
     //     std::cout << FAIL << std::endl;
-    //     return ;        
+    //     return ;
     // }
     // if (!check_iterator(st_map2, my_map2)){
     //     std::cout << FAIL << std::endl;
-    //     return ;         
+    //     return ;
     // }
     // std::map<int, int> st_map3;
     // ft::map<int, int> my_map3;
@@ -63,13 +63,13 @@ static void		test_constructor() {
     // my_map3 = my_map;
     // if (st_map3.size() != my_map3.size()){
     //     std::cout << FAIL << std::endl;
-    //     return ;        
+    //     return ;
     // }
     // if (!check_iterator(st_map3, my_map3)){
     //     std::cout << FAIL << std::endl;
-    //     return ;         
+    //     return ;
     // }
-    // std::cout << SUCS << std::endl; 
+    // std::cout << SUCS << std::endl;
 }
 
 static void		test_size() {
@@ -78,13 +78,13 @@ static void		test_size() {
 	// ft::map<int, int> my_map;
     // if (st_map.size() != my_map.size()){
     //     std::cout << FAIL << std::endl;
-    //     return ;        
+    //     return ;
     // }
     // st_map.insert(std::make_pair(5, 0));
     // my_map.insert(std::make_pair(5, 0));
     // if (st_map.size() != my_map.size()){
     //     std::cout << FAIL << std::endl;
-    //     return ;        
+    //     return ;
     // }
     // std::cout << SUCS << std::endl;
 }
@@ -95,37 +95,37 @@ static void    test_max_size(){
     // ft::map<int, int> my_map;
     // if (st_map.max_size() != my_map.max_size()){
     //     std::cout << FAIL << std::endl;
-    //     return ;        
+    //     return ;
     // }
     // std::cout << SUCS << std::endl;
 }
 
 static void		test_begin_end() {
 // 	std::cout << "Begin/end test:\t\t\t";
-// 	std::map<int, int> maps;    
+// 	std::map<int, int> maps;
 //     std::map<int, int> st_map(maps.begin(), maps.end());
 //     ft::map<int, int> my_map(maps.begin(), maps.end());
 //     std::map<int, int>::iterator its = st_map.begin();
 //     ft::map<int, int>::iterator itm = my_map.begin();
 //     if (st_map.size() != my_map.size()){
 //         std::cout << FAIL << std::endl;
-//         return ;        
+//         return ;
 //     }
 //     if (!check_iterator(st_map, my_map)){
 //         std::cout << FAIL << std::endl;
-//         return ;         
+//         return ;
 //     }
 //     if (++its->second != ++itm->second || its->first != itm->first){
 //         std::cout << FAIL << std::endl;
-//         return ;         
+//         return ;
 //     }
 //    std::map<int, int>::iterator its1 = st_map.end();
 //    ft::map<int, int>::iterator itm1 = my_map.end();
 //    if ((its1->first != itm1->first) || (its1->second != itm1->second)){
 //        std::cout << FAIL << std::endl;
-//        return ;         
+//        return ;
 //     }
-//     std::cout << SUCS << std::endl;  
+//     std::cout << SUCS << std::endl;
 }
 
 static void		test_operator() {
@@ -140,9 +140,9 @@ static void		test_operator() {
     // my_map['C'] = 3;
     // if (st_map['A'] != my_map['A']){
     //     std::cout << FAIL << std::endl;
-    //     return ;        
+    //     return ;
     // }
-    // std::cout << SUCS << std::endl; 
+    // std::cout << SUCS << std::endl;
 }
 
 static void		test_insert() {
@@ -153,23 +153,23 @@ static void		test_insert() {
     // my_map.insert(std::make_pair(5, 21));
     // if (st_map.size() != my_map.size()){
     //     std::cout << FAIL << std::endl;
-    //     return ;        
+    //     return ;
     // }
     // if (!check_iterator(st_map, my_map)){
     //     std::cout << FAIL << std::endl;
-    //     return ;         
+    //     return ;
     // }
     // st_map.clear();
     // my_map.clear();
     // if (st_map.size() != my_map.size()){
     //     std::cout << FAIL << std::endl;
-    //     return ;        
+    //     return ;
     // }
     // if (!check_iterator(st_map, my_map)){
     //     std::cout << FAIL << std::endl;
-    //     return ;         
+    //     return ;
     // }
-    // std::cout << SUCS << std::endl;  
+    // std::cout << SUCS << std::endl;
 }
 
 static void		test_empty() {
@@ -178,7 +178,7 @@ static void		test_empty() {
     // ft::map<int, int> my_map;
     // if (st_map.empty() != my_map.empty()){
     //     std::cout << FAIL << std::endl;
-    //     return ;       
+    //     return ;
     // }
     // std::cout << SUCS << std::endl;
 }
@@ -194,52 +194,52 @@ static void		test_erase() {
     // my_map['C'] = 3;
     // if (st_map.size() != my_map.size()){
     //     std::cout << FAIL << std::endl;
-    //     return ;        
+    //     return ;
     // }
     // if (!check_iterator(st_map, my_map)){
     //     std::cout << FAIL << std::endl;
-    //     return ;         
+    //     return ;
     // }
     // st_map.erase(++st_map.begin());
     // my_map.erase(++my_map.begin());
     // if (st_map.size() != my_map.size()){
     //     std::cout << FAIL << std::endl;
-    //     return ;        
+    //     return ;
     // }
     // if (!check_iterator(st_map, my_map)){
     //     std::cout << FAIL << std::endl;
-    //     return ;         
+    //     return ;
     // }
     // st_map.erase(++st_map.begin(), --st_map.end());
     // my_map.erase(++my_map.begin(), --my_map.end());
     // if (st_map.size() != my_map.size()){
     //     std::cout << FAIL << std::endl;
-    //     return ;        
+    //     return ;
     // }
     // if (!check_iterator(st_map, my_map)){
     //     std::cout << FAIL << std::endl;
-    //     return ;         
+    //     return ;
     // }
     // st_map.erase('A');
     // my_map.erase('A');
     // if (st_map.size() != my_map.size()){
     //     std::cout << FAIL << std::endl;
-    //     return ;        
+    //     return ;
     // }
     // if (!check_iterator(st_map, my_map)){
     //     std::cout << FAIL << std::endl;
-    //     return ;         
+    //     return ;
     // }
     // st_map.erase('F');
     // my_map.erase('F');
     // if (st_map.size() != my_map.size()){
     //     std::cout << FAIL << std::endl;
-    //     return ;        
+    //     return ;
     // }
     // if (!check_iterator(st_map, my_map)){
     //     std::cout << FAIL << std::endl;
-    //     return ;         
-    // }  
+    //     return ;
+    // }
     // std::cout << SUCS << std::endl;
 }
 
@@ -255,23 +255,23 @@ static void		test_swap() {
     // my_map[1] = 2;
     // if (st_map.size() != my_map.size()){
     //     std::cout << FAIL << std::endl;
-    //     return ;        
+    //     return ;
     // }
     // if (!check_iterator(st_map, my_map)){
     //     std::cout << FAIL << std::endl;
-    //     return ;         
+    //     return ;
     // }
     // st_map.swap(st_map1);
     // my_map.swap(my_map1);
     // if (st_map.size() != my_map.size()){
     //     std::cout << FAIL << std::endl;
-    //     return ;        
+    //     return ;
     // }
     // if (!check_iterator(st_map, my_map)){
     //     std::cout << FAIL << std::endl;
-    //     return ;         
-    // }  
-    // std::cout << SUCS << std::endl;  
+    //     return ;
+    // }
+    // std::cout << SUCS << std::endl;
 }
 
 static void		test_clear() {
@@ -282,23 +282,23 @@ static void		test_clear() {
 //     my_map.insert(std::make_pair(5, 21));
 //     if (st_map.size() != my_map.size()){
 //         std::cout << FAIL << std::endl;
-//         return ;        
+//         return ;
 //     }
 //     if (!check_iterator(st_map, my_map)){
 //         std::cout << FAIL << std::endl;
-//         return ;         
+//         return ;
 //     }
 //     st_map.clear();
 //     my_map.clear();
 //     if (st_map.size() != my_map.size()){
 //         std::cout << FAIL << std::endl;
-//         return ;        
+//         return ;
 //     }
 //     if (!check_iterator(st_map, my_map)){
 //         std::cout << FAIL << std::endl;
-//         return ;         
+//         return ;
 //     }
-//     std::cout << SUCS << std::endl;  
+//     std::cout << SUCS << std::endl;
 }
 
 static void    test_find () {
@@ -314,17 +314,17 @@ static void    test_find () {
     // my_map['C'] = 3;
     // if (st_map.size() != my_map.size()){
     //     std::cout << FAIL << std::endl;
-    //     return ;        
+    //     return ;
     // }
     // if (!check_iterator(st_map, my_map)){
     //     std::cout << FAIL << std::endl;
-    //     return ;         
+    //     return ;
     // }
     // it_s = st_map.find(1);
     // it_m = my_map.find(1);
     // if (it_s != st_map.end() || it_m != my_map.end()){
     //     std::cout << FAIL << std::endl;
-    //     return ;             
+    //     return ;
     // }
     // std::map<char, int>::iterator it_s1;
     // ft::map<char, int>::iterator it_m1;
@@ -332,9 +332,9 @@ static void    test_find () {
     // it_m1 = my_map.find('A');
     // if ((it_s1->first != it_m1->first) || (it_s1->second != it_m1->second)){
     //     std::cout << FAIL << std::endl;
-    //     return ;        
-    // }    
-    // std::cout << SUCS << std::endl;       
+    //     return ;
+    // }
+    // std::cout << SUCS << std::endl;
 }
 
 static void    test_count(){
@@ -348,11 +348,11 @@ static void    test_count(){
     // my_map['C'] = 3;
     // if (st_map.count('A') != my_map.count('A')){
     //     std::cout << FAIL << std::endl;
-    //     return ;        
+    //     return ;
     // }
     // if (st_map.count('T') != my_map.count('T')){
     //     std::cout << FAIL << std::endl;
-    //     return ;        
+    //     return ;
     // }
     // std::cout << SUCS << std::endl;
 }
@@ -365,32 +365,32 @@ static void    test_bound(){
     // st_map['C'] = 3;
     // my_map['A'] = 1;
     // my_map['B'] = 2;
-    // my_map['C'] = 3;    
+    // my_map['C'] = 3;
     // std::map<char, int>::iterator it_s = st_map.lower_bound(1);
     // ft::map<char, int>::iterator it_m = my_map.lower_bound(1);
     // if ((it_s->first != it_m->first) || (it_s->second != it_m->second)){
     //     std::cout << FAIL << std::endl;
-    //     return ;        
+    //     return ;
     // }
     // it_s = st_map.lower_bound('A');
     // it_m = my_map.lower_bound('A');
     // if ((it_s->first != it_m->first) || (it_s->second != it_m->second)){
     //     std::cout << FAIL << std::endl;
-    //     return ;        
+    //     return ;
     // }
     // it_s = st_map.upper_bound(1);
     // it_m = my_map.upper_bound(1);
     // if ((it_s->first != it_m->first) || (it_s->second != it_m->second)){
     //     std::cout << FAIL << std::endl;
-    //     return ;        
+    //     return ;
     // }
     // it_s = st_map.upper_bound('A');
     // it_m = my_map.upper_bound('A');
     // if ((it_s->first != it_m->first) || (it_s->second != it_m->second)){
     //     std::cout << FAIL << std::endl;
-    //     return ;        
+    //     return ;
     // }
-    // std::cout << SUCS << std::endl;  
+    // std::cout << SUCS << std::endl;
 }
 
 static void    test_equal_range(){
@@ -409,7 +409,7 @@ static void    test_equal_range(){
     // if ((it_s.first->first != it_m.first->first) || (it_s.second->second != it_m.second->second) ||
     // (it_s.first->second != it_m.first->second) || (it_s.second->first != it_m.second->first)){
     //     std::cout << FAIL << std::endl;
-    //     return ;        
+    //     return ;
     // }
     // std::pair<std::map<int, int>::iterator, std::map<int, int>::iterator> it_s1;
     // std::pair<ft::map<int, int>::iterator, ft::map<int, int>::iterator> it_m1;
@@ -418,9 +418,9 @@ static void    test_equal_range(){
     // if ((it_s.first->first != it_m.first->first) || (it_s.second->second != it_m.second->second) ||
     // (it_s.first->second != it_m.first->second) || (it_s.second->first != it_m.second->first)){
     //     std::cout << FAIL << std::endl;
-    //     return ;        
+    //     return ;
     // }
-    // std::cout << SUCS << std::endl; 
+    // std::cout << SUCS << std::endl;
 }
 
 static void    test_relation(){
@@ -430,53 +430,53 @@ static void    test_relation(){
     // ft::map<int, int> my_map1;
     // if (st_map.size() != my_map.size()){
     //     std::cout << FAIL << std::endl;
-    //     return ;        
+    //     return ;
     // }
     // if (!check_iterator(st_map, my_map)){
     //     std::cout << FAIL << std::endl;
-    //     return ;         
+    //     return ;
     // }
     // if (st_map1.size() != my_map1.size()){
     //     std::cout << FAIL << std::endl;
-    //     return ;        
+    //     return ;
     // }
     // if (!check_iterator(st_map1, my_map1)){
     //     std::cout << FAIL << std::endl;
-    //     return ;         
+    //     return ;
     // }
     // st_map.insert(std::make_pair(5, 21));
     // my_map.insert(std::make_pair(5, 21));
     // if((st_map == st_map1) != (my_map == my_map1)){
     //     std::cout << FAIL << std::endl;
-    //     return ;              
+    //     return ;
     // }
     // if((st_map != st_map1) != (my_map != my_map1)){
     //     std::cout << FAIL << std::endl;
-    //     return ;              
+    //     return ;
     // }
     // if((st_map > st_map1) != (my_map > my_map1)){
     //     std::cout << FAIL << std::endl;
-    //     return ;              
+    //     return ;
     // }
     // if((st_map >= st_map1) != (my_map >= my_map1)){
     //     std::cout << FAIL << std::endl;
-    //     return ;              
+    //     return ;
     // }
     // if((st_map < st_map1) != (my_map < my_map1)){
     //     std::cout << FAIL << std::endl;
-    //     return ;              
+    //     return ;
     // }
     // if((st_map <= st_map1) != (my_map <= my_map1)){
     //     std::cout << FAIL << std::endl;
-    //     return ;              
+    //     return ;
     // }
-    // std::cout << SUCS << std::endl; 
+    // std::cout << SUCS << std::endl;
 }
 
 
 int test_map( void ){
 	std::cout << MAGENTA << "------------------------------------" << std::endl;
-	std::cout << "\tmAP TESTER IS HERE" << std::endl;
+	std::cout << "\tMAP TESTER IS HERE" << std::endl;
 	std::cout << "------------------------------------" << RESET << std::endl;
 
 	test_constructor();

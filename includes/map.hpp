@@ -6,7 +6,7 @@
 /*   By: anifanto <anifanto@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 16:42:39 by anifanto          #+#    #+#             */
-/*   Updated: 2022/06/05 16:42:40 by anifanto         ###   ########.fr       */
+/*   Updated: 2022/06/11 15:25:51 by anifanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #define MAP_HPP
 
 #include "containers.hpp"
+#include "binary_tree.hpp"
 namespace ft
 {
 	template <class Key, class T, class Compare = std::less<Key>, class Alloc = std::allocator<std::pair<const Key, T> > >
@@ -22,27 +23,60 @@ namespace ft
 		public:
 			typedef Key										key_type;
 			typedef T										mapped_type;
-//			typedef ft::pair<const key_type, mapped_type>	value_type;
+			typedef ft::pair<const key_type, mapped_type>	value_type;
 			typedef size_t									size_type;
-			//difference_type
-			//key_compare
-			//allocator_type
+			typedef Alloc									allocator_type;
+			typedef Compare									key_compare;
 			typedef T&										reference;
  			typedef T const & 								const_reference;
 			typedef T*										pointer;
 			typedef const T*								const_pointer;
+			//typedef typename ft::iterator_traits<iterator>::difference_type	difference_type;
 			//iterator
 			//const_iterator
 			//reverse_iterator
 			//const_reverse_iterator
 
-			private:
-			// protected:
-			// 	Compare comp;
-			// 	value_compare(Compare c) : comp(c)
-			// 	{}
+			class value_compare : public std::binary_function<value_type, value_type, bool> // in C++98, it is required to inherit binary_function ....
+			{
+				friend class map;
 
-			//public:
+				protected:
+					Compare		comp;
+					value_compare(Compare c) : comp(c) {}
+
+				public:
+					typedef bool		result_type;
+					typedef value_type	first_argument_type;
+					typedef value_type	second_argument_type;
+					bool operator() (const value_type &x, const value_type &y) const
+					{
+						return comp(x.first, y.first);
+					}
+			};
+
+		private:
+			typedef binary_tree<value_type>	b_tree;
+			allocator_type					_alloc;
+			key_compare						_comp;
+			size_type						_size;
+			std::allocator<b_tree>			_alloc_tree;
+			b_tree							*_root;
+			b_tree							*_nl_node;
+
+			b_tree *findnode (const key_type& k, b_tree *start) const {
+				b_tree *tmp;
+
+				tmp = start;
+				(void)k;
+				return (_nl_node);
+			}
+
+			// b_tree	*find_max_node() const {
+
+			// }
+
+		public:
 
 			// map() {
 

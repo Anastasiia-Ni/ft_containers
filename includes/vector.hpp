@@ -6,7 +6,7 @@
 /*   By: anifanto <anifanto@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 19:32:29 by anifanto          #+#    #+#             */
-/*   Updated: 2022/06/06 18:12:31 by anifanto         ###   ########.fr       */
+/*   Updated: 2022/06/11 15:32:38 by anifanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -340,7 +340,7 @@ namespace ft
 						reserve(1);
 					else
 						reserve(this->_capacity * 2);
-				}	
+				}
 				this->_alloc.construct(_end, value);
 				this->_end++;
 			}
@@ -401,8 +401,8 @@ namespace ft
 	}
 
 	template <class T, class Alloc>
-	bool operator!= (const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs) { 
-		return (!(lhs == rhs)); 
+	bool operator!= (const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs) {
+		return (!(lhs == rhs));
 	}
 
 	template <class T, class Alloc>
@@ -430,8 +430,8 @@ namespace ft
 	}
 
 	template <class T, class Alloc>
-	void swap (vector<T,Alloc>& lhs, vector<T,Alloc>& rhs) { 
-		lhs.swap(rhs); 
+	void swap (vector<T,Alloc>& lhs, vector<T,Alloc>& rhs) {
+		lhs.swap(rhs);
 	}
 };
 

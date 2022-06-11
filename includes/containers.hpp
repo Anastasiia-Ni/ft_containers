@@ -6,7 +6,7 @@
 /*   By: anifanto <anifanto@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 16:42:47 by anifanto          #+#    #+#             */
-/*   Updated: 2022/06/06 12:56:08 by anifanto         ###   ########.fr       */
+/*   Updated: 2022/06/11 15:32:59 by anifanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 #include <utility>
 #include <functional>
 #include <stdexcept>
+#include <cstddef>
 
 #include "vector.hpp"
 #include "map.hpp"
