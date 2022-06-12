@@ -6,7 +6,7 @@
 /*   By: anifanto <anifanto@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 19:12:35 by anifanto          #+#    #+#             */
-/*   Updated: 2022/06/11 19:12:40 by anifanto         ###   ########.fr       */
+/*   Updated: 2022/06/12 15:22:58 by anifanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -207,7 +207,27 @@ namespace ft
 			return (_ri);
 		}
 
-		//current
+		reference operator*() const
+		{
+			iterator_type tmp = _ri;
+			return (*(--tmp));
+		}
+
+		pointer operator->() const {
+			return &(operator*());
+		}
+
+		reference operator[](difference_type n) const {
+			return (this->_ri - n);  // (*(*this + n));
+		}
+
+		reverse_iterator operator+(difference_type n) const {
+			return (reverse_iterator(this->_ri - n));
+		}
+
+		reverse_iterator operator-(difference_type n) const {
+			return (reverse_iterator(this->_ri + n));
+		}
 
 		reverse_iterator &operator++(void) //pre_fix
 		{
@@ -234,24 +254,94 @@ namespace ft
 			this->_ri++;
 			return(tmp);
 		}
-		// to be continue...
+
+		reverse_iterator &operator+=(difference_type n)
+		{
+			this->_ri -= n;
+			return (*this);
+		}
+
+		reverse_iterator &operator-=(difference_type n)
+		{
+			this->rev_i += n;
+			return (*this);
+		}
 	};
 
-
-
-
-	template <class Iterator> // maybe move to utils
-	typename iterator_traits<Iterator>::difference_type distance (Iterator first, Iterator last)
+	template <class T, class U>
+	class map_iterator : public iterator<std::Biderectional_iterator_tag, T>
 	{
-		typename iterator_traits<Iterator>::difference_type n;
-		n = 0;
-		while (first != last)
-		{
-			first++;
-			n++;
-		}
-		return (n);
-	}
+		public:
+			typedef typename iterator<std::bidirectional_iterator_tag, T>::value_type			value_type;
+			typedef typename iterator<std::bidirectional_iterator_tag, T>::difference_type		difference_type;
+			typedef typename iterator<std::bidirectional_iterator_tag, T>::iterator_category	iterator_category;
+			typedef T*																			pointer;
+			typedef T&																			reference;
+		private:
+			U	*node;
+			U	*last;
+			U	*nl_node;
+		public:
+			map_iterator () : node(NULL), last(NULL), nl_node(NULL) {}
+			map_iterator (U *elem) : node(elem), last(elem), nl_node(NULL) {}
+			map_iterator (U *_node, U *_last) : node(_node), last(_last), nl_node(NULL) {}
+			virtual ~map_iterator () {}
+
+			map_iterator(const map_iterator& it) {
+				this->node = it.node;
+				this->last = it.last;
+				this->nl_node = it.nl_node;
+			}
+
+			map_iterator & operator=(const map_iterator& it) {
+				if (this == it)
+					return (this);
+				this->node = it.node;
+				this->last = it.last;
+				this->nl_node = it.nl_node;
+				return (*this);
+			}
+
+			map_iterator &operator++ (void) {	//pre fix
+
+			}
+
+			map_iterator operator++ (int) {		//post fix
+
+			}
+
+			map_iterator &operator-- (void) {	//pre fix
+
+			}
+
+			map_iterator operator-- (int) {		//post fix
+
+			}
+
+			bool operator== (const map_iterator& it) const {
+
+			}
+
+			bool operator!= (const map_iterator& it) const {
+
+			}
+
+			U *base() const {
+				return (node);
+			}
+
+			reference operator*() const {
+				return (node->_value);
+			}
+
+			pointer operator->() const {
+				return (&(node->_value));
+			}
+
+			operator ft::map_iterator<const T, const U> () const {
+				return (ft::map_iterator<const T, const U>(node, last));
+			}
+	};
 };
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: anifanto <anifanto@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 19:11:51 by anifanto          #+#    #+#             */
-/*   Updated: 2022/06/11 19:49:59 by anifanto         ###   ########.fr       */
+/*   Updated: 2022/06/12 09:49:02 by anifanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ namespace ft
 
 			~vector() {
 				clear();
-				if (capacity() > 0)
+				if (this->_arr) // maybr no need
 					_alloc.deallocate(_arr, capacity());
 			}
 
@@ -127,19 +127,19 @@ namespace ft
 				this->operator=(src);
 			}
 
-			vector &operator=(const vector &rhs) { // - broblem is here, try again
-				if (this == &rhs)
+			vector &operator=(const vector &other) {
+				if (this == &other)
 					return (*this);
 				clear();
-				this->_arr = this->_alloc.allocate(rhs.size());
+				this->_capacity = other.size();
+				this->_arr = this->_alloc.allocate(other.size());
 				this->_end = this->_arr;
-				this->_capacity = rhs.size();
-				for(const_iterator it = rhs.begin(); it != rhs.end(); it++) {
+				for(const_iterator it = other.begin(); it != other.end(); it++) {
 					this->_alloc.construct(this->_end, *it);
 					this->_end++;
 				}
 				return (*this);
-			}
+				}
 
 			allocator_type	get_allocator() const {
 				return (this->_alloc);

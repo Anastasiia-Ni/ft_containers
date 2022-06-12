@@ -6,7 +6,7 @@
 /*   By: anifanto <anifanto@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 19:11:10 by anifanto          #+#    #+#             */
-/*   Updated: 2022/06/11 19:25:52 by anifanto         ###   ########.fr       */
+/*   Updated: 2022/06/12 09:27:07 by anifanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -188,7 +188,7 @@ static void default_test () {
 
 }
 
-int test_stack( void ){
+int test_stack () {
 	std::cout << MAGENTA << "------------------------------------" << std::endl;
 	std::cout << "\tSTACK TESTER IS HERE" << std::endl;
 	std::cout << "------------------------------------" << RESET << std::endl;

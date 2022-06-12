@@ -6,7 +6,7 @@
 /*   By: anifanto <anifanto@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 19:11:57 by anifanto          #+#    #+#             */
-/*   Updated: 2022/06/11 19:12:04 by anifanto         ###   ########.fr       */
+/*   Updated: 2022/06/12 13:30:35 by anifanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,21 @@ namespace ft
 		return true;
 	}
 
+	template <class Iterator> // maybe move to utils
+	typename iterator_traits<Iterator>::difference_type distance (Iterator first, Iterator last)
+	{
+		typename iterator_traits<Iterator>::difference_type n;
+		n = 0;
+		while (first != last)
+		{
+			first++;
+			n++;
+		}
+		return (n);
+	}
+
+// advanced !!!!
+
 	template <class T1, class T2>
 	struct pair {
 		T1  first;
@@ -135,7 +150,7 @@ namespace ft
 		pair() : first(), second() {}
 		pair(const T1& x, const T2& y) : first(x), second(y) {}
 
-
+		//add funct
 	};
 
 	template <class T1,class T2>
