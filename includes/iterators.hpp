@@ -269,7 +269,7 @@ namespace ft
 	};
 
 	template <class T, class U>
-	class map_iterator : public iterator<std::Biderectional_iterator_tag, T>
+	class map_iterator : public iterator<std::bidirectional_iterator_tag, T>
 	{
 		public:
 			typedef typename iterator<std::bidirectional_iterator_tag, T>::value_type			value_type;
@@ -303,27 +303,125 @@ namespace ft
 			}
 
 			map_iterator &operator++ (void) {	//pre fix
-
+				if (node == nl_node)
+					return (*this);
+				if (node->_right_node != nl_node)
+				{
+					node = node->_right_node;
+					while (node->_left_node != nl_node)
+						node = node->_left_node;
+					last = node;
+					return (*this);
+				}
+				while (true)
+				{
+					if (node->_parent_node == nl_node)
+					{
+						node = node->_parent_node;
+						return (*this);
+					}
+					if (node->_parent_node->_left_node == node)
+					{
+						node = node->_parent_node;
+						last = node;
+						return (*this);
+					}
+					node = node->_parent_node;
+				}
 			}
 
 			map_iterator operator++ (int) {		//post fix
-
+				map_iterator tmp(*this);
+				if (node == nl_node)
+					return (tmp);
+				if (node->_right_node != nl_node)
+				{
+					node = node->_right_node;
+					while (node->_left_node != nl_node)
+						node = node->_left_node;
+					last = node;
+					return (tmp);
+				}
+				while (true)
+				{
+					if (node->_parent_node == nl_node)
+					{
+						node = node->_parent_node;
+						return (tmp);
+					}
+					if (node->_parent_node->_left_node == node)
+					{
+						node = node->_parent_node;
+						last = node;
+						return (tmp);
+					}
+					node = node->_parent_node;
+				}
 			}
 
 			map_iterator &operator-- (void) {	//pre fix
-
+				if (node == nl_node) {
+					node = last;
+					return (*this);
+				}
+				if (node->_left_node != nl_node) {
+					node = node->_left_node;
+					while (node->_right_node != nl_node)
+						node = node->_right_node;
+					return (*this);
+				}
+				while (true)
+				{
+					if (node->_parent_node == nl_node)
+					{
+						node = node->_parent_node;
+						return (*this);
+					}
+					if (node->_parent_node->_right_node == node)
+					{
+						node = node->_parent_node;
+						return (*this);
+					}
+					node = node->_parent_node;
+				}
 			}
 
 			map_iterator operator-- (int) {		//post fix
-
+				map_iterator tmp(*this);
+				if (node == nl_node)
+				{
+					node = last;
+					return (tmp);
+				}
+				if (node->_left_node != nl_node)
+				{
+					node = node->_left_node;
+					while (node->_right_node != nl_node)
+						node = node->_right_node;
+					return (tmp);
+				}
+				while (true)
+				{
+					if (node->_parent_node == nl_node)
+					{
+						node = node->_parent_node;
+						return (tmp);
+					}
+					if (node->_parent_node->_right_node == node)
+					{
+						node = node->_parent_node;
+						return (tmp);
+					}
+					node = node->_parent_node;
+				}
 			}
 
 			bool operator== (const map_iterator& it) const {
-
+				return (this->node == it.node && this->nl_node == it.nl_node);
 			}
 
 			bool operator!= (const map_iterator& it) const {
-
+				return (!(*this == it));
 			}
 
 			U *base() const {

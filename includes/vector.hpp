@@ -79,6 +79,31 @@ namespace ft
 				}
 			}
 
+			~vector() {
+				clear();
+				if (this->_arr) // maybr no need
+					_alloc.deallocate(_arr, capacity());
+			}
+
+			vector(const vector& src) : _alloc(src._alloc), _arr(NULL), _end(NULL), _capacity(0)
+			{
+				this->operator=(src);
+			}
+
+			vector &operator=(const vector &other) {
+				if (this == &other)
+					return (*this);
+				clear();
+				this->_capacity = other.size();
+				this->_arr = this->_alloc.allocate(other.size());
+				this->_end = this->_arr;
+				for(const_iterator it = other.begin(); it != other.end(); it++) {
+					this->_alloc.construct(this->_end, *it);
+					this->_end++;
+				}
+				return (*this);
+				}
+
 			void assign(size_type count, const T& value) {
 				if (count > max_size()) {
 					throw std::length_error("error max_size");
@@ -115,31 +140,6 @@ namespace ft
 			// 	for (; first != last; first++, this->_end++)
 			// 		this->_alloc.construct(this->_end, *first);
 			// }
-
-			~vector() {
-				clear();
-				if (this->_arr) // maybr no need
-					_alloc.deallocate(_arr, capacity());
-			}
-
-			vector(const vector& src) : _alloc(src._alloc), _arr(NULL), _end(NULL), _capacity(0)
-			{
-				this->operator=(src);
-			}
-
-			vector &operator=(const vector &other) {
-				if (this == &other)
-					return (*this);
-				clear();
-				this->_capacity = other.size();
-				this->_arr = this->_alloc.allocate(other.size());
-				this->_end = this->_arr;
-				for(const_iterator it = other.begin(); it != other.end(); it++) {
-					this->_alloc.construct(this->_end, *it);
-					this->_end++;
-				}
-				return (*this);
-				}
 
 			allocator_type	get_allocator() const {
 				return (this->_alloc);

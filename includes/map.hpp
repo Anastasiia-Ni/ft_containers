@@ -15,6 +15,9 @@
 
 #include "containers.hpp"
 #include "binary_tree.hpp"
+#include "iterators.hpp"
+
+
 namespace ft
 {
 	template <class Key, class T, class Compare = std::less<Key>, class Alloc = std::allocator<std::pair<const Key, T> > >
@@ -31,11 +34,11 @@ namespace ft
  			typedef T const & 								const_reference;
 			typedef T*										pointer;
 			typedef const T*								const_pointer;
-			//typedef typename ft::iterator_traits<iterator>::difference_type	difference_type;
-			//iterator
-			//const_iterator
-			//reverse_iterator
-			//const_reverse_iterator
+			typedef ft::map_iterator<value_type, ft::binary_tree<value_type> >				iterator;
+			typedef ft::map_iterator<const value_type, const ft::binary_tree<value_type> >	const_iterator;
+			typedef ft::reverse_iterator<iterator>											reverse_iterator;
+			typedef ft::reverse_iterator<const_iterator>									const_reverse_iterator;
+			typedef typename ft::iterator_traits<iterator>::difference_type					difference_type;
 
 			class value_compare : public std::binary_function<value_type, value_type, bool> // in C++98, it is required to inherit binary_function ....
 			{
@@ -130,9 +133,9 @@ namespace ft
 		// 	insert(other.begin(), other.end());
 		// }
 
-		// 	~map() {
-		// 		clear();
-		// 	}
+			~map() {
+				clear();
+			}
 
 		// 	map& operator=(const map& rhs) {
 		// 		if (*this == rhs)
@@ -205,9 +208,9 @@ namespace ft
 			// 	return(this->_alloc_tree.max_size());
 			// }
 
-			// void clear() {
-			// 	erase(begin(), end());
-			// }
+			void clear() {
+				erase(begin(), end());
+			}
 
 			// ft::pair<iterator, bool> insert(const value_type& value) {
 
@@ -239,8 +242,8 @@ namespace ft
 			size_type erase( const Key& key ) {
 				b_tree *tmp;
 
-				tmp = findnode(k, this->_root);
-				if (tmp->_value.first == k) {
+				tmp = findnode(key, this->_root);
+				if (tmp->_value.first == key) {
 					erase(tmp);
 					return (1);
 				}
@@ -255,18 +258,18 @@ namespace ft
 				b_tree					*tmp_root;
 				b_tree					*tmp_nl_node;
 
-				tmp_alloc = x._alloc;
-				tmp_comp = x._comp;
-				tmp_size = x._size;
-				tmp_alloc_tree = x._alloc_tree;
-				tmp_root = x._root;
-				tmp_nl_node = x._nl_node;
-				x._alloc = this->_alloc;
-				x._comp = this->_comp;
-				x._size = this->_size;
-				x._alloc_tree = this->_alloc_tree;
-				x._root = this->_root;
-				x._nl_node = this->_nl_node;
+				tmp_alloc = other._alloc;
+				tmp_comp = other._comp;
+				tmp_size = other._size;
+				tmp_alloc_tree = other._alloc_tree;
+				tmp_root = other._root;
+				tmp_nl_node = other._nl_node;
+				other._alloc = this->_alloc;
+				other._comp = this->_comp;
+				other._size = this->_size;
+				other._alloc_tree = this->_alloc_tree;
+				other._root = this->_root;
+				other._nl_node = this->_nl_node;
 				this->_alloc = tmp_alloc;
 				this->_comp = tmp_comp;
 				this->_size = tmp_size;
