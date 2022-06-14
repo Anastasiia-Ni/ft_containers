@@ -150,7 +150,17 @@ namespace ft
 		pair() : first(), second() {}
 		pair(const T1& x, const T2& y) : first(x), second(y) {}
 
-		//add funct
+		template<class U, class V>
+		pair (const pair<U,V>& other) : first(other.first), second(other.second) {};
+		
+        pair& operator=(const pair& rhs)
+		{
+			if (*this == rhs)
+				return (*this);
+			this->first = rhs.first;
+			this->second = rhs.second;
+			return (*this);
+		}
 	};
 
 	template <class T1,class T2>

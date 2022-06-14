@@ -16,6 +16,7 @@
 #include "containers.hpp"
 #include "binary_tree.hpp"
 #include "iterators.hpp"
+#include "red_black_tree.hpp"
 
 
 namespace ft
@@ -238,7 +239,8 @@ namespace ft
 			}
 
 			size_type max_size() const {
-				return(this->_alloc_tree.max_size());
+				return (std::numeric_limits<size_type>::max() / sizeof(rb_map_tree<key_type, mapped_type>));
+				//return(this->_alloc_tree.max_size());
 			}
 
 			void clear() {
@@ -284,7 +286,7 @@ namespace ft
 					if (tmp->_right_node != _nl_node && tmp->_left_node != _nl_node) {
 
 					}
-					else if (tmp->_right_node == _nl_hode && tmp->_left_node != _nl_node) {
+					else if (tmp->_right_node == _nl_node && tmp->_left_node != _nl_node) {
 
 					}
 					else if (tmp->_left_node == _nl_node && tmp->_right_node != _nl_node) {

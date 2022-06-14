@@ -68,6 +68,16 @@ namespace ft
 				return (!(this == tree));
 			}
 	};
+	
+	template <class Key, class T>
+	struct rb_map_tree
+	{
+		std::pair<Key, T> 	pair;
+		rb_map_tree			*_parent_node;
+		rb_map_tree			*_left_node;
+		rb_map_tree			*_right_node;
+		bool				black;
+	};
 };
 
 #endif
