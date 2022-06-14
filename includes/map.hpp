@@ -6,7 +6,7 @@
 /*   By: anifanto <anifanto@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 19:12:26 by anifanto          #+#    #+#             */
-/*   Updated: 2022/06/12 14:20:39 by anifanto         ###   ########.fr       */
+/*   Updated: 2022/06/14 20:25:25 by anifanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,12 +118,11 @@ namespace ft
 		explicit map (const key_compare& comp = key_compare(), const allocator_type& alloc = allocator_type()) :
 					_alloc(alloc), _comp(comp), _size(0), _root(), _nl_node() {}
 
-		// template <class InputIterator>
-		// map (InputIterator first, InputIterator last, const key_compare& comp = key_compare(),
-		// 	const allocator_type& alloc = allocator_type()) : _alloc(alloc), _comp(comp), _size(0), _root(), _null_node()
-		// {
-		// 	insert(first, last);
-		// }
+		template <class InputIterator>
+		map (InputIterator first, InputIterator last, const key_compare& comp = key_compare(),
+			const allocator_type& alloc = allocator_type()) : _alloc(alloc), _comp(comp), _size(0), _root(), _nl_node() {
+				insert(first, last);
+		}
 
 		// map (const map& other) : _size(0), _root(), _nl_node()
 		// {
@@ -134,7 +133,7 @@ namespace ft
 		// }
 
 			~map() {
-				clear();
+				//clear();
 			}
 
 		// 	map& operator=(const map& rhs) {
@@ -148,37 +147,71 @@ namespace ft
 		// 		return (*this);
 		// 	}
 
-		// 	allocator_type get_allocator() const{
-		// 		return(this->_alloc);
-		// 	}
+			allocator_type get_allocator() const{
+				return(this->_alloc);
+			}
 
-			// T& at(const Key& key){
+			T& at(const Key& key){
+				iterator tmp;
 
-			// }
+				tmp = find(key);
+				if (tmp == this->end())
+					throw std::length_error("error vector::max_size");
+				return (tmp->second);
+			}
 
-			// const T& at(const Key& key) const {
+			const T& at(const Key& key) const {
+				iterator tmp;
 
-			// }
+				tmp = find(key);
+				if (tmp == this->end())
+					throw std::length_error("error vector::max_size");
+				return (tmp->second);
+			}
 
-			// T& operator[](const Key& key) {
+			T& operator[](const Key& key) {
+				return (insert(ft::make_pair(key, mapped_type())).first->second);
+			}
 
-			// }
+			iterator begin() {
+				b_tree *tmp;
 
-			// iterator begin() {
+				tmp = this->_root;
+				if(tmp != _nl_node) {
+					while (tmp->_left_node != _nl_node)
+					tmp = tmp->_left_node;
+				}
+				return (iterator(tmp));
+			}
 
-			// }
+			const_iterator begin() const {
+				b_tree *tmp;
 
-			// const_iterator begin() const {
+				tmp = this->_root;
+				if(tmp != _nl_node) {
+					while (tmp->_left_node != _nl_node)
+					tmp = tmp->_left_node;
+				}
+				return (const_iterator(tmp));
+			}
 
-			// }
+			iterator end() {
+				b_tree *tmp;
 
-			// iterator end() {
+				tmp = find_max_node();
+				if (tmp != _nl_node)
+					return (iterator(tmp->_right_node, tmp)); // check
+				return (iterator(tmp));
+			}
 
-			// }
+			const_iterator end() const {
+				b_tree *tmp;
 
-			// const_iterator end() const {
-
-			// }
+				tmp = find_max_node();
+				if (tmp != _nl_node)
+					return (const_iterator(tmp->_right_node, tmp)); // check
+				return (const_iterator(tmp));
+			}
 
 			// reverse_iterator rbegin() {
 
@@ -196,17 +229,17 @@ namespace ft
 
 			// }
 
-			// bool empty() const {
-			// 	return (this->_size == 0);
-			// }
+			bool empty() const {
+				return (this->_size == 0);
+			}
 
-			// size_type size() const {
-			// 	return (this->_size);
-			// }
+			size_type size() const {
+				return (this->_size);
+			}
 
-			// size_type max_size() const {
-			// 	return(this->_alloc_tree.max_size());
-			// }
+			size_type max_size() const {
+				return(this->_alloc_tree.max_size());
+			}
 
 			void clear() {
 				erase(begin(), end());
@@ -225,9 +258,55 @@ namespace ft
 
 			// }
 
-			// void erase(iterator pos) {
+			void erase(iterator pos) {
+				b_tree *tmp;
 
-			// }
+				tmp = pos.base();
+				if (tmp == this->_root) {
+					if (tmp->_right_node != _nl_node) {
+						if (tmp->_left_node != _nl_node) {
+							b_tree *tmp2;
+							tmp2 = tmp->_right_node;
+							while (tmp2->_left_node != _nl_node)
+								tmp2 = tmp2->_left_node;
+							tmp->_left_node->_parent_node = tmp2;
+							tmp2->_left_node = tmp->_left_node;
+						}
+						this->_root = tmp->_right_node;
+						this->_root->_parent_node = _nl_node;
+					}
+					else if (tmp->_left_node != _nl_node) {
+						this->_root = tmp->_left_node;
+						this->_root->_parent_node = _nl_node;
+					}
+				}
+				else {
+					if (tmp->_right_node != _nl_node && tmp->_left_node != _nl_node) {
+
+					}
+					else if (tmp->_right_node == _nl_hode && tmp->_left_node != _nl_node) {
+
+					}
+					else if (tmp->_left_node == _nl_node && tmp->_right_node != _nl_node) {
+
+					}
+					else if (tmp->_right_node == _nl_node && tmp->_left_node == _nl_node) {
+						if (tmp->_parent_node->_left_node == tmp)
+							tmp->_parent_node->_left_node = _nl_node;
+						else
+							tmp->_parent_node->_right_node = _nl_node;
+					}
+					// dopisat' ostalnie sluchai
+				}
+				tmp->_left_node = _nl_node;
+				tmp->_right_node = _nl_node;
+				tmp->_parent_node = _nl_node;
+				_alloc_tree.destroy(tmp);
+				_alloc_tree.deallocate(tmp, 1);
+				this->_size--;
+				if (this->_size == 0)
+					this->_root = _nl_node;
+			}
 
 			void erase(iterator first, iterator last) {
 				iterator tmp;

@@ -6,7 +6,7 @@
 /*   By: anifanto <anifanto@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 19:12:35 by anifanto          #+#    #+#             */
-/*   Updated: 2022/06/12 15:22:58 by anifanto         ###   ########.fr       */
+/*   Updated: 2022/06/14 16:02:15 by anifanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -294,8 +294,8 @@ namespace ft
 			}
 
 			map_iterator & operator=(const map_iterator& it) {
-				if (this == it)
-					return (this);
+				if (*this == it)
+					return (*this);
 				this->node = it.node;
 				this->last = it.last;
 				this->nl_node = it.nl_node;
