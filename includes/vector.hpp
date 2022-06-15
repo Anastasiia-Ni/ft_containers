@@ -6,7 +6,7 @@
 /*   By: anifanto <anifanto@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 19:11:51 by anifanto          #+#    #+#             */
-/*   Updated: 2022/06/12 09:49:02 by anifanto         ###   ########.fr       */
+/*   Updated: 2022/06/15 12:25:12 by anifanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ namespace ft
 
 			~vector() {
 				clear();
-				if (this->_arr) // maybr no need
+				if (this->_arr)
 					_alloc.deallocate(_arr, capacity());
 			}
 
@@ -189,8 +189,17 @@ namespace ft
 				return (*(this->_end - 1));
 			}
 
-			// T *data () {};
-			// const T* data() const {};
+			T *data () {
+				if (!size())
+					return NULL;
+				return (this->_arr);
+			};
+
+			const T* data() const {
+				if (!size())
+					return NULL;
+				return (this->_arr);
+			};
 
 			iterator end () {
 				return (iterator(this->_end));
@@ -201,18 +210,18 @@ namespace ft
 			}
 
 			reverse_iterator rbegin() {
-				return (reverse_iterator(this->_end));
+				return (reverse_iterator(this->_end - 1));
 			}
 			const_reverse_iterator rbegin() const {
-				return (const_reverse_iterator(this->_end));
+				return (const_reverse_iterator(this->_end - 1));
 			}
 
 			reverse_iterator rend() {
-				return (reverse_iterator(this->_arr));
+				return (reverse_iterator(this->_arr - 1));
 			}
 
 			const_reverse_iterator rend() const {
-				return (const_reverse_iterator(this->_arr));
+				return (const_reverse_iterator(this->_arr - 1));
 			}
 
 			bool empty() const {
@@ -398,18 +407,6 @@ namespace ft
 		if (lhs.size() != rhs.size())
 			return (false);
 		return (ft::equal(lhs.begin(), lhs.end(), rhs.begin()));
-		// typename ft::vector<T,Alloc>::const_iterator it_lhs = lhs.begin();
-		// typename ft::vector<T,Alloc>::const_iterator it_rhs = rhs.begin();
-		// while (true)
-		// {
-		// 	if (it_rhs == rhs.end() && it_lhs == lhs.end())
-		// 		break;
-		// 	if (*it_rhs != *it_lhs || (it_rhs == rhs.end() && it_lhs != lhs.end()))
-		// 		return (false);
-		// 	it_rhs++;
-		// 	it_lhs++;
-		// }
-		// return (true);
 	}
 
 	template <class T, class Alloc>

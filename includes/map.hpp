@@ -6,7 +6,7 @@
 /*   By: anifanto <anifanto@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 19:12:26 by anifanto          #+#    #+#             */
-/*   Updated: 2022/06/14 20:25:25 by anifanto         ###   ########.fr       */
+/*   Updated: 2022/06/15 19:22:46 by anifanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,14 +73,6 @@ namespace ft
 
 				tmp = start;
 
-				//SEARCH(T,k):
-				// ЕСЛИ T == NIL ИЛИ k == T.KEY
-				//     ВЫВОД T
-				// ИНАЧЕ
-				//     ЕСЛИ k < T.KEY
-				//         ВЫВОД SEARCH(T.LEFT, k)
-				//     ИНАЧЕ
-				//         ВЫВОД SEARCH(T.RIGHT, k)
 				if (tmp != _nl_node && tmp->_value.first == k)
 					return tmp;
 				while (tmp != _nl_node) {
@@ -125,28 +117,28 @@ namespace ft
 				insert(first, last);
 		}
 
-		// map (const map& other) : _size(0), _root(), _nl_node()
-		// {
-		// 	_alloc = other._alloc;
-		// 	_comp = other._comp;
-		// 	_alloc_tree = other._alloc_tree;
-		// 	insert(other.begin(), other.end());
-		// }
+		map (const map& other) : _size(0), _root(), _nl_node()
+		{
+			this->_alloc = other._alloc;
+			this->_comp = other._comp;
+			this->_alloc_tree = other._alloc_tree;
+			insert(other.begin(), other.end());
+		}
 
 			~map() {
-				//clear();
+				clear();
 			}
 
-		// 	map& operator=(const map& rhs) {
-		// 		if (*this == rhs)
-		// 			return (*this);
-		// 		clear();
-		// 		_alloc = rhs._alloc;
-		// 		_comp = rhs._comp;
-		// 		_alloc_tree = rhs._alloc_tree;
-		// 		insert(rhs.begin(), rhs.end());
-		// 		return (*this);
-		// 	}
+			map& operator=(const map& rhs) {
+				if (*this == rhs)
+					return (*this);
+				clear();
+				this->_alloc = rhs._alloc;
+				this->_comp = rhs._comp;
+				this->_alloc_tree = rhs._alloc_tree;
+				insert(rhs.begin(), rhs.end());
+				return (*this);
+			}
 
 			allocator_type get_allocator() const{
 				return(this->_alloc);
@@ -247,18 +239,95 @@ namespace ft
 				erase(begin(), end());
 			}
 
-			// ft::pair<iterator, bool> insert(const value_type& value) {
+			ft::pair<iterator, bool> insert(const value_type& value) {
+				b_tree		*ret;
+				b_tree		tmp;
+				bool		f;
 
-			// }
+				f = true;
+				if (this->_root == _nl_node)
+				{
 
-			// iterator insert(iterator hint, const value_type& value) {
+					this->_root = _alloc_tree.allocate(1);
+					this->_alloc.construct(&tmp._value, value);
+					this->_alloc_tree.construct(this->_root, tmp);
+					ret = this->_root;
+					this->_size++;
 
-			// }
+				}
+				else
+				{
+					b_tree *input_node;
+					input_node = findnode(value.first, this->_root);
+					this->_alloc.construct(&tmp._value, value);
+					if (value.first == input_node->_value.first)
+					{
+						ret = input_node;
+						f = false;
+					}
+					else if (!_comp(input_node->_value.first, value.first))
+					{
+						input_node->_left_node = this->_alloc_tree.allocate(1);
+						this->_alloc_tree.construct(input_node->_left_node, tmp);
+						input_node->_left_node->_parent_node = input_node;
+						ret = input_node->_left_node;
+						this->_size++;
+					}
+					else
+					{
+						input_node->_right_node = this->_alloc_tree.allocate(1);
+						this->_alloc_tree.construct(input_node->_right_node, tmp);
+						input_node->_right_node->_parent_node = input_node;
+						ret = input_node->_right_node;
+						this->_size++;
+					}
+				}
+				return (ft::make_pair(iterator(ret), f));
+			}
 
-			// template <class InputIt>
-			// void insert( InputIt first, InputIt last ){
+			iterator insert(iterator hint, const value_type& value) {
+				iterator	it;
+				b_tree		*input_node;
+				b_tree		tmp;
 
-			// }
+				_alloc.construct(&tmp._value, value);
+				it = hint;
+				if (this->_root == _nl_node)
+				{
+					insert(value);
+					return (this->_root);
+				}
+				if (hint.base() != NULL && hint.base() != _nl_node && _comp(hint->first, value.first) && _comp(hint.first, (++it)->first))
+					input_node = findnode(value.first, hint.base());
+				else
+					input_node = findnode(value.first, this->_root);
+				if (value.first == input_node->_value.first)
+					return (input_node);
+				if (!_comp(input_node->_value.first, value.first))
+				{
+					input_node->_left_node = _alloc_tree.allocate(1);
+					_alloc_tree.construct(input_node->_left_node, tmp);
+					input_node->_left_node->_parent_node = input_node;
+					_size++;
+					return (input_node->_left_node);
+				}
+				else
+				{
+					input_node->_right_node = _alloc_tree.allocate(1);
+					_alloc_tree.construct(input_node->_right_node, tmp);
+					input_node->_right_node->_parent_node = input_node;
+					this->_size++;
+					return (input_node->_right_node);
+				}
+			}
+
+			template <class InputIt>
+			void insert( InputIt first, InputIt last ){
+				while (first != last) {
+					insert(*first);
+					first++;
+				}
+			}
 
 			void erase(iterator pos) {
 				b_tree *tmp;
@@ -284,13 +353,31 @@ namespace ft
 				}
 				else {
 					if (tmp->_right_node != _nl_node && tmp->_left_node != _nl_node) {
-
+						b_tree *tmp2;
+						tmp2 = tmp->_right_node;
+						tmp->_right_node->_parent_node = tmp->_parent_node;
+						if (tmp->_parent_node->_left_node == tmp)
+							tmp->_parent_node->_left_node = tmp->_right_node;
+						else
+							tmp->_parent_node->_right_node = tmp->_right_node;
+						while (tmp2->_left_node != _nl_node)
+							tmp2 = tmp2->_left_node;
+						tmp2->_left_node = tmp->_left_node;
+						tmp->_left_node->_parent_node = tmp2;
 					}
 					else if (tmp->_right_node == _nl_node && tmp->_left_node != _nl_node) {
-
+						tmp->_left_node->_parent_node = tmp->_parent_node;
+						if (tmp->_parent_node->_left_node == tmp)
+							tmp->_parent_node->_left_node = tmp->_left_node;
+						else
+							tmp->_parent_node->_right_node = tmp->_left_node;
 					}
 					else if (tmp->_left_node == _nl_node && tmp->_right_node != _nl_node) {
-
+						tmp->_right_node->_parent_node = tmp->_parent_node;
+						if (tmp->_parent_node->_left_node == tmp)
+							tmp->_parent_node->_left_node = tmp->_right_node;
+						else
+							tmp->_parent_node->_right_node = tmp->_right_node;
 					}
 					else if (tmp->_right_node == _nl_node && tmp->_left_node == _nl_node) {
 						if (tmp->_parent_node->_left_node == tmp)
@@ -298,7 +385,6 @@ namespace ft
 						else
 							tmp->_parent_node->_right_node = _nl_node;
 					}
-					// dopisat' ostalnie sluchai
 				}
 				tmp->_left_node = _nl_node;
 				tmp->_right_node = _nl_node;
@@ -320,7 +406,7 @@ namespace ft
 				}
 			}
 
-			size_type erase( const Key& key ) {
+			size_type erase (const Key& key) {
 				b_tree *tmp;
 
 				tmp = findnode(key, this->_root);
@@ -359,17 +445,27 @@ namespace ft
 				this->_nl_node = tmp_nl_node;
 			}
 
-			// size_type count(const Key& key) const {
+			size_type count(const Key& key) const {
+				return (find(key) != end());
+			}
 
-			// }
+			iterator find(const Key& key) {
+				b_tree *res;
 
-			// iterator find(const Key& key) {
+				res = findnode(key, this->_root);
+				if (res->_value.first == key)
+					return (iterator(res));
+				return (end());
+			}
 
-			// }
+			const_iterator find(const Key& key) const {
+				b_tree *res;
 
-			// const_iterator find(const Key& key) const {
-
-			// }
+				res = findnode(key, this->_root);
+				if (res->_value.first == key)
+					return (const_iterator(res));
+				return (end());
+			}
 
 			// ft::pair<iterator,iterator> equal_range(const Key& key) {
 

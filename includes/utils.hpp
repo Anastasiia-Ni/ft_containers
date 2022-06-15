@@ -6,7 +6,7 @@
 /*   By: anifanto <anifanto@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 19:11:57 by anifanto          #+#    #+#             */
-/*   Updated: 2022/06/12 13:30:35 by anifanto         ###   ########.fr       */
+/*   Updated: 2022/06/15 19:31:41 by anifanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,12 +147,12 @@ namespace ft
 		T1  first;
 		T2  second;
 
-		pair() : first(), second() {}
-		pair(const T1& x, const T2& y) : first(x), second(y) {}
+		pair() : first(T1()), second(T2()) {}
 
 		template<class U, class V>
 		pair (const pair<U,V>& other) : first(other.first), second(other.second) {};
-		
+
+		pair(const T1& x, const T2& y) : first(x), second(y) {}
         pair& operator=(const pair& rhs)
 		{
 			if (*this == rhs)

@@ -6,7 +6,7 @@
 /*   By: anifanto <anifanto@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 19:11:45 by anifanto          #+#    #+#             */
-/*   Updated: 2022/06/14 18:18:55 by anifanto         ###   ########.fr       */
+/*   Updated: 2022/06/15 19:42:33 by anifanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -466,7 +466,7 @@ static void	test_compare(){
 		 return ;
 	}
 	// st_map.insert(std::make_pair(5, 21));
-	// my_map.insert(std::make_pair(5, 21));
+	// my_map.insert(ft::make_pair(5, 21));
 	// if((st_map == st_map1) != (my_map == my_map1)){
 	// 	 std::cout << FAIL << std::endl;
 	// 	 return ;

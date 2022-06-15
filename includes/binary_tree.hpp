@@ -6,7 +6,7 @@
 /*   By: anifanto <anifanto@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 19:13:00 by anifanto          #+#    #+#             */
-/*   Updated: 2022/06/11 19:13:03 by anifanto         ###   ########.fr       */
+/*   Updated: 2022/06/15 19:41:23 by anifanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ namespace ft
 				return (!(this == tree));
 			}
 	};
-	
+
 	template <class Key, class T>
 	struct rb_map_tree
 	{
