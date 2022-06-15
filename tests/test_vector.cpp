@@ -360,17 +360,17 @@ static void	test_insert() {
 		std::cout << FAIL << std::endl;
 		return ;
 	}
-	//std::cout << "\nstd cap " << st_vec.capacity() << " size " << st_vec.size() << std::endl; // delete
-	//std::cout << "my cap  " << my_vec.capacity() << " size " << my_vec.size() << std::endl;	//delete
+	// std::cout << "\nstd cap " << st_vec.capacity() << " size " << st_vec.size() << std::endl; // delete
+	// std::cout << "my cap  " << my_vec.capacity() << " size " << my_vec.size() << std::endl;	//delete
 	// st_vec.insert(++it_st, 12, 11);
-	// my_vec.insert(++it_my, 12, 11);
+	// my_vec.insert(++it_my, 12, 11); // - seg fault
 	// if (st_vec.size() != my_vec.size()){
-	//	 std::cout << FAIL << std::endl;
-	//	 return ;
+	// 	 std::cout << FAIL << std::endl;
+	// 	 return ;
 	// }
 	// if (!check_iterator(st_vec, my_vec)){
-	//	 std::cout << FAIL << std::endl;
-	//	 return ;
+	// 	 std::cout << FAIL << std::endl;
+	// 	 return ;
 	// }
 	// std::vector<int> st_vec2;
 	// ft::vector<int> my_vec2;
