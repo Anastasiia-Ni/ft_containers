@@ -6,7 +6,7 @@
 /*   By: anifanto <anifanto@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 19:11:51 by anifanto          #+#    #+#             */
-/*   Updated: 2022/06/15 12:25:12 by anifanto         ###   ########.fr       */
+/*   Updated: 2022/06/16 10:04:48 by anifanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -307,7 +307,7 @@ namespace ft
 				return (_arr + idx);
 			}
 
-			void insert(iterator pos, size_type count, const T& value) { // seg fault here
+			void insert(iterator pos, size_type count, const T& value) {
 				if (count == 0)
 					return ;
 				if (count > max_size()) {
@@ -320,7 +320,7 @@ namespace ft
 					if (size() + count != capacity())
 						it = this->_end + count;
 					else
-						it = this->_arr + (capacity() - 1);
+						it = this->_arr + capacity();
 					for (; it >= pos + count; it--)
 						this->_alloc.construct(it.base(), *(it - count));
 					while (count--)
@@ -358,7 +358,7 @@ namespace ft
 			// void insert(iterator pos, InputIt first, InputIt last, typename ft::enable_if<!ft::is_integral<InputIterator>::value, InputIterator>::type* = 0)
 			// {
 			// 	difference_type gap;
-				
+
 			// 	gap = = ft::distance(first, last);
 			// 	if (gap == 0)
 			// 		return;
