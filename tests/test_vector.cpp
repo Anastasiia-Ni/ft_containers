@@ -369,13 +369,11 @@ static void	test_insert() {
 	ft::vector<int>my_vec(10);
 	std::vector<int>::iterator it_st = st_vec.begin();
 	ft::vector<int>::iterator it_my = my_vec.begin();
-	std::cout << "\nstd cap " << st_vec.capacity() << " size " << st_vec.size() << std::endl; // delete
-	std::cout << "my cap  " << my_vec.capacity() << " size " << my_vec.size() << std::endl;	//delete
-	st_vec.insert(++it_st, 42);
-	my_vec.insert(++it_my, 42);
-	print_vector(st_vec, my_vec);
-	std::cout << "\nstd cap " << st_vec.capacity() << " size " << st_vec.size() << std::endl; // delete
-	std::cout << "my cap  " << my_vec.capacity() << " size " << my_vec.size() << std::endl;	//delete
+	st_vec.insert((it_st + 4), 42);
+	my_vec.insert((it_my + 4), 42);
+	//print_vector(st_vec, my_vec);
+	//std::cout << "\nstd cap " << st_vec.capacity() << " size " << st_vec.size() << std::endl; // delete
+	//std::cout << "my cap  " << my_vec.capacity() << " size " << my_vec.size() << std::endl;	//delete
 	if (st_vec.size() != my_vec.size()){
 		std::cout << FAIL << std::endl;
 		return ;
@@ -386,31 +384,36 @@ static void	test_insert() {
 	}
 	it_st = st_vec.begin();
 	it_my = my_vec.begin();
-	st_vec.insert(++it_st, 2, 11);
-	my_vec.insert(++it_my, 2, 11);
+	st_vec.insert(++it_st, 35, 11);
+	my_vec.insert(++it_my, 35, 11);
 	if (st_vec.size() != my_vec.size()){
 		 std::cout << FAIL << std::endl;
 		 return ;
 	}
-	print_vector(st_vec, my_vec);
-	// if (!check_iterator(st_vec, my_vec)){
-	// 	 std::cout << FAIL << std::endl;
-	// 	 return ;
-	// }
-	// std::vector<int> st_vec2;
-	// ft::vector<int> my_vec2;
-	// std::vector<int>::iterator it_st1 = st_vec2.end();
-	// ft::vector<int>::iterator it_my1 = my_vec2.end();
-	// st_vec.insert(--it_st1, st_vec2.begin(), st_vec2.end());
-	// my_vec.insert(--it_my1, my_vec2.begin(), my_vec2.end());
-	// if (st_vec.size() != my_vec.size()){
-	//	 std::cout << FAIL << std::endl;
-	//	 return ;
-	// }
-	// if (!check_iterator(st_vec, my_vec)){
-	//	 std::cout << FAIL << std::endl;
-	//	 return ;
-	// }
+	if (!check_iterator(st_vec, my_vec)){
+		 std::cout << FAIL << std::endl;
+		 return ;
+	}
+
+	std::vector<int> st_vec2(5, 100);
+	ft::vector<int> my_vec2(5, 100);
+	std::vector<int>::iterator it_s1 = st_vec.end();
+    ft::vector<int>::iterator it_m1 = my_vec.end();
+	it_s1--;
+	it_m1--;
+	st_vec.insert(it_s1, st_vec2.begin(), st_vec2.end());
+	my_vec.insert(it_m1, my_vec2.begin(), my_vec2.end());
+	// print_vector(st_vec, my_vec);
+	// std::cout << "\nstd cap " << st_vec.capacity() << " size " << st_vec.size() << std::endl; // delete
+	// std::cout << "my cap  " << my_vec.capacity() << " size " << my_vec.size() << std::endl;	//delete
+	if (st_vec.size() != my_vec.size()){
+		 std::cout << FAIL << std::endl;
+		 return ;
+	}
+	if (!check_iterator(st_vec, my_vec)){
+		 std::cout << FAIL << std::endl;
+		 return ;
+	}
 	std::cout << SUCS << std::endl;
 }
 

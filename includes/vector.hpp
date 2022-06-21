@@ -314,28 +314,34 @@ namespace ft
 					throw std::length_error("error max_size");
 					return ;
 				}
-				if (size() + count <= capacity())
-				{
-					iterator it;
-					if (size() + count != capacity())
-						it = this->_end + count;
-					else
-						it = this->_arr + capacity();
-					for (; it >= pos + count; it--)
-						this->_alloc.construct(it.base(), *(it - count));
-					while (count--)
-					{
-						this->_alloc.construct(pos.base(), value);
-						pos++;
-						this->_end++;
-					}
-				}
-				else
-				{
+				// if (size() + count <= capacity())
+				// {
+				// 	iterator it;
+				// 	if (size() + count != capacity())
+				// 		it = this->_end + count;
+				// 	else
+				// 		it = this->_arr + (capacity() - 1);
+				// 	while (it >= pos + count) {
+				// 		this->_alloc.construct(it.base(), *(it - count));
+				// 		it--;
+				// 	}
+				// 	while (count--)
+				// 	{
+				// 		this->_alloc.construct(pos.base(), value);
+				// 		pos++;
+				// 		this->_end++;
+				// 	}
+				// }
+				// else
+				// {
 					size_type new_cap;
 					if (size() == 0)
 						new_cap = 1;
+					else if (size() + count <= capacity())
+						new_cap = capacity();
 					else
+						new_cap = capacity() * 2;
+					if (size() + count > new_cap)
 						new_cap = size() + count;
 					pointer new_arr = this->_alloc.allocate(new_cap);
 					pointer new_end = new_arr;
@@ -351,54 +357,56 @@ namespace ft
 					this->_arr = new_arr;
 					this->_end = new_end;
 					this->_capacity = new_cap;
-				}
+				//}
 			};
 
-			// template< class InputIt >
-			// void insert(iterator pos, InputIt first, InputIt last, typename ft::enable_if<!ft::is_integral<InputIterator>::value, InputIterator>::type* = 0)
-			// {
-			// 	difference_type gap;
+			template< class InputIt >
+			void insert(iterator pos, InputIt first, InputIt last, typename ft::enable_if<!ft::is_integral<InputIt>::value, InputIt>::type* = 0)
+			{
+				difference_type gap;
 
-			// 	gap = = ft::distance(first, last);
-			// 	if (gap == 0)
-			// 		return;
-			// 	if (size() + gap < capacity())
-			// 	{
-			// 		iterator it;
-			// 		if (size() + gap != capacity())
-			// 			it = this->_end + gap;
-			// 		else
-			// 			it = _end_cap - 1;
-			// 		for (; it >= pos + gap; it--)
-			// 			_alloc.construct(it.base(), *(it - gap));
-			// 		while (first != last)
-			// 		{
-			// 			_alloc.construct(pos.base(), *first);
-			// 			pos++;
-			// 			first++;
-			// 			_end++;
-			// 		}
-			// 	}
-			// 	else
-			// 	{
-			// 		size_type new_cap;
-			// 		new_cap = size() + gap;
-			// 		pointer new_arr = _alloc.allocate(new_cap);
-			// 		pointer new_end = new_arr;
-			// 		iterator it;
-			// 		for (it = begin(); it != pos; it++, new_end++)
-			// 			_alloc.construct(new_end, *it);
-			// 		for (;first != last; first++, new_end++)
-			// 			_alloc.construct(new_end, *first);
-			// 		for (; it != _end; it++, new_end++)
-			// 			_alloc.construct(new_end, *it);
-			// 		clear();
-			// 		_alloc.deallocate(_arr, capacity());
-			// 		_arr = new_arr;
-			// 		_end = new_end;
-			// 		_capacity = new_cap;
-			// 	}
-			// }
+				gap = ft::distance(first, last);
+				if (gap == 0)
+					return;
+				if (size() + gap < capacity())
+				{
+					iterator it;
+					if (size() + gap != capacity())
+						it = this->_end + gap;
+					else
+						it = this->_arr + (size() - 1);
+					for (; it >= pos + gap; it--)
+						this->_alloc.construct(it.base(), *(it - gap));
+					while (first != last)
+					{
+						this->_alloc.construct(pos.base(), *first);
+						pos++;
+						first++;
+						this->_end++;
+					}
+				}
+				else
+				{
+					size_type new_cap;
+					new_cap = capacity() * 2;
+					if (size() + gap > new_cap)
+						new_cap = size() + gap;
+					pointer new_arr = _alloc.allocate(new_cap);
+					pointer new_end = new_arr;
+					iterator it;
+					for (it = begin(); it != pos; it++, new_end++)
+						this->_alloc.construct(new_end, *it);
+					for (;first != last; first++, new_end++)
+						this->_alloc.construct(new_end, *first);
+					for (; it != _end; it++, new_end++)
+						this->_alloc.construct(new_end, *it);
+					clear();
+					this->_alloc.deallocate(_arr, capacity());
+					this->_arr = new_arr;
+					this->_end = new_end;
+					this->_capacity = new_cap;
+				}
+			}
 
 			iterator erase(iterator pos) {
 				pointer ptr = pos.base();

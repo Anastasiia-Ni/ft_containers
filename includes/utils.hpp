@@ -127,7 +127,7 @@ namespace ft
 		return true;
 	}
 
-	template <class Iterator> // maybe move to utils
+	template <class Iterator>
 	typename iterator_traits<Iterator>::difference_type distance (Iterator first, Iterator last)
 	{
 		typename iterator_traits<Iterator>::difference_type n;

@@ -67,8 +67,6 @@ static void top_test() {
 	my_stack.push(42);
 	if (std_stack.top() != my_stack.top())
 	{
-		std::cout << "std stack top - " << std_stack.top() << std::endl; // delete
-		std::cout << "my stack top - " << my_stack.top() << std::endl; // delete
 		std::cout << FAIL << std::endl;
 		return ;
 	}

@@ -163,6 +163,10 @@ namespace ft
 			return (lhs.base() >= rhs.base());
 		}
 
+		friend bool operator>(const random_access_iterator& lhs, const random_access_iterator& rhs) {
+			return (lhs.base() > rhs.base());
+		}
+
 	};
 
 
