@@ -37,7 +37,6 @@ namespace ft
 			typedef ft::random_access_iterator<const T>		const_iterator; // typedef ft::random_access_iterator<const value_type>
 			typedef ft::reverse_iterator<T>					reverse_iterator;
 			typedef ft::reverse_iterator<const T>			const_reverse_iterator;
-			// typedef typename ft::iterator_traits<iterator>::difference_type	difference_type;
 
 		private:
 			allocator_type	_alloc;
@@ -211,18 +210,18 @@ namespace ft
 			}
 
 			reverse_iterator rbegin() {
-				return (reverse_iterator(this->_end - 1));
+				return (reverse_iterator(this->_end));
 			}
 			const_reverse_iterator rbegin() const {
-				return (const_reverse_iterator(this->_end - 1));
+				return (const_reverse_iterator(this->_end));
 			}
 
 			reverse_iterator rend() {
-				return (reverse_iterator(this->_arr - 1));
+				return (reverse_iterator(this->_arr));
 			}
 
 			const_reverse_iterator rend() const {
-				return (const_reverse_iterator(this->_arr - 1));
+				return (const_reverse_iterator(this->_arr));
 			}
 
 			bool empty() const {
@@ -424,14 +423,11 @@ namespace ft
 			}
 
 			iterator erase(iterator first, iterator last) {
-				for (;first != last; last--)
-					erase(first);
-				return iterator(first);
-				// difference_type dist = ft::distance(first, last);
-				// iterator tmp;
-				// for (tmp = first; dist > 0; dist--)		//check!!!
-				// 	tmp = erase (tmp);
-				// return (tmp);
+				difference_type dist = ft::distance(first, last);
+				iterator tmp;
+				for (tmp = first; dist > 0; dist--)
+					tmp = erase (tmp);
+				return (tmp);
 			}
 
 			void	push_back( const T& value){
@@ -441,6 +437,8 @@ namespace ft
 					else
 						reserve(this->_capacity * 2);
 				}
+				// _end = value;
+				// _end++;
 				this->_alloc.construct(_end, value);
 				this->_end++;
 			}
@@ -531,6 +529,8 @@ namespace ft
 	void swap (vector<T,Alloc>& lhs, vector<T,Alloc>& rhs) {
 		lhs.swap(rhs);
 	}
+
+	
 };
 
 #endif

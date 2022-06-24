@@ -34,6 +34,7 @@
 #include "iterators.hpp"
 #include "utils.hpp"
 #include "red_black_tree.hpp"
+#include "time_test.hpp"
 
 #define RESET		"\033[0m"
 #define BLACK		"\033[30m"

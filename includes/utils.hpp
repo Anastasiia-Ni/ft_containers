@@ -150,10 +150,10 @@ namespace ft
 		pair() : first(T1()), second(T2()) {}
 
 		template<class U, class V>
-		pair (const pair<U,V>& other) : first(other.first), second(other.second) {};
+		pair (const pair<U,V> &other) : first(other.first), second(other.second) {};
 
-		pair(const T1& x, const T2& y) : first(x), second(y) {}
-        pair& operator=(const pair& rhs)
+		pair(const T1 &x, const T2 &y) : first(x), second(y) {}
+        pair &operator=(const pair &rhs)
 		{
 			if (*this == rhs)
 				return (*this);
@@ -198,7 +198,6 @@ namespace ft
 	bool operator>= (const pair<T1,T2>& lhs, const pair<T1,T2>& rhs) {
 		return (!(lhs < rhs));
 	}
-
 }
 
 #endif

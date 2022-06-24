@@ -54,13 +54,13 @@ static bool check_iterator(std::vector<T> &std_vec, ft::vector<T> &my_vec) {
 	// typename ft::vector<T>::reverse_iterator it_rmy2 = my_vec.rend();
 	// while (it_rst1 != it_rst2)
 	// {
-	//	 if (*it_rst1 != *it_rmy1)
+	// 	 if (*it_rst1 != *it_rmy1)
 	// 	{
 	// 		std::cout  << *it_rst1 << "\n" << *it_rmy1 << std::endl;
-	//		 return false;
+	// 		 return false;
 	// 	}
-	//	 ++it_rst1;
-	//	 ++it_rmy1;
+	// 	 ++it_rst1;
+	// 	 ++it_rmy1;
 	// }
 	return true;
 }
@@ -135,12 +135,12 @@ static void	test_iterator() {
 	std::vector<int> std_vec4(10);
 	ft::vector<int> my_vec3(10);
 	ft::vector<int> my_vec4(10);
-	std::vector<int>::reverse_iterator it_s3 = ++std_vec3.rbegin();
-	std::vector<int>::reverse_iterator it_s4 = std_vec3.rend();
-	//ft::vector<int>::reverse_iterator it_m3 = ++my_vec3.rbegin();
-	//ft::vector<int>::reverse_iterator it_m4 = my_vec3.rend();
-	++(*it_s3) = 12345;
-	--(*it_s4) = 54321;
+	//std::vector<int>::reverse_iterator it_s3 = ++std_vec3.rbegin();
+	// std::vector<int>::reverse_iterator it_s4 = std_vec3.rend();
+	// ft::vector<int>::reverse_iterator it_m3 = ++my_vec3.rbegin();
+	// ft::vector<int>::reverse_iterator it_m4 = my_vec3.rend();
+	// ++(*it_s3) = 12345;
+	// --(*it_s4) = 54321;
 	// ++(*it_m3) = 12345;
 	// --(*it_m4) = 54321;
 	if (!check_iterator(std_vec4, my_vec4)){

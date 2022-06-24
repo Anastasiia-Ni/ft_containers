@@ -23,13 +23,13 @@ namespace ft
 	struct bidirectional_iterator_tag : public forward_iterator_tag { };
 	struct random_access_iterator_tag : public bidirectional_iterator_tag { };
 
-	template <class iterator>
+	template <class Iterator>
 	struct iterator_traits {
-		typedef typename iterator::difference_type		difference_type;
-		typedef typename iterator::value_type			value_type;
-		typedef typename iterator::pointer				pointer;
-		typedef typename iterator::reference			reference;
-		typedef typename iterator::iterator_category	iterator_category;
+		typedef typename Iterator::difference_type		difference_type;
+		typedef typename Iterator::value_type			value_type;
+		typedef typename Iterator::pointer				pointer;
+		typedef typename Iterator::reference			reference;
+		typedef typename Iterator::iterator_category	iterator_category;
 	};
 
 	template <class T>
@@ -59,7 +59,7 @@ namespace ft
 	};
 
 	template <class T>
-	class random_access_iterator : public iterator<std::random_access_iterator_tag, T>
+	class random_access_iterator : public iterator<ft::random_access_iterator_tag, T>
 	{
 	public:
 		typedef typename iterator<ft::random_access_iterator_tag, T>::value_type			value_type;
@@ -201,11 +201,17 @@ namespace ft
 		iterator_type	_ri;
 	public:
 		reverse_iterator () : _ri() {}
-		explicit reverse_iterator (iterator_type it) : _ri(it) {}
+		explicit reverse_iterator (iterator it) : _ri(it) {}
 
-		template <class Iterator>
-		reverse_iterator (const reverse_iterator<iterator> & it) : _ri(it.base()) {}
+		template <class otherIterator>
+		reverse_iterator (const reverse_iterator<otherIterator> & it) : _ri(it.base()) {}
 
+		reverse_iterator(reverse_iterator<iterator> const &it) : _ri(it._ri){};
+		reverse_iterator &operator=(const reverse_iterator &operand)
+		{
+			_ri = operand._ri;
+			return (*this);
+		}
 		virtual ~reverse_iterator() {}
 		iterator_type base() const {
 			return (_ri);

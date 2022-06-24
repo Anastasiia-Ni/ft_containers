@@ -12,16 +12,18 @@
 
 
 #include "includes/containers.hpp"
+#include "includes/time_test.hpp"
 
-#include<iostream>
-#include<iterator> // for iterators
-#include<vector> // for vectors
+// #include <iostream>
+// #include <iterator>
+// #include <vector>
+#include <unistd.h>
 
 int main(void)
 {
 	std::string input;
 	std::cout << MAGENTA << "\n\t\tEnter the name of the container:" << std::endl;
-	std::cout << "\t\tVECTOR, STACK, MAP, SET, ALL" << std::endl;
+	std::cout << "\t\tVECTOR, STACK, MAP, SET, ALL" << RESET << std::endl;
 	std::cout << "\n>>  ";
 	std::cin >> input;
 	for (unsigned int i = 0; i < input.size(); i++)
@@ -30,10 +32,12 @@ int main(void)
 	while (1){
 		if (input == "VECTOR"){
 			test_vector();
+			time_test_vector(1);
 			break ;
 		}
 		else if (input == "STACK"){
 			test_stack();
+			time_test_stack(1);
 			break ;
 		}
 		else if (input == "SET"){
@@ -42,29 +46,25 @@ int main(void)
 		}
 		else if (input == "MAP"){
 			test_map();
+			time_test_map(1);
 			break ;
 		}
 		else if (input == "ALL"){
 			test_vector();
 			test_stack();
 			test_map();
-			// test_set();
+			time_test_vector(0);
+			time_test_stack(0);
+			time_test_map(0);
+			//test_set();
 			break ;
 		}
 		else{
-			std::cout << RED << "ERROR COMMAND" << std::endl;
+			std::cout << RED << "ERROR COMMAND" << RESET << std::endl;
 			break ;
 		}
 	}
-	//run_tests();
 
-	std::cout << MAGENTA << "\nTIME TEST:" << std::endl << std::endl;
-	// time_tests_vector();
-	// time_tests_stack();
-	// time_tests_map();
-	//sleep(10);
-	//std::vector<int> ar = {1, 2, 3, 4, 5};
-	std::vector<int>::reverse_iterator ptr;
-	//ptr.current
+	usleep(10);
 	return (0);
 }
