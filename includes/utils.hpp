@@ -170,7 +170,7 @@ namespace ft
 	}
 
 	template <class T1, class T2>
-	inline bool operator==(const pair<T1,T2>& lhs, const pair<T1,T2>& rhs) {	  //check unline
+	inline bool operator==(const pair<T1,T2>& lhs, const pair<T1,T2>& rhs) {	  //check inline
 		return (lhs.first == rhs.first && lhs.second == rhs.second);
 	}
 
