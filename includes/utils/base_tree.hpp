@@ -138,8 +138,7 @@ namespace ft
 			// }
 
 			node *findNode(value_type value) {
-				node *tmp; // = вставить функцию из каждого дерева (this->_root, value)
-				(void)value;
+				node *tmp = findNodeTree(this->_root, value); // = вставить функцию из каждого дерева (this->_root, value)
 				return (tmp == NULL ? this->_end : tmp);
 			}
 
@@ -190,7 +189,7 @@ namespace ft
 		// }
 
 		// virtual node* _insert(node* cur, value_type value) = 0;
-		// virtual node* _find(node* cur, value_type value) = 0;
+		virtual node* findNodeTree(node* nd, value_type value) = 0;
 		// virtual void _erase(node* cur, value_type value) = 0;
 
 	};
