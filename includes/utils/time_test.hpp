@@ -6,7 +6,7 @@
 #include <map>
 #include <stack>
 #include <vector>
-#include "containers.hpp"
+#include "../containers.hpp"
 
 class time_test
 {
@@ -53,10 +53,8 @@ std::clock_t vector_insert(size_t count, vector_type vector)
 		vector.push_back(i);
 		tmp = vector[i];
 	}
-	{
-		vector_type new_vec(vector);
-	}
-	//vector.erase(vector.begin(), vector.end());
+	vector_type new_vec(vector);
+	vector.erase(vector.begin(), vector.end());
 	return t.stop();
 }
 
@@ -106,8 +104,29 @@ std::clock_t map_insert(size_t count, map_type map)
 	return t.stop();
 }
 
+// template <typename set_type>
+// std::clock_t set_insert(size_t count, set_type set)
+// {
+// 	time_test t;
+// 	t.start();
+
+// 	for (size_t i = 0; i < count; i++)
+// 	{
+// 		map[i] = true; // insert a constantly growing range of integers
+// 		// which is a worst-case scenario for an unbalanced map.
+// 		map.find(i);
+// 	}
+// 	//Copy-construction and destruction
+// 	{
+// 		set_type new_set(set);
+// 	}
+
+// 	return t.stop();
+// }
+
 void    time_test_vector(int n);
 void    time_test_stack(int n);
 void    time_test_map(int n);
+void	time_test_set(int n);
 
 #endif

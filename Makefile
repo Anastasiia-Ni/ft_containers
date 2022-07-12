@@ -3,24 +3,30 @@ NAME = ft_containers
 SRCS = main_test.cpp	tests/test_vector.cpp	tests/test_map.cpp	\
 						tests/test_stack.cpp	tests/test_time.cpp
 
+HEADERS	= 	includes/vector.hpp		includes/stack.hpp	includes/map.hpp includes/set.hpp\
+			includes/containers.hpp includes/iterators/map_iterator.hpp 	includes/utils/binary_tree.hpp\
+			includes/iterators/iterators_traits.hpp	includes/iterators/random_access_iterator.hpp \
+			includes/iterators/reverse_iterator.hpp	includes/utils/utils.hpp			\
+			includes/utils/time_test.hpp		includes/utils/red_black_tree.hpp		\
+
 OBJS = $(SRCS:.cpp=.o)
 
 CXX = c++
 
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-RM = rm -f
+RM = rm -rf
 
-compile : $(OBJS)
+all: $(NAME)
+
+$(NAME) : $(OBJS) $(HEADERS)
 	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
 
-all: compile
-
 clean:
-		rm -rf $(NAME)
+		$(RM) $(NAME)
 
 fclean: clean
-		rm -rf $(OBJS)
+		$(RM) $(OBJS)
 
 re: 	fclean all
 

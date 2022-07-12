@@ -13,7 +13,7 @@
 #ifndef BINARY_TREE_HPP
 # define BINARY_TREE_HPP
 
-#include "containers.hpp"
+#include "../containers.hpp"
 
 namespace ft
 {
@@ -25,27 +25,19 @@ namespace ft
 			binary_tree		*_parent_node;
 			binary_tree		*_left_node;
 			binary_tree		*_right_node;
+			bool 			_red;
 
-			binary_tree() {
-				_value = value_type();
-				_parent_node = NULL;
-				_left_node = NULL;
-				_right_node = NULL;
+			binary_tree() : _value(value_type()),  _parent_node(NULL), _left_node(NULL), _right_node(NULL), _red(true) {}
+
+			explicit binary_tree(const value_type &val, binary_tree *pn = NULL, binary_tree *ln = NULL, binary_tree *rn = NULL) {
+					this->_value = val;
+					this->_parent_node = pn;
+					this->_left_node = ln;
+					this->_right_node = rn;
+					this->_red = true;
 			}
 
-			explicit binary_tree(const value_type &value, binary_tree *parent = NULL, binary_tree *left = NULL, binary_tree *right = NULL) {
-				_value = value;
-				_left_node = left;
-				_right_node = right;
-				_parent_node = parent;
-			}
-
-			binary_tree(const binary_tree &node) {
-				_value = node._value;
-				_left_node = node._left_node;
-				_right_node = node._right_node;
-				_parent_node = node._parent_node;
-			}
+			binary_tree(const binary_tree &n) : _value(n._value), _parent_node(n._parent_node), _left_node(n._left_node), _right_node(n._right_node), _red(true) {};
 
 			~binary_tree() {};
 
@@ -53,10 +45,10 @@ namespace ft
 			{
 				if (*this == node)
 					return (*this);
-				_value = node._value;
-				_left_node = node._left_node;
-				_right_node = node._right_node;
-				_parent_node = node._parent_node;
+				this->_value = node._value;
+				this->_left_node = node._left_node;
+				this->_right_node = node._right_node;
+				this->_parent_node = node._parent_node;
 				return (*this);
 			}
 

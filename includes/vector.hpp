@@ -10,14 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
-
 # ifndef VECTOR_HPP
 #define VECTOR_HPP
 
 #include "containers.hpp"
-#include "iterators.hpp"
-#include "utils.hpp"
+#include "iterators/random_access_iterator.hpp"
+#include "iterators/reverse_iterator.hpp"
+#include "utils/utils.hpp"
 
 namespace ft
 {
@@ -32,11 +31,11 @@ namespace ft
 			typedef T const &								const_reference;
 			typedef T*										pointer;
 			typedef	const T*								const_pointer;
-			typedef ptrdiff_t								difference_type; // typedef typename ft::iterator_traits<iterator>::difference_type
-			typedef ft::random_access_iterator<T>			iterator; // typedef ft::random_access_iterator<value_type>
-			typedef ft::random_access_iterator<const T>		const_iterator; // typedef ft::random_access_iterator<const value_type>
-			typedef ft::reverse_iterator<T>					reverse_iterator;
-			typedef ft::reverse_iterator<const T>			const_reverse_iterator;
+			typedef ptrdiff_t								difference_type;
+			typedef random_access_iterator<T>				iterator;
+			typedef random_access_iterator<const T>			const_iterator;
+			typedef ft::reverse_iterator<iterator>			reverse_iterator;
+			typedef ft::reverse_iterator<const_iterator>	const_reverse_iterator;
 
 		private:
 			allocator_type	_alloc;
@@ -359,8 +358,8 @@ namespace ft
 				//}
 			};
 
-			template< class InputIt >
-			void insert(iterator pos, InputIt first, InputIt last, typename ft::enable_if<!ft::is_integral<InputIt>::value, InputIt>::type* = 0)
+			template< class InputIterator >
+			void insert(iterator pos, InputIterator first, InputIterator last, typename ft::enable_if<!ft::is_integral<InputIterator>::value, InputIterator>::type* = 0)
 			{
 				difference_type gap;
 
@@ -489,7 +488,7 @@ namespace ft
 	};
 
 	template <class T, class Alloc>
-	bool operator== (const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs)
+	bool operator== (const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs) //проверить может все
 	{
 		if (lhs.size() != rhs.size())
 			return (false);
@@ -529,8 +528,6 @@ namespace ft
 	void swap (vector<T,Alloc>& lhs, vector<T,Alloc>& rhs) {
 		lhs.swap(rhs);
 	}
-
-	
 };
 
 #endif

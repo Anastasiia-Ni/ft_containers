@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "containers.hpp"
+#include "../containers.hpp"
 
 # ifndef UTILS_HPP
 #define UTILS_HPP
@@ -140,19 +140,25 @@ namespace ft
 		return (n);
 	}
 
-// advanced !!!!
+// pair !!!!
 
 	template <class T1, class T2>
 	struct pair {
-		T1  first;
-		T2  second;
+		typedef T1 first_type;
+		typedef T2 second_type;
+
+		first_type	first;
+		second_type	second;
 
 		pair() : first(T1()), second(T2()) {}
 
 		template<class U, class V>
 		pair (const pair<U,V> &other) : first(other.first), second(other.second) {};
 
-		pair(const T1 &x, const T2 &y) : first(x), second(y) {}
+		pair(const first_type &x, const second_type &y) : first(x), second(y) {}
+
+		~pair() {};
+
         pair &operator=(const pair &rhs)
 		{
 			if (*this == rhs)
@@ -163,7 +169,7 @@ namespace ft
 		}
 	};
 
-	template <class T1,class T2>
+	template <class T1, class T2>
 	pair<T1,T2> make_pair (T1 x, T2 y)
 	{
 		return (pair<T1,T2>(x,y));

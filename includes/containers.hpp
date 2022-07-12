@@ -20,21 +20,24 @@
 #include <stack>
 #include <queue>
 #include <map>
-#include <memory>
+#include <set>
+#include <memory>   // allocator
 #include <iostream>
-#include <limits>
+#include <limits>   // numeric_limits, max
 #include <utility>
 #include <functional>
 #include <stdexcept>
-#include <cstddef>
+#include <cstddef>  // ptrdiff_t
 
 #include "vector.hpp"
 #include "map.hpp"
 #include "stack.hpp"
-#include "iterators.hpp"
-#include "utils.hpp"
-#include "red_black_tree.hpp"
-#include "time_test.hpp"
+#include "iterators/iterators_traits.hpp"
+#include "iterators/reverse_iterator.hpp"
+#include "iterators/random_access_iterator.hpp"
+#include "utils/utils.hpp"
+#include "utils/red_black_tree.hpp"
+#include "utils/time_test.hpp"
 
 #define RESET		"\033[0m"
 #define BLACK		"\033[30m"

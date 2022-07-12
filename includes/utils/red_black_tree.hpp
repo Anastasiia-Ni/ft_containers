@@ -13,19 +13,15 @@
 #ifndef RED_BLACK_TREE_HPP
 # define RED_BLACK_TREE_HPP
 
-#include "containers.hpp"
+#include "base_tree.hpp"
 
-namespace ft
-{
-	template <class value_type>
-	struct rb_tree
-	{
-		value_type		_value;
-		rb_tree			*_parent_node;
-		rb_tree			*_left_node;
-		rb_tree			*_right_node;
-		bool			black;
-	};
+namespace ft {
+
+    template <typename value_type, typename Compare, typename Alloc>
+    class rbTree : public  baseTree<value_type, Compare, Alloc> {
+
+    };
 };
+
 
 #endif

@@ -48,20 +48,20 @@ static bool check_iterator(std::vector<T> &std_vec, ft::vector<T> &my_vec) {
 		++it_st1;
 		++it_my1;
 	}
-	// typename std::vector<T>::reverse_iterator it_rst1 = std_vec.rbegin();
-	// typename std::vector<T>::reverse_iterator it_rst2 = std_vec.rend();
-	// typename ft::vector<T>::reverse_iterator it_rmy1 = my_vec.rbegin();
-	// typename ft::vector<T>::reverse_iterator it_rmy2 = my_vec.rend();
-	// while (it_rst1 != it_rst2)
-	// {
-	// 	 if (*it_rst1 != *it_rmy1)
-	// 	{
-	// 		std::cout  << *it_rst1 << "\n" << *it_rmy1 << std::endl;
-	// 		 return false;
-	// 	}
-	// 	 ++it_rst1;
-	// 	 ++it_rmy1;
-	// }
+	typename std::vector<T>::reverse_iterator it_rst1 = std_vec.rbegin();
+	typename std::vector<T>::reverse_iterator it_rst2 = std_vec.rend();
+	typename ft::vector<T>::reverse_iterator it_rmy1 = my_vec.rbegin();
+	typename ft::vector<T>::reverse_iterator it_rmy2 = my_vec.rend();
+	while (it_rst1 != it_rst2)
+	{
+		 if (*it_rst1 != *it_rmy1)
+		{
+			std::cout  << *it_rst1 << "\n" << *it_rmy1 << std::endl;
+			 return false;
+		}
+		 ++it_rst1;
+		 ++it_rmy1;
+	}
 	return true;
 }
 
@@ -135,14 +135,14 @@ static void	test_iterator() {
 	std::vector<int> std_vec4(10);
 	ft::vector<int> my_vec3(10);
 	ft::vector<int> my_vec4(10);
-	// std::vector<int>::reverse_iterator it_s3 = ++std_vec3.rbegin();
-	// std::vector<int>::reverse_iterator it_s4 = std_vec3.rend();
-	// ft::vector<int>::reverse_iterator it_m3 = ++my_vec3.rbegin();
-	// ft::vector<int>::reverse_iterator it_m4 = my_vec3.rend();
-	// ++(*it_s3) = 12345;
-	// --(*it_s4) = 54321;
-	// ++(*it_m3) = 12345;
-	// --(*it_m4) = 54321;
+	std::vector<int>::reverse_iterator it_s3 = ++std_vec3.rbegin();
+	std::vector<int>::reverse_iterator it_s4 = std_vec3.rend();
+	ft::vector<int>::reverse_iterator it_m3 = ++my_vec3.rbegin();
+	ft::vector<int>::reverse_iterator it_m4 = my_vec3.rend();
+	++(*it_s3) = 12345;
+	--(*it_s4) = 54321;
+	++(*it_m3) = 12345;
+	--(*it_m4) = 54321;
 	if (!check_iterator(std_vec4, my_vec4)){
 		std::cout << FAIL << std::endl;
 		return ;
@@ -371,7 +371,7 @@ static void	test_insert() {
 	ft::vector<int>::iterator it_my = my_vec.begin();
 	st_vec.insert((it_st + 4), 42);
 	my_vec.insert((it_my + 4), 42);
-	//print_vector(st_vec, my_vec);
+	//print_vector(st_vec, my_vec);		// DELETE before submition
 	//std::cout << "\nstd cap " << st_vec.capacity() << " size " << st_vec.size() << std::endl; // delete
 	//std::cout << "my cap  " << my_vec.capacity() << " size " << my_vec.size() << std::endl;	//delete
 	if (st_vec.size() != my_vec.size()){
@@ -403,7 +403,7 @@ static void	test_insert() {
 	it_m1--;
 	st_vec.insert(it_s1, st_vec2.begin(), st_vec2.end());
 	my_vec.insert(it_m1, my_vec2.begin(), my_vec2.end());
-	// print_vector(st_vec, my_vec);
+	// print_vector(st_vec, my_vec);			// DELETE before submition
 	// std::cout << "\nstd cap " << st_vec.capacity() << " size " << st_vec.size() << std::endl; // delete
 	// std::cout << "my cap  " << my_vec.capacity() << " size " << my_vec.size() << std::endl;	//delete
 	if (st_vec.size() != my_vec.size()){

@@ -199,5 +199,6 @@ int test_stack () {
 	push_test();
 	compare_test();
 
+
 	return (0);
 }
