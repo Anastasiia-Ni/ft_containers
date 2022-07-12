@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   time_test.hpp                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: anifanto <anifanto@student.42abudhabi.a    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/12 15:51:02 by anifanto          #+#    #+#             */
+/*   Updated: 2022/07/12 15:51:03 by anifanto         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef TIME_TEST_HPP
 # define TIME_TEST_HPP
 
@@ -14,7 +26,7 @@ class time_test
 		std::clock_t _start;
 
 	public:
-		time_test() { 
+		time_test() {
 			_start = 0;
 		}
 
@@ -26,7 +38,7 @@ class time_test
 			this->_start = rhs._start;
 			return (*this);
 		}
-		
+
 		~time_test() {}
 
 		void start() {
@@ -43,18 +55,19 @@ class time_test
 template <typename vector_type>
 std::clock_t vector_insert(size_t count, vector_type vector)
 {
-	time_test   t;
-	int         tmp;
-	
-    t.start();
-    tmp = 0;
+	time_test	t;
+	int			tmp;
+
+	t.start();
+	tmp = 0;
 	for (size_t i = 0; i < count; i++)
 	{
 		vector.push_back(i);
 		tmp = vector[i];
 	}
 	vector_type new_vec(vector);
-	vector.erase(vector.begin(), vector.end());
+	(void)tmp;
+	//vector.erase(vector.begin(), vector.end()); - take much time
 	return t.stop();
 }
 
@@ -79,7 +92,7 @@ std::clock_t stack_insert(size_t count, stack_type stack)
 		tmp = stack.top();
 		stack.pop();
 	}
-
+	(void)tmp;
 	return t.stop();
 }
 
@@ -124,9 +137,9 @@ std::clock_t map_insert(size_t count, map_type map)
 // 	return t.stop();
 // }
 
-void    time_test_vector(int n);
-void    time_test_stack(int n);
-void    time_test_map(int n);
+void	time_test_vector(int n);
+void	time_test_stack(int n);
+void	time_test_map(int n);
 void	time_test_set(int n);
 
 #endif

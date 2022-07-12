@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   set.hpp                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: anifanto <anifanto@student.42abudhabi.a    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/12 15:51:13 by anifanto          #+#    #+#             */
+/*   Updated: 2022/07/12 15:51:14 by anifanto         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 
 #ifndef SET_HPP
 # define SET_HPP
@@ -8,17 +20,17 @@
 
 namespace ft
 {
-    template <class T, class Compare = std::less<T>, class Alloc = std::allocator<T> >
-    class set
-    {
-        public:
-    		typedef T                                 									key_type;
-    		typedef T		                                 							value_type;
-    		typedef Compare                                 							key_compare;
-    		typedef Compare                                 							value_compare;
-    		typedef Alloc                              									allocator_type;
-    		typedef typename allocator_type::reference                           		reference;
-    		typedef typename allocator_type::const_reference							const_reference;
+	template <class T, class Compare = std::less<T>, class Alloc = std::allocator<T> >
+	class set
+	{
+		public:
+			typedef T																	key_type;
+			typedef T																	value_type;
+			typedef Compare																key_compare;
+			typedef Compare																value_compare;
+			typedef Alloc																allocator_type;
+			typedef typename allocator_type::reference									reference;
+			typedef typename allocator_type::const_reference							const_reference;
 			typedef typename allocator_type::pointer									pointer;
 			typedef typename allocator_type::const_pointer								const_pointer;
 			// typedef typename ft::red_black_tree<value_type, value_compare, allocator_type>	tree;
@@ -82,7 +94,7 @@ namespace ft
 			const_reverse_iterator rend() const {
 
 			}
-			
+
 			bool empty() const {
 				return (this->_size == 0);
 			}
@@ -127,7 +139,7 @@ namespace ft
 			size_type count( const Key& key ) const {
 
 			}
-			
+
 			iterator find( const Key& key ) {
 
 			}
@@ -165,7 +177,7 @@ namespace ft
 			}
 
 			std::set::value_compare value_comp() const {
-				
+
 			}
     };
 	template< class Key, class Compare, class Alloc >
@@ -198,7 +210,7 @@ bool operator>=( const std::set<Key,Compare,Alloc>& lhs,
 void swap( std::set<Key,Compare,Alloc>& lhs,
            std::set<Key,Compare,Alloc>& rhs );
 
-	
+
 }
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: anifanto <anifanto@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 19:10:51 by anifanto          #+#    #+#             */
-/*   Updated: 2022/06/16 10:05:50 by anifanto         ###   ########.fr       */
+/*   Updated: 2022/07/12 15:45:12 by anifanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,13 +132,13 @@ static void	test_iterator() {
 		return ;
 	}
 	std::vector<int> std_vec3(10);
-	std::vector<int> std_vec4(10);
+	std::vector<int> std_vec4(10, 4);
 	ft::vector<int> my_vec3(10);
-	ft::vector<int> my_vec4(10);
+	ft::vector<int> my_vec4(10, 4);
 	std::vector<int>::reverse_iterator it_s3 = ++std_vec3.rbegin();
-	std::vector<int>::reverse_iterator it_s4 = std_vec3.rend();
+	std::vector<int>::reverse_iterator it_s4 = --std_vec4.rend();
 	ft::vector<int>::reverse_iterator it_m3 = ++my_vec3.rbegin();
-	ft::vector<int>::reverse_iterator it_m4 = my_vec3.rend();
+	ft::vector<int>::reverse_iterator it_m4 = --my_vec4.rend();
 	++(*it_s3) = 12345;
 	--(*it_s4) = 54321;
 	++(*it_m3) = 12345;

@@ -6,7 +6,7 @@
 /*   By: anifanto <anifanto@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 19:12:17 by anifanto          #+#    #+#             */
-/*   Updated: 2022/06/11 19:12:21 by anifanto         ###   ########.fr       */
+/*   Updated: 2022/07/12 15:48:33 by anifanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@
 
 namespace ft {
 
-    template <typename value_type, typename Compare, typename Alloc>
-    class rbTree : public  baseTree<value_type, Compare, Alloc> {
+	template <typename value_type, typename Compare, typename Alloc>
+	class rbTree : public  baseTree<value_type, Compare, Alloc> {
 
-    };
+	};
 };
 
 

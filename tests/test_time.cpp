@@ -1,45 +1,57 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_time.cpp                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: anifanto <anifanto@student.42abudhabi.a    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/12 15:51:26 by anifanto          #+#    #+#             */
+/*   Updated: 2022/07/12 19:51:58 by anifanto         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/containers.hpp"
 #include "../includes/utils/time_test.hpp"
 
-void    time_test_vector(int n) {
-    if (!n)
-        std::cout << MAGENTA << "------------------------------------";
-    std::cout << MAGENTA << "\n\tTIME TEST:" << RESET <<std::endl;
-    if (!n)
-        std::cout << MAGENTA << "------------------------------------" << RESET << std::endl;
-    std::cout << std::endl;
-    if (!n)
-        std::cout << BLUE << "Vector time:" << RESET << std::endl;
-    std::clock_t std;
+void	time_test_vector(int n) {
+	if (!n)
+		std::cout << MAGENTA << "------------------------------------";
+	std::cout << MAGENTA << "\n\tTIME TEST:" << RESET <<std::endl;
+	if (!n)
+		std::cout << MAGENTA << "------------------------------------" << RESET << std::endl;
+	std::cout << std::endl;
+	if (!n)
+		std::cout << BLUE << "Vector time:" << RESET << std::endl;
+	std::clock_t std;
 	std::clock_t ft;
 
 	std::vector<int> sv1;
 	ft::vector<int> mv1;
-	
-    std = vector_insert(200, sv1);			//200000
+
+	std = vector_insert(200000, sv1);			//200000
 	std::cout << "Std: " << std << std::endl;
 
-	ft = vector_insert(200, mv1);
+	ft = vector_insert(200000, mv1);
 	std::cout << "Ft : " << ft << std::endl;
 
 	std::cout << "Our vector is " << GREEN << (double)ft / (double)std << RESET << " times slower." << std::endl;
 
-    std::cout << "\nTime test:\t\t\t";
+	std::cout << "\nTime test:\t\t\t";
 	if (((double)ft / (double)std) < 20.0)
 		std::cout << SUCS << std::endl;
 	else
 		std::cout << FAIL << std::endl;
-    std::cout << std::endl;
-    return ;
+	std::cout << std::endl;
+	return ;
 }
 
 void time_test_stack(int n) {
-    if (n)
-        std::cout << MAGENTA << "\n\tTIME TEST:" << RESET << std::endl << std::endl;
-    if (!n)
-        std::cout << BLUE << "Stack time" << RESET << std::endl;
-    
-    std::clock_t std;
+	if (n)
+		std::cout << MAGENTA << "\n\tTIME TEST:" << RESET << std::endl << std::endl;
+	if (!n)
+		std::cout << BLUE << "Stack time" << RESET << std::endl;
+
+	std::clock_t std;
 	std::clock_t ft;
 
 	std::stack<int> st1;
@@ -53,7 +65,7 @@ void time_test_stack(int n) {
 
 	std::cout << "Our stack is " << GREEN << (double)ft / (double)std << RESET << " times slower." << std::endl;
 
-    std::cout << "\nTime test:\t\t\t";
+	std::cout << "\nTime test:\t\t\t";
 	if (((double)ft / (double)std) < 20.0)
 		std::cout << SUCS << std::endl;
 	else
@@ -64,12 +76,12 @@ void time_test_stack(int n) {
 }
 
 void time_test_map(int n) {
-    if (n)
-        std::cout << MAGENTA << "\n\tTIME TEST:" << RESET << std::endl << std::endl;
-    if (!n)
-        std::cout << BLUE << "Map time" << RESET << std::endl;   
-	
-    std::clock_t std;
+	if (n)
+		std::cout << MAGENTA << "\n\tTIME TEST:" << RESET << std::endl << std::endl;
+	if (!n)
+		std::cout << BLUE << "Map time" << RESET << std::endl;
+
+	std::clock_t std;
 	std::clock_t ft;
 
 	std::map<int, bool> sm1;
@@ -82,8 +94,8 @@ void time_test_map(int n) {
 	std::cout << "Ft : " << ft << std::endl;
 
 	std::cout << "Our map is " << GREEN << (double)ft / (double)std << RESET << " times slower." << std::endl;
-	
-    std::cout << "\nTime test:\t\t\t";
+
+	std::cout << "\nTime test:\t\t\t";
 	if (((double)ft / (double)std) < 20.0)
 		std::cout << SUCS << std::endl;
 	else
@@ -93,11 +105,11 @@ void time_test_map(int n) {
 
 void	time_test_set(int n)
 {
-    if (n)
-        std::cout << MAGENTA << "\n\tTIME TEST:" << RESET << std::endl << std::endl;
-    if (!n)
-        std::cout << BLUE << "Set time" << RESET << std::endl; 
-	
+	if (n)
+		std::cout << MAGENTA << "\n\tTIME TEST:" << RESET << std::endl << std::endl;
+	if (!n)
+		std::cout << BLUE << "Set time" << RESET << std::endl;
+
 	// std::clock_t std;
 	// std::clock_t ft;
 
@@ -111,8 +123,8 @@ void	time_test_set(int n)
 	//std::cout << "Ft : " << ft << std::endl;
 
 	//std::cout << "Our map is " << GREEN << (double)ft / (double)std << RESET << " times slower." << std::endl;
-	
-    std::cout << "\nTime test:\t\t";
+
+	std::cout << "\nTime test:\t\t";
 	// if (((double)ft / (double)std) < 20.0)
 	// 	std::cout << SUCS << std::endl;
 	// else

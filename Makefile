@@ -1,7 +1,7 @@
 NAME = ft_containers
 
 SRCS = main_test.cpp	tests/test_vector.cpp	tests/test_map.cpp	\
-						tests/test_stack.cpp	tests/test_time.cpp
+						tests/test_stack.cpp	tests/test_time.cpp	tests/test_set.cpp
 
 HEADERS	= 	includes/vector.hpp		includes/stack.hpp	includes/map.hpp includes/set.hpp\
 			includes/containers.hpp includes/iterators/map_iterator.hpp 	includes/utils/binary_tree.hpp\

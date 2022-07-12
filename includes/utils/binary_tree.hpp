@@ -6,7 +6,7 @@
 /*   By: anifanto <anifanto@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 19:13:00 by anifanto          #+#    #+#             */
-/*   Updated: 2022/06/15 19:41:23 by anifanto         ###   ########.fr       */
+/*   Updated: 2022/07/12 15:48:23 by anifanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ namespace ft
 			binary_tree		*_parent_node;
 			binary_tree		*_left_node;
 			binary_tree		*_right_node;
-			bool 			_red;
+			bool			_red;
 
 			binary_tree() : _value(value_type()),  _parent_node(NULL), _left_node(NULL), _right_node(NULL), _red(true) {}
 

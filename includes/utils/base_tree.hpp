@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   base_tree.hpp                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: anifanto <anifanto@student.42abudhabi.a    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/12 15:50:53 by anifanto          #+#    #+#             */
+/*   Updated: 2022/07/12 15:50:54 by anifanto         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef BASE_TREE_HPP
 # define BASE_TREE_HPP
 
@@ -14,14 +26,14 @@ namespace ft
 		bNode			*_parent;
 		bool			_black;				// black = 1, red = 0
 
-		rbNode() : _value(), _left(NULL), _right(NULL), _parent(NULL) { }
-		rbNode(const value_type _value, bNode *_parent = NULL) : _value(), _left(NULL), _right(NULL), _parent(_parent), _black(false) {}
-		~rbNode() {
+		bNode() : _value(), _left(NULL), _right(NULL), _parent(NULL) { }
+		bNode(const value_type _value, bNode *_parent = NULL) : _value(_value), _left(NULL), _right(NULL), _parent(_parent), _black(false) {} // check _value
+		~bNode() {
 			_left = NULL;
 			_right = NULL;
 			_parent = NULL;
 		}
-		rbNode(bNode const &other) : _value(other.value), _left(other._left), _right(other._right), _parent(other._parent), _black(other._black) {}
+		bNode(bNode const &other) : _value(other.value), _left(other._left), _right(other._right), _parent(other._parent), _black(other._black) {}
 
 		bNode *max_node(bNode *nd) { //for root
 			while (nd && nd->_right)
@@ -52,7 +64,7 @@ namespace ft
 			if (this->_parent == NULL)
 				return (max_node(this)); //this->_right?
 			bNode *tmp;
-			if (tnis->_left) {
+			if (this->_left) {
 				tmp = this->_left;
 				while (tmp->_right)
 					tmp = tmp->_right;
@@ -81,10 +93,10 @@ namespace ft
 			Compare													_comp;
 			typedef typename Alloc::template rebind<node>::other	NodeAlloc;		//from C++ reference -> allocator ->note for node befor C++11
 			NodeAlloc												_alloc;
-		
+
 		private:
 			baseTree() {}
-			baseTree &operator=(baseTree const &rhs) {}
+			baseTree &operator=(baseTree const &rhs) { (void) rhs; } //check
 
 			void clearBaseTree (node *nd) {
 				if (nd != NULL) {
@@ -119,19 +131,20 @@ namespace ft
 				this->_alloc.deallocate(this->_end, 1);
 			}
 
-			clearBaseTree(clearBaseTree const &other) : _root(NULL), _size(other._size), _comp(other._comp), _alloc(other._alloc) {
-				this->_end = _alloc.allocate(1);
-				this->_alloc.construct(this->_end, node());
-				this->_root = copyBNode(other._root, this->_end);
-			}
+			// void clearBaseTree(clearBaseTree const &other) : _root(NULL), _size(other._size), _comp(other._comp), _alloc(other._alloc) {
+			// 	this->_end = _alloc.allocate(1);
+			// 	this->_alloc.construct(this->_end, node());
+			// 	this->_root = copyBNode(other._root, this->_end);
+			// }
 
-			node *findNode(value_type value) {	
+			node *findNode(value_type value) {
 				node *tmp; // = вставить функцию из каждого дерева (this->_root, value)
+				(void)value;
 				return (tmp == NULL ? this->_end : tmp);
 			}
 
-			node *insertNode(value_type value) {	//общая функция для вставки корняб если его нет
-				if (this->_root != NULL) 
+			node *insertNode(value_type value) {	//общая функция для вставки корня если его нет
+				if (this->_root != NULL)
 					return (NULL); // вставить инсерт для каждого дерева (this->_root, value)
 				else {
 					this->_root = this->_alloc.allocate(1);
@@ -143,7 +156,7 @@ namespace ft
 				}
 			}
 
-		// 	node* insertNode(node* hint, value_type value) { 
+		// 	node* insertNode(node* hint, value_type value) {
 		// 		return (_insert(hint, value));  //  вставить инсерт для каждого дерева как выше
 		// 	}
 

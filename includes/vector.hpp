@@ -6,7 +6,7 @@
 /*   By: anifanto <anifanto@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 19:11:51 by anifanto          #+#    #+#             */
-/*   Updated: 2022/06/16 10:04:48 by anifanto         ###   ########.fr       */
+/*   Updated: 2022/07/12 15:50:21 by anifanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -471,9 +471,9 @@ namespace ft
 			}
 
 			void swap(vector& other) {
-				allocator_type  alloc_tmp = other._alloc;
-				pointer         arr_tmp = other._arr;
-				pointer         end_tmp = other._end;
+				allocator_type	alloc_tmp = other._alloc;
+				pointer			arr_tmp = other._arr;
+				pointer			end_tmp = other._end;
 				size_t			cap_tmp = other._capacity;
 
 				other._alloc = this->_alloc;
