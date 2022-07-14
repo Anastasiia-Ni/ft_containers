@@ -6,7 +6,7 @@
 /*   By: anifanto <anifanto@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 19:11:57 by anifanto          #+#    #+#             */
-/*   Updated: 2022/06/15 19:31:41 by anifanto         ###   ########.fr       */
+/*   Updated: 2022/07/14 13:57:31 by anifanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,7 +159,7 @@ namespace ft
 
 		~pair() {};
 
-        pair &operator=(const pair &rhs)
+		pair &operator=(const pair &rhs)
 		{
 			if (*this == rhs)
 				return (*this);

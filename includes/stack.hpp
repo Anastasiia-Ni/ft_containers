@@ -6,7 +6,7 @@
 /*   By: anifanto <anifanto@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 19:12:10 by anifanto          #+#    #+#             */
-/*   Updated: 2022/06/11 19:22:39 by anifanto         ###   ########.fr       */
+/*   Updated: 2022/07/13 16:09:11 by anifanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #define STACK_HPP
 
 #include "containers.hpp"
+#include "vector.hpp"
 
 namespace ft
 {
@@ -35,7 +36,7 @@ namespace ft
 			this->_cont = copy._cont;
 		}
 
-		virtual ~stack(){};
+		virtual ~stack() {}
 
 		stack &operator=(stack const &rhs){
 			if (&rhs != this)
@@ -67,7 +68,7 @@ namespace ft
 			return (this->_cont.pop_back());
 		}
 
-	/* !!!!!!!!! double check friend*/
+	/* no - member functions */ // friend for class T
 		friend bool operator==(const stack<T,Container>& lhs, const stack<T,Container>& rhs) {
 			return (lhs._cont == rhs._cont);
 		}
@@ -92,6 +93,7 @@ namespace ft
 			return (lhs._cont >= rhs._cont);
 		}
 	};
+
 };
 
 #endif

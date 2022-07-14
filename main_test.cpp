@@ -6,7 +6,7 @@
 /*   By: anifanto <anifanto@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 19:11:26 by anifanto          #+#    #+#             */
-/*   Updated: 2022/07/12 20:22:58 by anifanto         ###   ########.fr       */
+/*   Updated: 2022/07/14 13:44:02 by anifanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,23 +41,23 @@ int main(void)
 			break ;
 		}
 		else if (input == "SET"){
-			test_set();
+			//test_set();
 			//time_test_set(1);
 			break ;
 		}
 		else if (input == "MAP"){
 			test_map();
-			time_test_map(1);
+			//time_test_map(1);
 			break ;
 		}
 		else if (input == "ALL"){
 			test_vector();
 			test_stack();
 			test_map();
-			test_set();
+			//test_set();
 			time_test_vector(0);
 			time_test_stack(0);
-			time_test_map(0);
+			//time_test_map(0);
 			//time_test_set(0);
 			break ;
 		}

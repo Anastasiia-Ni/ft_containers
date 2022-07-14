@@ -70,6 +70,7 @@
 		"utility": "cpp",
 		"memory_resource": "cpp",
 		"__functional_03": "cpp",
-		"set": "cpp"
+		"set": "cpp",
+		"__memory": "cpp"
 	}
 }

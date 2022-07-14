@@ -6,7 +6,7 @@
 /*   By: anifanto <anifanto@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 15:51:26 by anifanto          #+#    #+#             */
-/*   Updated: 2022/07/12 19:51:58 by anifanto         ###   ########.fr       */
+/*   Updated: 2022/07/13 17:36:04 by anifanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,25 +81,25 @@ void time_test_map(int n) {
 	if (!n)
 		std::cout << BLUE << "Map time" << RESET << std::endl;
 
-	std::clock_t std;
-	std::clock_t ft;
+	// std::clock_t std;
+	// std::clock_t ft;
 
-	std::map<int, bool> sm1;
-	ft::map<int, bool> m1;
+	// std::map<int, bool> sm1;
+	// ft::map<int, bool> m1;
 
-	std = map_insert(200, sm1);
-	std::cout << "Std: " << std << std::endl;
+	// std = map_insert(200, sm1);
+	// std::cout << "Std: " << std << std::endl;
 
-	ft = map_insert(200, m1);
-	std::cout << "Ft : " << ft << std::endl;
+	// ft = map_insert(200, m1);
+	// std::cout << "Ft : " << ft << std::endl;
 
-	std::cout << "Our map is " << GREEN << (double)ft / (double)std << RESET << " times slower." << std::endl;
+	// std::cout << "Our map is " << GREEN << (double)ft / (double)std << RESET << " times slower." << std::endl;
 
-	std::cout << "\nTime test:\t\t\t";
-	if (((double)ft / (double)std) < 20.0)
-		std::cout << SUCS << std::endl;
-	else
-		std::cout << FAIL << std::endl;
+	// std::cout << "\nTime test:\t\t\t";
+	// if (((double)ft / (double)std) < 20.0)
+	// 	std::cout << SUCS << std::endl;
+	// else
+	// 	std::cout << FAIL << std::endl;
 	std::cout << std::endl;
 }
 

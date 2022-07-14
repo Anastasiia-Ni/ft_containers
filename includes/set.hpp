@@ -6,17 +6,18 @@
 /*   By: anifanto <anifanto@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 15:51:13 by anifanto          #+#    #+#             */
-/*   Updated: 2022/07/12 15:51:14 by anifanto         ###   ########.fr       */
+/*   Updated: 2022/07/13 20:26:25 by anifanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #ifndef SET_HPP
 # define SET_HPP
-#include <memory>
-#include <functional>
-#include <iostream>
-#include "red_black_tree.hpp"
+// #include <memory>
+// #include <functional>
+// #include <iostream>
+#include "utils/red_black_tree.hpp"
+#include "iterators/tree_iterator.hpp"
 
 namespace ft
 {
@@ -47,7 +48,7 @@ namespace ft
 				size_type									_size;
 				value_compare								_comp;
 				allocator_type								_alloc;
-				rb_tree										_tree;
+				rbTree										_tree;
 
 		public:
 			constructor
