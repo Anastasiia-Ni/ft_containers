@@ -71,6 +71,9 @@
 		"memory_resource": "cpp",
 		"__functional_03": "cpp",
 		"set": "cpp",
-		"__memory": "cpp"
+		"__memory": "cpp",
+		"compare": "cpp",
+		"concepts": "cpp",
+		"variant": "cpp"
 	}
 }

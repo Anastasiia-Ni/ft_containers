@@ -41,7 +41,7 @@ int main(void)
 			break ;
 		}
 		else if (input == "SET"){
-			//test_set();
+			test_set();
 			//time_test_set(1);
 			break ;
 		}
@@ -54,7 +54,7 @@ int main(void)
 			test_vector();
 			test_stack();
 			test_map();
-			//test_set();
+			test_set();
 			time_test_vector(0);
 			time_test_stack(0);
 			//time_test_map(0);

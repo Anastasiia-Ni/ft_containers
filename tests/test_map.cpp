@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "../includes/containers.hpp"
+#include "../includes/map.hpp"
 
 template <typename Key, typename T>
 bool	check_iterator(std::map<Key, T> &st_map, ft::map<Key, T> &my_map){
@@ -25,52 +26,53 @@ bool	check_iterator(std::map<Key, T> &st_map, ft::map<Key, T> &my_map){
 	return true;
 }
 
-// static void		test_constructor() {
-// 	std::cout << "Default constructor test:\t";
-// 	std::map<int, int> st_map;
-// 	ft::map<int, int> my_map;
-// 	if (st_map.size() != my_map.size()){
-// 		 std::cout << FAIL << std::endl;
-// 		 return ;
-// 	}
-// 	if (!check_iterator(st_map, my_map)){
-// 		 std::cout << FAIL << std::endl;
-// 		 return ;
-// 	}
-// 	std::map<std::string, std::string> st_map1;
-// 	ft::map<std::string, std::string> my_map1;
-// 	if (st_map1.size() != my_map1.size()){
-// 		 std::cout << FAIL << std::endl;
-// 		 return ;
-// 	}
-// 	if (!check_iterator(st_map1, my_map1)){
-// 		 std::cout << FAIL << std::endl;
-// 		 return ;
-// 	}
-// 	std::map<int, int> st_map2(st_map.begin(), st_map.end());
-// 	ft::map<int, int> my_map2(my_map.begin(), my_map.end());
-// 	if (st_map2.size() != my_map2.size()){
-// 		 std::cout << FAIL << std::endl;
-// 		 return ;
-// 	}
-// 	if (!check_iterator(st_map2, my_map2)){
-// 		 std::cout << FAIL << std::endl;
-// 		 return ;
-// 	}
-// 	std::map<int, int> st_map3;
-// 	ft::map<int, int> my_map3;
-// 	st_map3 = st_map;
-// 	my_map3 = my_map;
-// 	if (st_map3.size() != my_map3.size()){
-// 		 std::cout << FAIL << std::endl;
-// 		 return ;
-// 	}
-// 	if (!check_iterator(st_map3, my_map3)){
-// 		 std::cout << FAIL << std::endl;
-// 		 return ;
-// 	}
-// 	std::cout << SUCS << std::endl;
-// }
+static void		test_constructor() {
+	std::cout << "Default constructor test:\t";
+	std::map<int, int> st_map;
+	ft::map<int, int> my_map;
+	if (st_map.size() != my_map.size()){
+		 std::cout << FAIL << std::endl;
+		 return ;
+	}
+	if (!check_iterator(st_map, my_map)){
+		 std::cout << FAIL << std::endl;
+		 return ;
+	}
+	std::map<std::string, std::string> st_map1;
+	ft::map<std::string, std::string> my_map1;
+	if (st_map1.size() != my_map1.size()){
+		 std::cout << FAIL << std::endl;
+		 return ;
+	}
+	if (!check_iterator(st_map1, my_map1)){
+		 std::cout << FAIL << std::endl;
+		 return ;
+	}
+	std::cout << "not ready "; //DELETE
+	// std::map<int, int> st_map2(st_map.begin(), st_map.end());
+	// ft::map<int, int> my_map2(my_map.begin(), my_map.end());
+	// if (st_map2.size() != my_map2.size()){
+	// 	 std::cout << FAIL << std::endl;
+	// 	 return ;
+	// }
+	// if (!check_iterator(st_map2, my_map2)){
+	// 	 std::cout << FAIL << std::endl;
+	// 	 return ;
+	// }
+	std::map<int, int> st_map3;
+	ft::map<int, int> my_map3;
+	st_map3 = st_map;
+	my_map3 = my_map;
+	if (st_map3.size() != my_map3.size()){
+		 std::cout << FAIL << std::endl;
+		 return ;
+	}
+	if (!check_iterator(st_map3, my_map3)){
+		 std::cout << FAIL << std::endl;
+		 return ;
+	}
+	std::cout << SUCS << std::endl;
+}
 
 static void		test_size() {
 	std::cout << "Size test:\t\t\t";
@@ -80,12 +82,13 @@ static void		test_size() {
 		 std::cout << FAIL << std::endl;
 		 return ;
 	}
-	// st_map.insert(std::make_pair(5, 0));
-	// my_map.insert(ft::make_pair(5, 0));
-	// if (st_map.size() != my_map.size()){
-	// 	 std::cout << FAIL << std::endl;
-	// 	 return ;
-	// }
+	std::cout << "not ready"; //DELETE
+// 	// st_map.insert(std::make_pair(5, 0));
+// 	// my_map.insert(ft::make_pair(5, 0));
+// 	// if (st_map.size() != my_map.size()){
+// 	// 	 std::cout << FAIL << std::endl;
+// 	// 	 return ;
+// 	// }
 	std::cout << SUCS << std::endl;
 }
 
@@ -102,34 +105,34 @@ static void	test_max_size(){
 	std::cout << SUCS << std::endl;
 }
 
-// static void		test_begin_end() {
-// 	std::cout << "Begin/end test:\t\t\t";
-// 	std::cout << "not ready" << std::endl; //DELETE
-// 	// std::map<int, int> maps;
-// 	// std::map<int, int> st_map(maps.begin(), maps.end());
-// 	// ft::map<int, int> my_map(maps.begin(), maps.end());
-// 	// std::map<int, int>::iterator its = st_map.begin();
-// 	// ft::map<int, int>::iterator itm = my_map.begin();
-// 	// if (st_map.size() != my_map.size()){
-// 	// 	std::cout << FAIL << std::endl;
-// 	// 	return ;
-// 	// }
-// 	// if (!check_iterator(st_map, my_map)){
-// 	// 	std::cout << FAIL << std::endl;
-// 	// 	return ;
-// 	// }
-// 	// if (++its->second != ++itm->second || its->first != itm->first){
-// 	// 	std::cout << FAIL << std::endl;
-// 	// 	return ;
-// 	// }
-// 	// std::map<int, int>::iterator its1 = st_map.end();
-// 	// ft::map<int, int>::iterator itm1 = my_map.end();
-// 	// if ((its1->first != itm1->first) || (its1->second != itm1->second)){
-// 	// 	std::cout << FAIL << std::endl;
-// 	// 	return ;
-// 	// }
-// 	// std::cout << SUCS << std::endl;
-// }
+static void		test_begin_end() {
+	std::cout << "Begin/end test:\t\t\t";
+	std::cout << "not ready " << std::endl; //DELETE
+	//std::map<int, int> maps;
+	// std::map<int, int> st_map(maps.begin(), maps.end());
+	// ft::map<int, int> my_map(maps.begin(), maps.end());
+	//std::map<int, int>::iterator its = st_map.begin();
+	//ft::map<int, int>::iterator itm = my_map.begin();
+	// if (st_map.size() != my_map.size()){
+	// 	std::cout << FAIL << std::endl;
+	// 	return ;
+	// }
+	// if (!check_iterator(st_map, my_map)){
+	// 	std::cout << FAIL << std::endl;
+	// 	return ;
+	// }
+	// if (++its->second != ++itm->second || its->first != itm->first){
+	// 	std::cout << FAIL << std::endl;
+	// 	return ;
+	// }
+	// std::map<int, int>::iterator its1 = st_map.end();
+	// ft::map<int, int>::iterator itm1 = my_map.end();
+	// if ((its1->first != itm1->first) || (its1->second != itm1->second)){
+	// 	std::cout << FAIL << std::endl;
+	// 	return ;
+	// }
+	//std::cout << SUCS << std::endl;
+}
 
 // static void		test_operators() {
 // 	std::cout << "Operator[] test\t\t\t";
@@ -503,10 +506,10 @@ int test_map( void ){
 	std::cout << "\tMAP TESTER IS HERE" << std::endl;
 	std::cout << "------------------------------------" << RESET << std::endl;
 
-	// test_constructor();
+	test_constructor();
 	test_size();
-	// test_max_size();
-	// test_begin_end();
+	test_max_size();
+	test_begin_end();
 	// test_operators();
 	// test_insert();
 	// test_empty();
