@@ -28,7 +28,7 @@ void	time_test_vector(int n) {
 	std::vector<int> sv1;
 	ft::vector<int> mv1;
 
-	std = vector_insert(200000, sv1);			//200000
+	std = vector_insert(200000, sv1);
 	std::cout << "Std: " << std << std::endl;
 
 	ft = vector_insert(200000, mv1);
@@ -57,10 +57,10 @@ void time_test_stack(int n) {
 	std::stack<int> st1;
 	ft::stack<int> ms1;
 
-	std = stack_insert(200000, st1);
+	std = stack_insert(2000000, st1);
 	std::cout << "Std: " << std << std::endl;
 
-	ft = stack_insert(200000, ms1);
+	ft = stack_insert(2000000, ms1);
 	std::cout << "Ft : " << ft << std::endl;
 
 	std::cout << "Our stack is " << GREEN << (double)ft / (double)std << RESET << " times slower." << std::endl;
@@ -81,25 +81,25 @@ void time_test_map(int n) {
 	if (!n)
 		std::cout << BLUE << "Map time" << RESET << std::endl;
 
-	// std::clock_t std;
-	// std::clock_t ft;
+	std::clock_t std;
+	std::clock_t ft;
 
-	// std::map<int, bool> sm1;
-	// ft::map<int, bool> m1;
+	std::map<int, bool> sm1;
+	ft::map<int, bool> m1;
 
-	// std = map_insert(200, sm1);
-	// std::cout << "Std: " << std << std::endl;
+	std = map_insert(2000, sm1);
+	std::cout << "Std: " << std << std::endl;
 
-	// ft = map_insert(200, m1);
-	// std::cout << "Ft : " << ft << std::endl;
+	ft = map_insert(2000, m1);
+	std::cout << "Ft : " << ft << std::endl;
 
-	// std::cout << "Our map is " << GREEN << (double)ft / (double)std << RESET << " times slower." << std::endl;
+	std::cout << "Our map is " << GREEN << (double)ft / (double)std << RESET << " times slower." << std::endl;
 
-	// std::cout << "\nTime test:\t\t\t";
-	// if (((double)ft / (double)std) < 20.0)
-	// 	std::cout << SUCS << std::endl;
-	// else
-	// 	std::cout << FAIL << std::endl;
+	std::cout << "\nTime test:\t\t\t";
+	if (((double)ft / (double)std) < 20.0)
+		std::cout << SUCS << std::endl;
+	else
+		std::cout << FAIL << std::endl;
 	std::cout << std::endl;
 }
 
@@ -110,24 +110,24 @@ void	time_test_set(int n)
 	if (!n)
 		std::cout << BLUE << "Set time" << RESET << std::endl;
 
-	// std::clock_t std;
-	// std::clock_t ft;
+	std::clock_t std;
+	std::clock_t ft;
 
-	// std::set<int, bool> sm1;
-	// ft::set<int, bool> m1;
+	std::set<int> sm1;
+	ft::set<int> m1;
 
-	//std = map_insert(200, sm1);
-	//std::cout << "Std: " << std << std::endl;
+	std = set_insert(200000, sm1);
+	std::cout << "Std: " << std << std::endl;
 
-	//ft = map_insert(200, m1);
-	//std::cout << "Ft : " << ft << std::endl;
+	ft = set_insert(200000, m1);
+	std::cout << "Ft : " << ft << std::endl;
 
-	//std::cout << "Our map is " << GREEN << (double)ft / (double)std << RESET << " times slower." << std::endl;
+	std::cout << "Our map is " << GREEN << (double)ft / (double)std << RESET << " times slower." << std::endl;
 
 	std::cout << "\nTime test:\t\t";
-	// if (((double)ft / (double)std) < 20.0)
-	// 	std::cout << SUCS << std::endl;
-	// else
-	// 	std::cout << FAIL << std::endl;
+	if (((double)ft / (double)std) < 20.0)
+		std::cout << SUCS << std::endl;
+	else
+		std::cout << FAIL << std::endl;
 	std::cout << std::endl;
 }

@@ -29,7 +29,6 @@ namespace ft
 			typedef T												key_type;
 			typedef Compare											key_compare;
 			typedef Alloc											allocator_type;
-			//value_type	Key;
 			//typedef Key										key_type;
 
 		private:
@@ -48,6 +47,7 @@ namespace ft
 			typedef typename tree_type::const_iterator				const_iterator;
 			typedef typename tree_type::const_reverse_iterator		reverse_iterator;
 			typedef typename tree_type::const_reverse_iterator		const_reverse_iterator;
+			typedef value_type										Key;
 
 		private:
 			tree_type _tree;
@@ -122,7 +122,7 @@ namespace ft
 				this->_tree.clear();
 			}
 
-			std::pair<iterator,bool> insert( const value_type& val ) {
+			ft::pair<iterator,bool> insert( const value_type& val ) {
 				return (this->_tree.insert(val));
 			}
 
@@ -145,57 +145,61 @@ namespace ft
 					this->_tree.erase(*(first++));
 			}
 
-			// size_type erase( const Key& key ) {
-			// 	//написать
-			// }
+			size_type erase( const Key& key ) {
+				return (this->_tree.erase(key));		/// double check
+			}
 
 			void swap( set& other ) {
 				this->_tree.swap(other._tree);
 			}
 
-			// size_type count( const Key& key ) const {
-			// 	//return this->_tree.count(val);
-			// }
+			size_type count( const Key& key ) const {
+				return (this->_tree.count(key));
+			}
 
-			// iterator find( const Key& key ) {
-			// 	//return (this->_tree.find(val);
-			// }
+			iterator find( const Key& key ) {
+				return (this->_tree.find(key));
+			}
 
-			// const_iterator find( const Key& key ) const {
-			// 	//return this->_tree.find(val);
-			// }
+			const_iterator find( const Key& key ) const {
+				return (this->_tree.find(key));
+			}
 
-			// std::pair<iterator,iterator> equal_range( const Key& key ) {
-			// 	//return this->_tree.equal_range(val); попробовать как работает 
-			// }
+			std::pair<iterator,iterator> equal_range( const Key& key ) {
+				return this->_tree.equal_range(key);
+			}
 
-			// std::pair<const_iterator,const_iterator> equal_range( const Key& key ) const {
-			// 	//return this->_tree.equal_range(val); попробовать как работает 
-			// }
+			std::pair<const_iterator,const_iterator> equal_range( const Key& key ) const {
+				return this->_tree.equal_range(key);
+			}
 
-			// iterator lower_bound( const Key& key ) {
-			// 	return this->_tree.lower_bound(val);
-			// }
+			iterator lower_bound( const Key& key ) {
+				return this->_tree.lower_bound(key);
+			}
 
-			// const_iterator lower_bound( const Key& key ) const {
-			// 	return this->_tree.lower_bound(val);
-			// }
+			const_iterator lower_bound( const Key& key ) const {
+				return this->_tree.lower_bound(key);
+			}
 
-			// iterator upper_bound( const Key& key ) {
-			// 	return this->_tree.upper_bound(val);
-			// }
+			iterator upper_bound( const Key& key ) {
+				return this->_tree.upper_bound(key);
+			}
 
-			// const_iterator upper_bound( const Key& key ) const {
-			// 	return this->_tree.upper_bound(val);
-			// }
+			const_iterator upper_bound( const Key& key ) const {
+				return this->_tree.upper_bound(key);
+			}
 
 			key_compare key_comp() const {
 				return (key_compare());
 			}
 
-			// std::set::value_compare value_comp() const {
-			// 	return (this->_tree.value_comp());
-			// }
+			value_compare value_comp() const {
+				return (this->_tree.value_comp());
+			}
+
+			void PrintTree() {		// DELETE
+				this->_tree.PrintTree();
+			}
     };
 
 	template< class Key, class Compare, class Alloc >

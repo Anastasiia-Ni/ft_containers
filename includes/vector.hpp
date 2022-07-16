@@ -422,11 +422,17 @@ namespace ft
 			}
 
 			iterator erase(iterator first, iterator last) {
-				difference_type dist = ft::distance(first, last);
-				iterator tmp;
-				for (tmp = first; dist > 0; dist--)
-					tmp = erase (tmp);
-				return (tmp);
+				//difference_type dist = ft::distance(first, last);
+				// iterator tmp;
+				// for (tmp = first; dist > 0; dist--)
+				// 	tmp = erase (tmp);
+				//return (tmp);
+
+				while (first != last) { // check for leaks and tests
+					erase (last);
+					--last;
+				}
+				return (first);
 			}
 
 			void	push_back( const T& value){

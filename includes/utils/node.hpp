@@ -25,7 +25,7 @@ namespace ft
 	{
 		typedef T							value_type;
 		typedef RBnode<value_type>*			node_ptr;
-		typedef RBnode<value_type>*			const_node_ptr; // тут был  const typedef RBnode<value_type>*			const_node_ptr; с перегруженными min and max в методах
+		typedef const RBnode<value_type>*	const_node_ptr; // тут был  const typedef RBnode<value_type>*			const_node_ptr; с перегруженными min and max в методах
 
 		value_type	_value;
 		node_ptr	_parent;
@@ -53,18 +53,17 @@ namespace ft
 			this->_color = (this->_color == red ? black : red);
 		}
 
-
 		node_ptr	tree_min(node_ptr root) {
 			while (root->_left != nullptr)
 				root = root->_left;
 			return root;
 		}
 
-		// const_node_ptr tree_min(const_node_ptr root) {
-		// 	while (root->_left != nullptr)
-		// 		root = root->_left;
-		// 	return root;
-		// }
+		const_node_ptr const_tree_min(const_node_ptr root) const {
+			while (root->_left != nullptr)
+				root = root->_left;
+			return root;
+		}
 
 		node_ptr tree_max(node_ptr root) {
 			while (root->_right != nullptr)
@@ -72,14 +71,12 @@ namespace ft
 			return root;
 		}
 
-		// const_node_ptr tree_max(const_node_ptr root) {
-		// 	while (root->_right != nullptr)
-		// 		root = root->_right;
-		// 	return root;
-		// }
-
+		const_node_ptr const_tree_max(const_node_ptr root) const {
+			while (root->_right != nullptr)
+				root = root->_right;
+			return root;
+		}
 	};
-
 };
 
 

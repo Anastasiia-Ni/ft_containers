@@ -67,7 +67,7 @@ std::clock_t vector_insert(size_t count, vector_type vector)
 	}
 	vector_type new_vec(vector);
 	(void)tmp;
-	//vector.erase(vector.begin(), vector.end()); - take much time
+	vector.erase(vector.begin(), vector.end()); //- take much time
 	return t.stop();
 }
 
@@ -117,25 +117,24 @@ std::clock_t map_insert(size_t count, map_type map)
 	return t.stop();
 }
 
-// template <typename set_type>
-// std::clock_t set_insert(size_t count, set_type set)
-// {
-// 	time_test t;
-// 	t.start();
+template <typename set_type>
+std::clock_t set_insert(size_t count, set_type set)
+{
+	time_test t;
+	t.start();
 
-// 	for (size_t i = 0; i < count; i++)
-// 	{
-// 		map[i] = true; // insert a constantly growing range of integers
-// 		// which is a worst-case scenario for an unbalanced map.
-// 		map.find(i);
-// 	}
-// 	//Copy-construction and destruction
-// 	{
-// 		set_type new_set(set);
-// 	}
+	for (size_t i = 0; i < count; i++)
+	{
+		set.insert(i); // insert a constantly growing range of integers
+		set.find(i);
+	}
+	//Copy-construction and destruction
+	{
+		set_type new_set(set);
+	}
 
-// 	return t.stop();
-// }
+	return t.stop();
+}
 
 void	time_test_vector(int n);
 void	time_test_stack(int n);

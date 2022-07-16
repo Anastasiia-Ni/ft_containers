@@ -161,10 +161,10 @@ namespace ft
 
 		pair &operator=(const pair &rhs)
 		{
-			if (*this == rhs)
-				return (*this);
-			this->first = rhs.first;
-			this->second = rhs.second;
+			if (*this != rhs) {
+				this->first = rhs.first;
+				this->second = rhs.second;
+			}
 			return (*this);
 		}
 	};

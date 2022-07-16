@@ -95,6 +95,22 @@ namespace ft
 			}
 	};
 
+	template<typename Node_ptr, typename Value>
+	inline bool
+	operator==(const tree_iterator<Node_ptr,Value>& rhs,
+				const tree_iterator<Node_ptr,Value>& lhs)
+	{
+		return rhs.base() == lhs.base();
+	}
+
+	template<typename Node_ptr, typename Value>
+	inline bool
+	operator!=(const tree_iterator<Node_ptr,Value>& rhs,
+				const tree_iterator<Node_ptr,Value>& lhs)
+	{
+		return rhs.base() != lhs.base();
+	}
+
 	template<typename Const_node_ptr, typename Value>
 	class const_tree_iterator
 	{
@@ -134,9 +150,15 @@ namespace ft
 				return (&_cur_node->_value);
 			}
 
+			// const_node_ptr const_tree_min(const_node_ptr root) {
+			// 	while (root->_left != nullptr)
+			// 		root = root->_left;
+			// 	return root;
+			// }
+
 			const_tree_iterator&	operator++() {
 				if (_cur_node->_right != _nill_node)
-					_cur_node = _cur_node->tree_min(_cur_node->_right);
+					_cur_node = _cur_node->const_tree_min(_cur_node->_right);
 				else {
 					while (_cur_node != _cur_node->_parent->_left) {
 						_cur_node = _cur_node->_parent;
@@ -154,7 +176,7 @@ namespace ft
 
 			const_tree_iterator&	operator--() {
 				if (_cur_node->_left != _nill_node)
-					_cur_node = _cur_node->tree_max(_cur_node->_left);
+					_cur_node = _cur_node->const_tree_max(_cur_node->_left);
 				else {
 					while (_cur_node == _cur_node->_parent->_left) {
 						_cur_node = _cur_node->_parent;
@@ -223,6 +245,7 @@ namespace ft
 	{
 		return rhs.base() != lhs.base();
 	}
+
 };
 
 #endif

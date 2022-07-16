@@ -91,26 +91,26 @@ namespace ft
 		}
 
 		allocator_type get_allocator() const{
-			//return(this->alloc);
+			return (this->_tree.get_allocator());
 		}
 
-// 		// T& at(const Key& key){
-// 		// 	iterator tmp;
+		T& at(const Key& key){
+			iterator tmp;
 
-// 		// 	tmp = find(key);
-// 		// 	if (tmp == this->end())
-// 		// 		throw std::length_error("error vector::max_size");
-// 		// 	return (tmp->second);
-// 		// }
+			tmp = find(key);
+			if (tmp == this->end())
+				throw std::length_error("error vector::max_size");
+			return (tmp->second);
+		}
 
-// 		// const T& at(const Key& key) const {
-// 		// 	iterator tmp;
+		const T& at(const Key& key) const {
+			const_iterator tmp;
 
-// 		// 	tmp = find(key);
-// 		// 	if (tmp == this->end())
-// 		// 		throw std::length_error("error vector::max_size");
-// 		// 	return (tmp->second);
-// 		// }
+			tmp = find(key);
+			if (tmp == this->end())
+				throw std::length_error("error vector::max_size");
+			return (tmp->second);
+		}
 
 		iterator begin() {
 			return (this->_tree.begin());

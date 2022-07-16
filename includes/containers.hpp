@@ -32,6 +32,7 @@
 #include "vector.hpp"
 #include "map.hpp"
 #include "stack.hpp"
+#include "set.hpp"
 #include "iterators/iterators_traits.hpp"
 #include "iterators/reverse_iterator.hpp"
 #include "iterators/random_access_iterator.hpp"
