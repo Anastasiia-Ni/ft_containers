@@ -74,6 +74,10 @@
 		"__memory": "cpp",
 		"compare": "cpp",
 		"concepts": "cpp",
-		"variant": "cpp"
+		"variant": "cpp",
+		"*.ipp": "cpp",
+		"csignal": "cpp",
+		"fstream": "cpp",
+		"iomanip": "cpp"
 	}
 }

@@ -105,31 +105,38 @@ static void	test_max_size(){
 
 static void		test_begin_end() {
 	std::cout << "Begin/end test:\t\t\t";
-	std::cout << "not ready " << std::endl; //DELETE
-	// std::map<int, int> maps;
-	// std::map<int, int> st_map(maps.begin(), maps.end());
-	// ft::map<int, int> my_map(maps.begin(), maps.end());
-	// std::map<int, int>::iterator its = st_map.begin();
-	// ft::map<int, int>::iterator itm = my_map.begin();
-	// if (st_map.size() != my_map.size()){
-	// 	std::cout << FAIL << std::endl;
-	// 	return ;
-	// }
-	// if (!check_iterator(st_map, my_map)){
-	// 	std::cout << FAIL << std::endl;
-	// 	return ;
-	// }
-	// if (++its->second != ++itm->second || its->first != itm->first){
-	// 	std::cout << FAIL << std::endl;
-	// 	return ;
-	// }
-	// std::map<int, int>::iterator its1 = st_map.end();
-	// ft::map<int, int>::iterator itm1 = my_map.end();
-	// if ((its1->first != itm1->first) || (its1->second != itm1->second)){
-	// 	std::cout << FAIL << std::endl;
-	// 	return ;
-	// }
-	//std::cout << SUCS << std::endl;
+	//std::cout << "not ready " << std::endl; //DELETE
+	std::map<int, char> maps;
+	ft::map<int, char> mapm;
+	std::map<int, char> st_map(maps.begin(), maps.end());
+	ft::map<int, char> my_map(mapm.begin(), mapm.end());
+	for (int i = 0; i < 26; i++) {
+		st_map.insert(std::make_pair(i, i + 'A'));
+		my_map.insert(ft::make_pair(i, i + 'A'));
+	}
+	std::map<int, char>::iterator its = st_map.begin();
+	ft::map<int, char>::iterator itm = my_map.begin();
+	if (st_map.size() != my_map.size()){
+		std::cout << FAIL << std::endl;
+		return ;
+	}
+	if (!check_iterator(st_map, my_map)){
+		std::cout << FAIL << std::endl;
+		return ;
+	}
+	if (++its->second != ++itm->second || its->first != itm->first){
+		std::cout << FAIL << std::endl;
+		return ;
+	}
+	std::map<int, char>::iterator its1 = st_map.end();
+	ft::map<int, char>::iterator itm1 = my_map.end();
+	--its1;
+	--itm1;
+	if ((its1->first != itm1->first) || (its1->second != itm1->second)){
+		std::cout << FAIL << std::endl;
+		return ;
+	}
+	std::cout << SUCS << std::endl;
 }
 
 static void		test_operators() {
@@ -163,30 +170,36 @@ static void		test_operators() {
 
 static void		test_insert() {
 	std::cout << "Insert test:\t\t\t";
-	std::cout << "not ready" << std::endl; //DELETE
-	// std::map<int, int> st_map;
-	// ft::map<int, int> my_map;
-	// st_map.insert(std::make_pair(5, 21));
-	// my_map.insert(std::make_pair(5, 21));
-	// if (st_map.size() != my_map.size()){
-	// 	 std::cout << FAIL << std::endl;
-	// 	 return ;
-	// }
-	// if (!check_iterator(st_map, my_map)){
-	// 	 std::cout << FAIL << std::endl;
-	// 	 return ;
-	// }
-	// st_map.clear();
-	// my_map.clear();
-	// if (st_map.size() != my_map.size()){
-	// 	 std::cout << FAIL << std::endl;
-	// 	 return ;
-	// }
-	// if (!check_iterator(st_map, my_map)){
-	// 	 std::cout << FAIL << std::endl;
-	// 	 return ;
-	// }
-	// std::cout << SUCS << std::endl;
+	//std::cout << "not ready" << std::endl; //DELETE
+	std::map<int, int> st_map;
+	ft::map<int, int> my_map;
+	st_map.insert(std::make_pair(5, 21));
+	my_map.insert(ft::make_pair(5, 21));
+	if (st_map.size() != my_map.size()){
+		 std::cout << FAIL << std::endl;
+		 return ;
+	}
+	if (!check_iterator(st_map, my_map)){
+		 std::cout << FAIL << std::endl;
+		 return ;
+	}
+	st_map.clear();
+	my_map.clear();
+	std::map<int, std::string> st_map1;
+	ft::map<int, std::string> my_map1;
+	for (int i = 0; i < 50; i++) {
+		my_map1.insert(ft::pair<int, std::string>(i, "c"));
+		st_map1.insert(std::pair<int, std::string>(i, "c"));
+	}
+	if (st_map1.size() != my_map1.size()){
+		 std::cout << FAIL << std::endl;
+		 return ;
+	}
+	if (!check_iterator(st_map1, my_map1)){
+		 std::cout << FAIL << std::endl;
+		 return ;
+	}
+	std::cout << SUCS << std::endl;
 }
 
 static void		test_empty() {
@@ -295,30 +308,30 @@ static void		test_swap() {
 
 static void		test_clear() {
 	std::cout << "Clear test:\t\t\t";
-	std::cout << "not ready" << std::endl; //DELETE
-// 	// std::map<int, int> st_map;
-// 	// ft::map<int, int> my_map;
-// 	// st_map.insert(std::make_pair(5, 21));
-// 	// my_map.insert(std::make_pair(5, 21));
-// 	//  if (st_map.size() != my_map.size()){
-// 	// 	 std::cout << FAIL << std::endl;
-// 	// 	 return ;
-// 	//  }
-// 	//  if (!check_iterator(st_map, my_map)){
-// 	// 	 std::cout << FAIL << std::endl;
-// 	// 	 return ;
-// 	//  }
-// 	//  st_map.clear();
-// 	//  my_map.clear();
-// 	//  if (st_map.size() != my_map.size()){
-// 	// 	 std::cout << FAIL << std::endl;
-// 	// 	 return ;
-// 	//  }
-// 	//  if (!check_iterator(st_map, my_map)){
-// 	// 	 std::cout << FAIL << std::endl;
-// 	// 	 return ;
-// 	//  }
-// 	//  std::cout << SUCS << std::endl;
+	//std::cout << "not ready" << std::endl; //DELETE
+	std::map<int, int> st_map;
+	ft::map<int, int> my_map;
+	st_map.insert(std::make_pair(5, 21));
+	my_map.insert(ft::make_pair(5, 21));
+	 if (st_map.size() != my_map.size()){
+		 std::cout << FAIL << std::endl;
+		 return ;
+	 }
+	 if (!check_iterator(st_map, my_map)){
+		 std::cout << FAIL << std::endl;
+		 return ;
+	 }
+	 st_map.clear();
+	 my_map.clear();
+	 if (st_map.size() != my_map.size()){
+		 std::cout << FAIL << std::endl;
+		 return ;
+	 }
+	 if (!check_iterator(st_map, my_map)){
+		 std::cout << FAIL << std::endl;
+		 return ;
+	 }
+	 std::cout << SUCS << std::endl;
 }
 
 static void	test_find () {
@@ -360,24 +373,24 @@ static void	test_find () {
 
 static void	test_count(){
 	std::cout << "Count test:\t\t\t";
-	std::cout << "not ready" << std::endl; //DELETE
-	// std::map<char, int> st_map;
-	// ft::map<char, int> my_map;
-	// st_map['A'] = 1;
-	// st_map['B'] = 2;
-	// st_map['C'] = 3;
-	// my_map['A'] = 1;
-	// my_map['B'] = 2;
-	// my_map['C'] = 3;
-	// if (st_map.count('A') != my_map.count('A')){
-	// 	std::cout << FAIL << std::endl;
-	// 	return ;
-	// }
-	// if (st_map.count('T') != my_map.count('T')){
-	// 	std::cout << FAIL << std::endl;
-	// 	return ;
-	// }
-	// std::cout << SUCS << std::endl;
+	//std::cout << "not ready" << std::endl; //DELETE
+	std::map<char, int> st_map;
+	ft::map<char, int> my_map;
+	st_map['A'] = 1;
+	st_map['B'] = 2;
+	st_map['C'] = 3;
+	my_map['A'] = 1;
+	my_map['B'] = 2;
+	my_map['C'] = 3;
+	if (st_map.count('A') != my_map.count('A')){
+		std::cout << FAIL << std::endl;
+		return ;
+	}
+	if (st_map.count('T') != my_map.count('T')){
+		std::cout << FAIL << std::endl;
+		return ;
+	}
+	std::cout << SUCS << std::endl;
 }
 
 static void	test_bound(){
@@ -419,86 +432,86 @@ static void	test_bound(){
 
 static void	test_equal_range(){
 	std::cout << "Equal range test:\t\t";
-	std::cout << "not ready" << std::endl; //DELETE
-	// std::map<int, int> st_map;
-	// ft::map<int, int> my_map;
-	// st_map[0] = 1;
-	// st_map[1] = 2;
-	// st_map[2] = 3;
-	// my_map[0] = 1;
-	// my_map[1] = 2;
-	// my_map[2] = 3;
-	// std::pair<std::map<int, int>::iterator, std::map<int, int>::iterator> it_s;
-	// std::pair<ft::map<int, int>::iterator, ft::map<int, int>::iterator> it_m;
-	// it_s = st_map.equal_range(1);
-	// it_m = my_map.equal_range(1);
-	// if ((it_s.first->first != it_m.first->first) || (it_s.second->second != it_m.second->second) ||
-	// (it_s.first->second != it_m.first->second) || (it_s.second->first != it_m.second->first)){
-	// 	 std::cout << FAIL << std::endl;
-	// 	 return ;
-	// }
-	// std::pair<std::map<int, int>::iterator, std::map<int, int>::iterator> it_s1;
-	// std::pair<ft::map<int, int>::iterator, ft::map<int, int>::iterator> it_m1;
-	// it_s1 = st_map.equal_range(1000);
-	// it_m1 = my_map.equal_range(1000);
-	// if ((it_s.first->first != it_m.first->first) || (it_s.second->second != it_m.second->second) ||
-	// (it_s.first->second != it_m.first->second) || (it_s.second->first != it_m.second->first)){
-	// 	 std::cout << FAIL << std::endl;
-	// 	 return ;
-	// }
-	// std::cout << SUCS << std::endl;
+	//std::cout << "not ready" << std::endl; //DELETE
+	std::map<int, int> st_map;
+	ft::map<int, int> my_map;
+	st_map[0] = 1;
+	st_map[1] = 2;
+	st_map[2] = 3;
+	my_map[0] = 1;
+	my_map[1] = 2;
+	my_map[2] = 3;
+	std::pair<std::map<int, int>::iterator, std::map<int, int>::iterator> it_s;
+	ft::pair<ft::map<int, int>::iterator, ft::map<int, int>::iterator> it_m;
+	it_s = st_map.equal_range(1);
+	it_m = my_map.equal_range(1);
+	if ((it_s.first->first != it_m.first->first) || (it_s.second->second != it_m.second->second) ||
+	(it_s.first->second != it_m.first->second) || (it_s.second->first != it_m.second->first)){
+		 std::cout << FAIL << std::endl;
+		 return ;
+	}
+	std::pair<std::map<int, int>::iterator, std::map<int, int>::iterator> it_s1;
+	ft::pair<ft::map<int, int>::iterator, ft::map<int, int>::iterator> it_m1;
+	it_s1 = st_map.equal_range(1000);
+	it_m1 = my_map.equal_range(1000);
+	if ((it_s.first->first != it_m.first->first) || (it_s.second->second != it_m.second->second) ||
+	(it_s.first->second != it_m.first->second) || (it_s.second->first != it_m.second->first)){
+		 std::cout << FAIL << std::endl;
+		 return ;
+	}
+	std::cout << SUCS << std::endl;
 }
 
 static void	test_compare(){
 	std::cout << "Compare test:\t\t\t";
-	std::cout << "not ready" << std::endl; //DELETE
-	// std::map<int, int> st_map;
-	// ft::map<int, int> my_map;
-	// std::map<int, int> st_map1;
-	// ft::map<int, int> my_map1;
-	// if (st_map.size() != my_map.size()){
-	// 	 std::cout << FAIL << std::endl;
-	// 	 return ;
-	// }
-	// if (!check_iterator(st_map, my_map)){
-	// 	 std::cout << FAIL << std::endl;
-	// 	 return ;
-	// }
-	// if (st_map1.size() != my_map1.size()){
-	// 	 std::cout << FAIL << std::endl;
-	// 	 return ;
-	// }
-	// if (!check_iterator(st_map1, my_map1)){
-	// 	 std::cout << FAIL << std::endl;
-	// 	 return ;
-	// }
-	// st_map.insert(std::make_pair(5, 21));
-	// my_map.insert(ft::make_pair(5, 21));
-	// if((st_map == st_map1) != (my_map == my_map1)){
-	// 	 std::cout << FAIL << std::endl;
-	// 	 return ;
-	// }
-	// if((st_map != st_map1) != (my_map != my_map1)){
-	// 	 std::cout << FAIL << std::endl;
-	// 	 return ;
-	// }
-	// if((st_map > st_map1) != (my_map > my_map1)){
-	// 	 std::cout << FAIL << std::endl;
-	// 	 return ;
-	// }
-	// if((st_map >= st_map1) != (my_map >= my_map1)){
-	// 	 std::cout << FAIL << std::endl;
-	// 	 return ;
-	// }
-	// if((st_map < st_map1) != (my_map < my_map1)){
-	// 	 std::cout << FAIL << std::endl;
-	// 	 return ;
-	// }
-	// if((st_map <= st_map1) != (my_map <= my_map1)){
-	// 	 std::cout << FAIL << std::endl;
-	// 	 return ;
-	// }
-	// std::cout << SUCS << std::endl;
+	//std::cout << "not ready" << std::endl; //DELETE
+	std::map<int, int> st_map;
+	ft::map<int, int> my_map;
+	std::map<int, int> st_map1;
+	ft::map<int, int> my_map1;
+	if (st_map.size() != my_map.size()){
+		 std::cout << FAIL << std::endl;
+		 return ;
+	}
+	if (!check_iterator(st_map, my_map)){
+		 std::cout << FAIL << std::endl;
+		 return ;
+	}
+	if (st_map1.size() != my_map1.size()){
+		 std::cout << FAIL << std::endl;
+		 return ;
+	}
+	if (!check_iterator(st_map1, my_map1)){
+		 std::cout << FAIL << std::endl;
+		 return ;
+	}
+	st_map.insert(std::make_pair(5, 21));
+	my_map.insert(ft::make_pair(5, 21));
+	if((st_map == st_map1) != (my_map == my_map1)){
+		 std::cout << FAIL << std::endl;
+		 return ;
+	}
+	if((st_map != st_map1) != (my_map != my_map1)){
+		 std::cout << FAIL << std::endl;
+		 return ;
+	}
+	if((st_map > st_map1) != (my_map > my_map1)){
+		 std::cout << FAIL << std::endl;
+		 return ;
+	}
+	if((st_map >= st_map1) != (my_map >= my_map1)){
+		 std::cout << FAIL << std::endl;
+		 return ;
+	}
+	if((st_map < st_map1) != (my_map < my_map1)){
+		 std::cout << FAIL << std::endl;
+		 return ;
+	}
+	if((st_map <= st_map1) != (my_map <= my_map1)){
+		 std::cout << FAIL << std::endl;
+		 return ;
+	}
+	std::cout << SUCS << std::endl;
 }
 
 

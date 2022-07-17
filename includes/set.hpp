@@ -43,9 +43,9 @@ namespace ft
 			typedef typename tree_type::const_pointer				const_pointer;
 			typedef typename tree_type::size_type					size_type;
 			typedef typename tree_type::difference_type				difference_type;
-			typedef typename tree_type::const_iterator				iterator;
+			typedef typename tree_type::iterator					iterator;			//typedef typename tree_type::const_iterator
 			typedef typename tree_type::const_iterator				const_iterator;
-			typedef typename tree_type::const_reverse_iterator		reverse_iterator;
+			typedef typename tree_type::reverse_iterator			reverse_iterator;	//typedef typename tree_type::const_reverse_iterator
 			typedef typename tree_type::const_reverse_iterator		const_reverse_iterator;
 			typedef value_type										Key;
 
@@ -165,28 +165,28 @@ namespace ft
 				return (this->_tree.find(key));
 			}
 
-			std::pair<iterator,iterator> equal_range( const Key& key ) {
-				return this->_tree.equal_range(key);
+			ft::pair<iterator,iterator> equal_range( const Key& key ) {
+				return (this->_tree.equal_range(key));
 			}
 
-			std::pair<const_iterator,const_iterator> equal_range( const Key& key ) const {
-				return this->_tree.equal_range(key);
+			ft::pair<const_iterator,const_iterator> equal_range( const Key& key ) const {
+				return (this->_tree.equal_range(key));
 			}
 
 			iterator lower_bound( const Key& key ) {
-				return this->_tree.lower_bound(key);
+				return (this->_tree.lower_bound(key));
 			}
 
 			const_iterator lower_bound( const Key& key ) const {
-				return this->_tree.lower_bound(key);
+				return (this->_tree.lower_bound(key));
 			}
 
 			iterator upper_bound( const Key& key ) {
-				return this->_tree.upper_bound(key);
+				return (this->_tree.upper_bound(key));
 			}
 
 			const_iterator upper_bound( const Key& key ) const {
-				return this->_tree.upper_bound(key);
+				return (this->_tree.upper_bound(key));
 			}
 
 			key_compare key_comp() const {

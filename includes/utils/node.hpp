@@ -25,7 +25,7 @@ namespace ft
 	{
 		typedef T							value_type;
 		typedef RBnode<value_type>*			node_ptr;
-		typedef const RBnode<value_type>*	const_node_ptr; // тут был  const typedef RBnode<value_type>*			const_node_ptr; с перегруженными min and max в методах
+		typedef const RBnode<value_type>*	const_node_ptr;
 
 		value_type	_value;
 		node_ptr	_parent;

@@ -24,12 +24,12 @@
 void test_tree() {
 	std::set<int> st_set;
 	ft::set<int> my_set;
-	// for (int i = 25; i > 10; i--)
-	// {
-	// 	st_set.insert(i);
-	// 	my_set.insert(i * 2);
-	// }
-	// my_set.insert(53);
+	for (int i = 65; i > 10; i--)
+	{
+		st_set.insert(i);
+		my_set.insert(i * 2);
+	}
+	my_set.insert(53);
 
 	for (int i = 5; i < 20; i++)
 	{
@@ -39,12 +39,24 @@ void test_tree() {
 	my_set.insert(53);
 	my_set.insert(63);
 	my_set.insert(60);
-	my_set.insert(66);
+	my_set.insert(166);
+	my_set.insert(167);
+	my_set.insert(168);
+	my_set.insert(169);
+	my_set.insert(170);
+	my_set.insert(113);
 	my_set.insert(67);
 	my_set.insert(68);
 	my_set.insert(69);
 	my_set.insert(78);
+	my_set.insert(114);
+	my_set.insert(127);
+	my_set.insert(129);
 	my_set.erase(53);
+	my_set.erase(114);
+	my_set.erase(113);
+	my_set.erase(68);
+	my_set.erase(82);
 	my_set.PrintTree();
 }
 

@@ -137,8 +137,6 @@ static void	test_begin_end() {
 	std::set<int> sets;
 	for (int i = 0; i < 20; i++)
 		sets.insert(i * 10);
-
-	//попробовать распечатать дерево
 	std::set<int> st_set(sets.begin(), sets.end());
 	ft::set<int> my_set(sets.begin(), sets.end());
 	std::set<int>::iterator its = st_set.begin();
@@ -166,7 +164,6 @@ static void	test_begin_end() {
 
 static void	test_insert() {
 	std::cout << "Insert test:\t\t\t";
-	//попробовать распечатать дерево
 	std::set<int> st_set;
 	ft::set<int> my_set;
 	for (int i = 5; i < 20; i++)
@@ -209,7 +206,6 @@ static void	test_empty() {
 static void	test_erase() {
 	std::cout << "Erase test:\t\t\t";
 	//std::cout << "not ready" << std::endl; //DELETE
-	
 	const int arr_size = 8;
 	int arr[arr_size] = {1, 1, 2, 2, 1, 3, 2, 3};
 	std::set<int> st_set(arr, arr + arr_size);
@@ -354,14 +350,10 @@ static void	test_find() {
 	itm = my_set.find(15);
 	its1 = st_set.find(25);
 	itm1 = my_set.find(25);
-	if (*my_set.end() != *st_set.end()) {
+	if (*my_set.end() != *itm1 || *its != *itm) {
 		std::cout << FAIL << std::endl;
 		return ;
 	}
-	// if (*its1 != *itm1 || *its != *itm) {
-	// 	std::cout << FAIL << std::endl;
-	// 	return ;
-	// }
 	std::cout << SUCS << std::endl;
 }
 
@@ -433,39 +425,43 @@ static void	test_bound() {
 
 static void	test_equal_range() {
 	std::cout << "Equal range test:\t\t";
-	std::cout << "not ready" << std::endl; //DELETE
-	// std::set<int> st_set;
-	// ft::set<int> my_set;
-	// std::set<int>::iterator its;
-	// ft::set<int>::iterator itm;
-	// std::set<int>::iterator its1;
-	// ft::set<int>::iterator itm1;
-	// for (int i = 1; i < 20; i++)
-	// {
-	// 	st_set.insert(i);
-	// 	my_set.insert(i);
-	// }
-	// if (st_set.size() != my_set.size()){
-	// 	std::cout << FAIL << std::endl;
-	// 	return ;
-	// }
-	// if (!check_iterator(st_set, my_set)){
-	// 	std::cout << FAIL << std::endl;
-	// 	return ;
-	// }
-	// its = st_set.equal_range(15);
-	// itm = my_set.equal_range(15);
-	// if (*its != *itm) {
-	// 	std::cout << FAIL << std::endl;
-	// 	return ;
-	// }
-	// its1 = st_set.equal_range(150);
-	// itm1 = my_set.equal_range(150);
-	// if (*its1 != *itm1) {
-	// 	std::cout << FAIL << std::endl;
-	// 	return ;
-	// }
-	// std::cout << SUCS << std::endl;
+	//std::cout << "not ready" << std::endl; //DELETE
+	std::set<int> st_set;
+	ft::set<int> my_set;
+	for (int i = 1; i < 20; i++)
+	{
+		st_set.insert(i);
+		my_set.insert(i);
+	}
+	if (st_set.size() != my_set.size()){
+		std::cout << FAIL << std::endl;
+		return ;
+	}
+	if (!check_iterator(st_set, my_set)){
+		std::cout << FAIL << std::endl;
+		return ;
+	}
+	std::pair<std::set<int>::iterator, std::set<int>::iterator> its;
+	ft::pair<ft::set<int>::iterator, ft::set<int>::iterator> itm;
+	its = st_set.equal_range(15);
+	itm = my_set.equal_range(15);
+	if (*its.first != *itm.first || *its.second != *itm.second) {
+		std::cout << FAIL << std::endl;
+		return ;
+	}
+	std::pair<std::set<int>::iterator, std::set<int>::iterator> its1;
+	ft::pair<ft::set<int>::iterator, ft::set<int>::iterator> itm1;
+	its1 = st_set.equal_range(150);
+	itm1 = my_set.equal_range(150);
+	if (*itm1.first != *my_set.end() || *itm1.second != *my_set.end()){
+		std::cout << FAIL << std::endl;
+		return ;
+	}
+	if (*(--its1.first) != *(--itm1.first) || *(--its1.second) != *(--itm1.second)){
+		std::cout << FAIL << std::endl;
+		return ;
+	}
+	std::cout << SUCS << std::endl;
 }
 
 static void	test_compare() {

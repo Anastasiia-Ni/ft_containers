@@ -21,6 +21,23 @@
 
 namespace ft
 {
+	// template<typename Arg1, typename Arg2, typename Result>
+	// struct binary_function
+	// {
+	// 	typedef Arg1	frist_argument_type;
+	// 	typedef Arg2	second_argument_type;
+	// 	typedef Result	result_type;
+	// };
+	
+	// template<typename T>
+	// struct less: binary_function<T,T,bool>
+	// {
+	// 	bool operator()(const T& x, const T& y) const
+	// 	{
+	// 		return x < y;
+	// 	}
+	// };
+	
 	template <class Key, class T, class Compare = std::less<Key>, class Alloc = std::allocator<ft::pair<const Key, T> > >
  	class map
 	{
@@ -36,11 +53,11 @@ namespace ft
 				friend class map;
 				protected:
 					key_compare		comp;
-					value_compare(Compare c) : comp(c) {}
-				public:		//немного отличается
-					typedef bool		result_type;
-					typedef value_type	first_argument_type;
-					typedef value_type	second_argument_type;
+					value_compare(key_compare c) : comp(c) {}
+				public:	
+				// 	typedef bool		result_type;
+				// 	typedef value_type	first_argument_type;
+				// 	typedef value_type	second_argument_type;
 					bool operator() (const value_type &x, const value_type &y) const {
 						return comp(x.first, y.first);
 					}

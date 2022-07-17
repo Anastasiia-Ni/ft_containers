@@ -28,10 +28,10 @@ void	time_test_vector(int n) {
 	std::vector<int> sv1;
 	ft::vector<int> mv1;
 
-	std = vector_insert(200000, sv1);
+	std = vector_insert(2000, sv1);
 	std::cout << "Std: " << std << std::endl;
 
-	ft = vector_insert(200000, mv1);
+	ft = vector_insert(2000, mv1);
 	std::cout << "Ft : " << ft << std::endl;
 
 	std::cout << "Our vector is " << GREEN << (double)ft / (double)std << RESET << " times slower." << std::endl;
@@ -57,10 +57,10 @@ void time_test_stack(int n) {
 	std::stack<int> st1;
 	ft::stack<int> ms1;
 
-	std = stack_insert(2000000, st1);
+	std = stack_insert(2000, st1);
 	std::cout << "Std: " << std << std::endl;
 
-	ft = stack_insert(2000000, ms1);
+	ft = stack_insert(2000, ms1);
 	std::cout << "Ft : " << ft << std::endl;
 
 	std::cout << "Our stack is " << GREEN << (double)ft / (double)std << RESET << " times slower." << std::endl;
@@ -87,10 +87,10 @@ void time_test_map(int n) {
 	std::map<int, bool> sm1;
 	ft::map<int, bool> m1;
 
-	std = map_insert(2000, sm1);
+	std = map_insert(200000, sm1);
 	std::cout << "Std: " << std << std::endl;
 
-	ft = map_insert(2000, m1);
+	ft = map_insert(200000, m1);
 	std::cout << "Ft : " << ft << std::endl;
 
 	std::cout << "Our map is " << GREEN << (double)ft / (double)std << RESET << " times slower." << std::endl;
@@ -124,7 +124,7 @@ void	time_test_set(int n)
 
 	std::cout << "Our map is " << GREEN << (double)ft / (double)std << RESET << " times slower." << std::endl;
 
-	std::cout << "\nTime test:\t\t";
+	std::cout << "\nTime test:\t\t\t";
 	if (((double)ft / (double)std) < 20.0)
 		std::cout << SUCS << std::endl;
 	else
