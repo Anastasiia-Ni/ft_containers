@@ -12,7 +12,7 @@ SRCS_S = main.cpp
 HEADERS	= 	includes/vector.hpp		includes/stack.hpp	includes/map.hpp includes/set.hpp\
 			includes/containers.hpp includes/iterators/tree_iterator.hpp  includes/utils/node.hpp\
 			includes/iterators/iterators_traits.hpp	includes/iterators/random_access_iterator.hpp \
-			includes/iterators/reverse_iterator.hpp	includes/utils/utils.hpp			\
+			includes/iterators/reverse_iterator.hpp	includes/utils/utils.hpp	includes/utils/pair.hpp	\
 			includes/utils/time_test.hpp		includes/utils/red_black_tree.hpp		\
 
 OBJS = $(SRCS:.cpp=.o)

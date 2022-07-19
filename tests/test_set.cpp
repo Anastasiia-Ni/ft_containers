@@ -40,6 +40,19 @@ template <typename T>
 bool	check_iterator(std::set<T> &st_set, ft::set<T> &my_set) {
 	typename std::set<T>::iterator it_st = st_set.begin();
 	typename ft::set<T>::iterator it_my = my_set.begin();
+
+	//typename std::set<T>::const_iterator it_st2 = it_st;
+	//typename ft::set<T>::const_iterator it_my2 = it_my;
+	// while (it_st2 != st_set.end()) {
+	// 	std::cout << *it_st2 << " ";
+	// 	++it_st2;
+	// }
+
+	// while (it_my2 != my_set.end()) {
+	// 	std::cout << *it_my2 << " ";
+	// 	++it_my2;
+	//}
+
 	while (it_st != st_set.end()){
 		if (*it_st != *it_my)
 			return false;

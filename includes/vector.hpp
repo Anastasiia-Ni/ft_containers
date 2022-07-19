@@ -126,7 +126,8 @@ namespace ft
 			}
 
 			template< class InputIterator >
-			void assign(InputIterator first, InputIterator last, typename ft::enable_if<!ft::is_integral<InputIterator>::value, InputIterator>::type* = NULL)
+			void assign(InputIterator first, InputIterator last, 
+				typename ft::enable_if<!ft::is_integral<InputIterator>::value, InputIterator>::type* = NULL)
 			{
 				clear();
 				difference_type gap = ft::distance(first, last);
@@ -312,54 +313,34 @@ namespace ft
 					throw std::length_error("error max_size");
 					return ;
 				}
-				// if (size() + count <= capacity())
-				// {
-				// 	iterator it;
-				// 	if (size() + count != capacity())
-				// 		it = this->_end + count;
-				// 	else
-				// 		it = this->_arr + (capacity() - 1);
-				// 	while (it >= pos + count) {
-				// 		this->_alloc.construct(it.base(), *(it - count));
-				// 		it--;
-				// 	}
-				// 	while (count--)
-				// 	{
-				// 		this->_alloc.construct(pos.base(), value);
-				// 		pos++;
-				// 		this->_end++;
-				// 	}
-				// }
-				// else
-				// {
-					size_type new_cap;
-					if (size() == 0)
-						new_cap = 1;
-					else if (size() + count <= capacity())
-						new_cap = capacity();
-					else
-						new_cap = capacity() * 2;
-					if (size() + count > new_cap)
-						new_cap = size() + count;
-					pointer new_arr = this->_alloc.allocate(new_cap);
-					pointer new_end = new_arr;
-					iterator it;
-					for (it = begin(); it != pos; it++, new_end++)
-						this->_alloc.construct(new_end, *it);
-					for (size_type i = 0; i != count; i++, new_end++)
-						this->_alloc.construct(new_end, value);
-					for (; it != this->_end; it++, new_end++)
-						this->_alloc.construct(new_end, *it);
-					clear();
-					this->_alloc.deallocate(this->_arr, capacity());
-					this->_arr = new_arr;
-					this->_end = new_end;
-					this->_capacity = new_cap;
-				//}
+				size_type new_cap;
+				if (size() == 0)
+					new_cap = 1;
+				else if (size() + count <= capacity())
+					new_cap = capacity();
+				else
+					new_cap = capacity() * 2;
+				if (size() + count > new_cap)
+					new_cap = size() + count;
+				pointer new_arr = this->_alloc.allocate(new_cap);
+				pointer new_end = new_arr;
+				iterator it;
+				for (it = begin(); it != pos; it++, new_end++)
+					this->_alloc.construct(new_end, *it);
+				for (size_type i = 0; i != count; i++, new_end++)
+					this->_alloc.construct(new_end, value);
+				for (; it != this->_end; it++, new_end++)
+					this->_alloc.construct(new_end, *it);
+				clear();
+				this->_alloc.deallocate(this->_arr, capacity());
+				this->_arr = new_arr;
+				this->_end = new_end;
+				this->_capacity = new_cap;
 			};
 
 			template< class InputIterator >
-			void insert(iterator pos, InputIterator first, InputIterator last, typename ft::enable_if<!ft::is_integral<InputIterator>::value, InputIterator>::type* = 0)
+			void insert(iterator pos, InputIterator first, InputIterator last, 
+				typename ft::enable_if<!ft::is_integral<InputIterator>::value, InputIterator>::type* = 0)
 			{
 				difference_type gap;
 
@@ -442,8 +423,6 @@ namespace ft
 					else
 						reserve(this->_capacity * 2);
 				}
-				// _end = value;
-				// _end++;
 				this->_alloc.construct(_end, value);
 				this->_end++;
 			}
@@ -494,7 +473,7 @@ namespace ft
 	};
 
 	template <class T, class Alloc>
-	bool operator== (const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs) //проверить может все
+	bool operator== (const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs)
 	{
 		if (lhs.size() != rhs.size())
 			return (false);

@@ -22,9 +22,13 @@ namespace ft
 		random_access_iterator() : _p(NULL) {}
 		random_access_iterator(pointer ptr) : _p(ptr) {}
 		~random_access_iterator() {}
-		random_access_iterator(const random_access_iterator &other) : _p(other._p) {}
+
+		template<typename Iter>
+		random_access_iterator(const random_access_iterator <Iter>&other) : _p(other.base()) {}
 		
-		random_access_iterator &operator=(const random_access_iterator &rhs) {
+		
+		template<typename Iter>
+		random_access_iterator &operator=(const random_access_iterator <Iter>&rhs) {
 			this->_p = rhs._p;
 			return (*this);
 		}

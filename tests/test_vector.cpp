@@ -18,14 +18,20 @@ static void print_vector(std::vector<T> &std_vec, ft::vector<T> &my_vec) {
 	typename std::vector<T>::iterator it_st1 = std_vec.begin();
 	typename ft::vector<T>::iterator it_my1 = my_vec.begin();
 
-	std::cout << "st vector: ";
-	for(; it_st1 != std_vec.end(); ++it_st1) {
-		std::cout << *it_st1 << "; " ;
+	typename std::vector<T>::const_iterator it_st2 = it_st1;
+	typename ft::vector<T>::const_iterator it_my2 = it_my1;
+
+	// iter = const_iter // не должно работать
+	// const_iter = iter // должно работать
+
+	std::cout << "\nst vector: ";
+	for(; it_st2 != std_vec.end(); ++it_st2) {
+		std::cout << *it_st2 << "; " ;
 	}
 
 	std::cout << "\nmy vector: ";
-	for(; it_my1 != my_vec.end(); ++it_my1) {
-		std::cout << *it_my1 << "; " ;
+	for(; it_my2 != my_vec.end(); ++it_my2) {
+		std::cout << *it_my2 << "; " ;
 	}
 	std::cout << std::endl;
 }
@@ -371,9 +377,6 @@ static void	test_insert() {
 	ft::vector<int>::iterator it_my = my_vec.begin();
 	st_vec.insert((it_st + 4), 42);
 	my_vec.insert((it_my + 4), 42);
-	//print_vector(st_vec, my_vec);		// DELETE before submition
-	//std::cout << "\nstd cap " << st_vec.capacity() << " size " << st_vec.size() << std::endl; // delete
-	//std::cout << "my cap  " << my_vec.capacity() << " size " << my_vec.size() << std::endl;	//delete
 	if (st_vec.size() != my_vec.size()){
 		std::cout << FAIL << std::endl;
 		return ;
@@ -403,9 +406,6 @@ static void	test_insert() {
 	it_m1--;
 	st_vec.insert(it_s1, st_vec2.begin(), st_vec2.end());
 	my_vec.insert(it_m1, my_vec2.begin(), my_vec2.end());
-	// print_vector(st_vec, my_vec);			// DELETE before submition
-	// std::cout << "\nstd cap " << st_vec.capacity() << " size " << st_vec.size() << std::endl; // delete
-	// std::cout << "my cap  " << my_vec.capacity() << " size " << my_vec.size() << std::endl;	//delete
 	if (st_vec.size() != my_vec.size()){
 		 std::cout << FAIL << std::endl;
 		 return ;

@@ -17,6 +17,21 @@ template <typename Key, typename T>
 bool	check_iterator(std::map<Key, T> &st_map, ft::map<Key, T> &my_map){
 	typename std::map<Key, T>::iterator it_st = st_map.begin();
 	typename ft::map<Key, T>::iterator it_my = my_map.begin();
+
+	//typename std::map<Key, T>::const_iterator it_st2 = it_st;
+	//typename ft::map<Key, T>::const_iterator it_my2 = it_my;
+	// while (it_st2 != st_map.end()) {
+	// 	std::cout << it_st2->second;
+	// 	++it_st2;
+	// }
+	// while (it_my2 != my_map.end()) {
+	// 	std::cout << it_my2->second;
+	// 	++it_my2;
+	// }
+
+	// std::cout<< std::endl;
+
+
 	while (it_st != st_map.end()){
 		if (it_st->first != it_my->first || it_st->second != it_my->second)
 			return false;
@@ -296,12 +311,12 @@ static void		test_swap() {
 	st_map.swap(st_map1);
 	my_map.swap(my_map1);
 	if (st_map.size() != my_map.size()){
-		 std::cout << FAIL << std::endl;
-		 return ;
+		std::cout << FAIL << std::endl;
+		return ;
 	}
 	if (!check_iterator(st_map, my_map)){
-		 std::cout << FAIL << std::endl;
-		 return ;
+		std::cout << FAIL << std::endl;
+		return ;
 	}
 	std::cout << SUCS << std::endl;
 }

@@ -21,13 +21,13 @@
 #include <queue>
 #include <map>
 #include <set>
-#include <memory>   // allocator
+#include <memory> 
 #include <iostream>
-#include <limits>   // numeric_limits, max
+#include <limits> 
 #include <utility>
 #include <functional>
 #include <stdexcept>
-#include <cstddef>  // ptrdiff_t
+#include <cstddef>
 
 #include "vector.hpp"
 #include "map.hpp"
@@ -37,6 +37,7 @@
 #include "iterators/reverse_iterator.hpp"
 #include "iterators/random_access_iterator.hpp"
 #include "utils/utils.hpp"
+#include "utils/pair.hpp"
 #include "utils/red_black_tree.hpp"
 #include "utils/time_test.hpp"
 

@@ -19,18 +19,17 @@
 #include "iterators/tree_iterator.hpp"
 #include "iterators/reverse_iterator.hpp"
 #include "utils/utils.hpp"
+#include "utils/pair.hpp"
 
 namespace ft
 {
-	template <class T, class Compare = std::less<T>, class Alloc = std::allocator<T> >
+	template <class T, class Compare = ft::less<T>, class Alloc = std::allocator<T> >
 	class set
 	{
 		public:
 			typedef T												key_type;
 			typedef Compare											key_compare;
 			typedef Alloc											allocator_type;
-			//typedef Key										key_type;
-
 		private:
 			typedef ft::rbTree<T,Compare,Alloc>						tree_type;
 		
@@ -43,9 +42,9 @@ namespace ft
 			typedef typename tree_type::const_pointer				const_pointer;
 			typedef typename tree_type::size_type					size_type;
 			typedef typename tree_type::difference_type				difference_type;
-			typedef typename tree_type::iterator					iterator;			//typedef typename tree_type::const_iterator
+			typedef typename tree_type::iterator					iterator;
 			typedef typename tree_type::const_iterator				const_iterator;
-			typedef typename tree_type::reverse_iterator			reverse_iterator;	//typedef typename tree_type::const_reverse_iterator
+			typedef typename tree_type::reverse_iterator			reverse_iterator;
 			typedef typename tree_type::const_reverse_iterator		const_reverse_iterator;
 			typedef value_type										Key;
 
@@ -54,10 +53,12 @@ namespace ft
 
 		public:
 
-			explicit set(const key_compare& comp = key_compare(), const allocator_type& alloc = allocator_type()) : _tree(comp, alloc) {}
+			explicit set(const key_compare& comp = key_compare(), const allocator_type& alloc = allocator_type()) : 
+			_tree(comp, alloc) {}
 
 			template<typename InputIterator>
-			set(InputIterator first, InputIterator last, const key_compare& comp = key_compare(), const allocator_type& alloc = allocator_type()) : _tree(comp, alloc) {
+			set(InputIterator first, InputIterator last, const key_compare& comp = key_compare(), const allocator_type& alloc = allocator_type()) : 
+			_tree(comp, alloc) {
 				this->insert(first, last);
 			}			
 			set(const set& other) : _tree(other._tree) {}
@@ -114,8 +115,8 @@ namespace ft
 			}
 
 			size_type max_size() const {
-				return (std::numeric_limits<size_type>::max() / sizeof(ft::RBnode<key_type>));
-				//return (this->_tree.max_size()); // check witn original
+				//return (std::numeric_limits<size_type>::max() / sizeof(ft::RBnode<key_type>));
+				return (this->_tree.max_size()); // check witn original
 			}
 
 			void clear() {
@@ -146,10 +147,11 @@ namespace ft
 			}
 
 			size_type erase( const Key& key ) {
-				return (this->_tree.erase(key));		/// double check
+				return (this->_tree.erase(key));
 			}
 
 			void swap( set& other ) {
+				//std::swap(_tree, other._tree);
 				this->_tree.swap(other._tree);
 			}
 
@@ -197,7 +199,9 @@ namespace ft
 				return (this->_tree.value_comp());
 			}
 
-			void PrintTree() {		// DELETE
+
+			//for print
+			void PrintTree() {
 				this->_tree.PrintTree();
 			}
     };
