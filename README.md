@@ -12,8 +12,8 @@ Reimplement some containers of the STL (vector, stack, map, set and their iterat
 
 ## Installation:
 ```
-$ git@github.com:Anastasiia-Ni/ft_containers-42-cursus.git
-$ cd ft_containers-42-cursus
+$ git clone git@github.com:Anastasiia-Ni/ft_containers.git
+$ cd ft_containers
 $ make
 ```
 ## Usage:

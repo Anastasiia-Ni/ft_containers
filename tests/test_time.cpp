@@ -70,9 +70,7 @@ void time_test_stack(int n) {
 		std::cout << SUCS << std::endl;
 	else
 		std::cout << FAIL << std::endl;
-
 	std::cout << std::endl;
-
 }
 
 void time_test_map(int n) {

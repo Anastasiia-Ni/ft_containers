@@ -46,7 +46,7 @@ namespace ft
 				this->_right = other._right;
 				this->_color = other._color;
 			}
-			return *this;
+			return (*this);
 		}
 
 		void flip_color() {
@@ -56,25 +56,25 @@ namespace ft
 		node_ptr	tree_min(node_ptr root) {
 			while (root->_left != nullptr)
 				root = root->_left;
-			return root;
+			return (root);
 		}
 
 		const_node_ptr const_tree_min(const_node_ptr root) const {
 			while (root->_left != nullptr)
 				root = root->_left;
-			return root;
+			return (root);
 		}
 
 		node_ptr tree_max(node_ptr root) {
 			while (root->_right != nullptr)
 				root = root->_right;
-			return root;
+			return (root);
 		}
 
 		const_node_ptr const_tree_max(const_node_ptr root) const {
 			while (root->_right != nullptr)
 				root = root->_right;
-			return root;
+			return (root);
 		}
 	};
 };

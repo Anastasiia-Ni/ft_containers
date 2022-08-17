@@ -98,24 +98,20 @@ namespace ft {
 			}
 
 			node_ptr	_insert(node_ptr node, node_ptr new_node, bool &insert, iterator &pos) {
-				if (node == nullptr)
-				{
+				if (node == nullptr) {
 					pos = new_node;
 					insert = true;
 					return (new_node);
 				}
-				if (this->_comp(node->_value, new_node->_value))
-				{
+				if (this->_comp(node->_value, new_node->_value)) {
 					node->_right = _insert(node->_right, new_node, insert, pos);
 					node->_right->_parent = node;
 				}
-				else if (this->_comp(new_node->_value, node->_value))
-				{
+				else if (this->_comp(new_node->_value, node->_value)) {
 					node->_left = _insert(node->_left, new_node, insert, pos);
 					node->_left->_parent = node;
 				}
-				else
-				{
+				else {
 					pos = node;
 					insert = false;
 				}
@@ -129,28 +125,28 @@ namespace ft {
 
 			node_ptr _grandparent(node_ptr n) {
 				if ((n != nullptr) && (n->_parent != nullptr))
-					return n->_parent->_parent;
-				return nullptr;
+					return (n->_parent->_parent);
+				return (nullptr);
 			}
 
 			node_ptr _uncle(node_ptr n) {
 				node_ptr g = _grandparent(n);
 				if (g == nullptr)
-					return nullptr;
+					return (nullptr);
 				if (n->_parent == g->_left)
-					return g->_right;
+					return (g->_right);
 				else
-					return g->_left;
+					return (g->_left);
 			}
 
 			void	_balance_insert(node_ptr n) {			
 				node_ptr p = n->_parent;
 				if (n->_parent == nullptr)	{	
 					n->_color = black;
-					return;
+					return ;
 				}
 				else if (p->_color == black)
-					return;
+					return ;
 				else {
 					node_ptr u = _uncle(n);
 					if (u && u->_color == red) {		
@@ -244,22 +240,19 @@ namespace ft {
 				node_ptr sibling = nullptr;
 				if (repl_child != nullptr)
 					repl_child->_parent = repl->_parent;
-				if (is_left_child(repl))
-				{
+				if (is_left_child(repl)) {
 					repl->_parent->_left = repl_child;
 					if (repl == root)
 						root = repl_child;
 					else
 						sibling = repl->_parent->_right;
 				}
-				else
-				{
+				else {
 					repl->_parent->_right = repl_child;
 					sibling = repl->_parent->_left;
 				}
 				node_color repl_color = repl->_color;
-				if (repl != node)
-				{
+				if (repl != node) {
 					repl->_parent = node->_parent;
 					if (is_left_child(node))
 						repl->_parent->_left = repl;
@@ -275,8 +268,7 @@ namespace ft {
 						root = repl;
 					
 				}
-				if (repl_color == black && root != nullptr)
-				{
+				if (repl_color == black && root != nullptr) {
 					if (repl_child != nullptr)
 						repl_child->_color = black;
 					else
@@ -284,13 +276,10 @@ namespace ft {
 				}
 			}
 
-			void _balance_erase(node_ptr root, node_ptr db_node, node_ptr sibling) { // что такое дб нода
-				while (true) // == (node != root && this->_get_node_color(node) == black)
-				{
-					if (!is_left_child(sibling)) // == tree_is_left_child(node)
-					{
-						if (this->_get_node_color(sibling) == red) // Case 3
-						{
+			void _balance_erase(node_ptr root, node_ptr db_node, node_ptr sibling) {
+				while (true) {
+					if (!is_left_child(sibling)) {
+						if (this->_get_node_color(sibling) == red) {
 							sibling->flip_color();
 							sibling->_parent->flip_color();
 							this->_rotate_left(sibling->_parent);
@@ -298,37 +287,31 @@ namespace ft {
 								root = sibling;
 							sibling = sibling->_left->_right;
 						}
-						if (this->_get_node_color(sibling->_left) == black && this->_get_node_color(sibling->_right) == black) // Case 4
-						{
+						if (this->_get_node_color(sibling->_left) == black && this->_get_node_color(sibling->_right) == black) {
 							sibling->flip_color();
 							db_node = sibling->_parent;
-							if (db_node == root || this->_get_node_color(db_node) == red)
-							{
+							if (db_node == root || this->_get_node_color(db_node) == red) {
 								db_node->_color = black;
-								break;
+								break ;
 							}
 							sibling = this->_get_sibling(db_node);
 						}
-						else // sibling has one red child
-						{
-							if (this->_get_node_color(sibling->_right) == black) // Case 5
-							{
-								sibling->_left->flip_color(); // the left child is red
+						else {
+							if (this->_get_node_color(sibling->_right) == black) {
+								sibling->_left->flip_color();
 								sibling->flip_color();
 								this->_rotate_right(sibling);
 								sibling = sibling->_parent;
 							}
-							sibling->_color = sibling->_parent->_color; // Case 6
+							sibling->_color = sibling->_parent->_color;
 							sibling->_parent->_color = black;
 							sibling->_right->_color = black;
 							this->_rotate_left(sibling->_parent);
-							break;
+							break ;
 						}
 					}
-					else // the same as before, but in reverse order
-					{
-						if (this->_get_node_color(sibling) == red) // Case 3
-						{
+					else {
+						if (this->_get_node_color(sibling) == red) {
 							sibling->flip_color();
 							sibling->_parent->flip_color();
 							this->_rotate_right(sibling->_parent);
@@ -336,31 +319,27 @@ namespace ft {
 								root = sibling;
 							sibling = sibling->_right->_left;
 						}
-						if (this->_get_node_color(sibling->_left) == black && this->_get_node_color(sibling->_right) == black) // Case 4
-						{
+						if (this->_get_node_color(sibling->_left) == black && this->_get_node_color(sibling->_right) == black) {
 							sibling->flip_color();
 							db_node = sibling->_parent;
-							if (db_node == root || this->_get_node_color(db_node) == red)
-							{
+							if (db_node == root || this->_get_node_color(db_node) == red) {
 								db_node->_color = black;
-								break;
+								break ;
 							}
 							sibling = this->_get_sibling(db_node);
 						}
-						else // sibling has one red child
-						{
-							if (this->_get_node_color(sibling->_left) == black) // Case 5
-							{
-								sibling->_right->flip_color(); // the right child is red
+						else {
+							if (this->_get_node_color(sibling->_left) == black) {
+								sibling->_right->flip_color();
 								sibling->flip_color();
 								this->_rotate_left(sibling);
 								sibling = sibling->_parent;
 							}
-							sibling->_color = sibling->_parent->_color; // Case 6
+							sibling->_color = sibling->_parent->_color;
 							sibling->_parent->_color = black;
 							sibling->_left->_color = black;
 							this->_rotate_right(sibling->_parent);
-							break;
+							break ;
 						}
 					}
 				}
@@ -375,8 +354,7 @@ namespace ft {
 
 
 			template<typename U>
-			void _swap_val(U& first, U& second)
-			{
+			void _swap_val(U& first, U& second) {
 				U temp = first;
 				first = second;
 				second = temp;
@@ -409,7 +387,7 @@ namespace ft {
 						this->_root()->_parent = &this->_parent;
 					}
 				}
-				return *this;
+				return (*this);
 			}
 
 			iterator	begin() {
@@ -449,10 +427,10 @@ namespace ft {
 			}
 
 			size_type	size() const {
-				return(this->_size);
+				return (this->_size);
 			}
 
-			size_type	max_size() const {	// if don't good for set, no need
+			size_type	max_size() const {
 				return (this->_allocator.max_size());
 			}
 
@@ -529,8 +507,7 @@ namespace ft {
 			}
 			
 			void	clear() {
-				if (this->_root() != nullptr)
-				{
+				if (this->_root() != nullptr) {
 					this->_destroy(this->_root());
 					this->_root() = nullptr;
 					this->_begin_node = this->_end_node();
@@ -584,7 +561,7 @@ namespace ft {
 					else
 						node = node->_right;
 				}
-				return iterator(pos);
+				return (iterator(pos));
 			}
 
 			const_iterator	lower_bound(const value_type& val) const {
@@ -599,7 +576,7 @@ namespace ft {
 					else
 						node = node->_right;
 				}
-				return const_iterator(pos);
+				return (const_iterator(pos));
 			}
 
 			iterator	upper_bound(const value_type& val) {
@@ -613,7 +590,7 @@ namespace ft {
 					else
 						node = node->_right;
 				}
-				return iterator(pos);
+				return (iterator(pos));
 			}
 
 			const_iterator	upper_bound(const value_type& val) const {
@@ -627,7 +604,7 @@ namespace ft {
 					else
 						node = node->_right;
 				}
-				return const_iterator(pos);
+				return (const_iterator(pos));
 			}
 
 			ft::pair<iterator,iterator>		equal_range(const value_type& val) {
@@ -664,37 +641,6 @@ namespace ft {
 
 			allocator_type	get_allocator() const {
 				return (this->_allocator);
-			}
-
-// for print
-			
-			void _print_tree(node_ptr node, int depth) const {
-
-				if (node != NULL) {
-					depth = depth + 4;
-					_print_tree(node->_right, depth);
-					//std::cout << std::endl;
-					for (int i = 4; i < depth; i++) {
-						std::cout << " ";
-					}
-					if(node->_color == false){
-						std::cout << RED << node->_value << std::endl << "\033[0m";
-					}
-					else{
-						std::cout << "\033[1m\033[37m" << node->_value << std::endl << "\033[0m";
-					}
-					_print_tree(node->_left, depth);
-
-				}
-				/* for print in order*/
-				// if (node == nullptr) return;
-				// _print_tree(node->_left, depth + 1);
-				// std::cout << node->_value << " ";
-			 	// _print_tree(node->_right, depth + 1);
-			}
-
-			void PrintTree() {
- 				_print_tree(this->_root(), 0);
 			}
  	};
 

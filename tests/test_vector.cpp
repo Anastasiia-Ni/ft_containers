@@ -14,30 +14,6 @@
 #include "../includes/containers.hpp"
 
 template <typename T>
-static void print_vector(std::vector<T> &std_vec, ft::vector<T> &my_vec) {
-	typename std::vector<T>::iterator it_st1 = std_vec.begin();
-	typename ft::vector<T>::iterator it_my1 = my_vec.begin();
-
-	typename std::vector<T>::const_iterator it_st2 = it_st1;
-	typename ft::vector<T>::const_iterator it_my2 = it_my1;
-
-	// iter = const_iter // не должно работать
-	// const_iter = iter // должно работать
-
-	std::cout << "\nst vector: ";
-	for(; it_st2 != std_vec.end(); ++it_st2) {
-		std::cout << *it_st2 << "; " ;
-	}
-
-	std::cout << "\nmy vector: ";
-	for(; it_my2 != my_vec.end(); ++it_my2) {
-		std::cout << *it_my2 << "; " ;
-	}
-	std::cout << std::endl;
-}
-
-
-template <typename T>
 static bool check_iterator(std::vector<T> &std_vec, ft::vector<T> &my_vec) {
 	typename std::vector<T>::iterator it_st1 = std_vec.begin();
 	typename std::vector<T>::iterator it_st2 = std_vec.end();
@@ -46,11 +22,7 @@ static bool check_iterator(std::vector<T> &std_vec, ft::vector<T> &my_vec) {
 	while (it_st1 != it_st2)
 	{
 		if (*it_st1 != *it_my1)
-		{
-			print_vector(std_vec, my_vec);
-			//std::cout  << *it_st1 << "\n" << *it_my1 << std::endl;
 			return false;
-		}
 		++it_st1;
 		++it_my1;
 	}
@@ -149,11 +121,11 @@ static void	test_iterator() {
 	--(*it_s4) = 54321;
 	++(*it_m3) = 12345;
 	--(*it_m4) = 54321;
-	if (!check_iterator(std_vec4, my_vec4)){
+	if (!check_iterator(std_vec4, my_vec4)) {
 		std::cout << FAIL << std::endl;
 		return ;
 	}
-	if (!check_iterator(std_vec4, my_vec4)){
+	if (!check_iterator(std_vec4, my_vec4)) {
 		std::cout << FAIL << std::endl;
 		return ;
 	}
@@ -167,11 +139,11 @@ static void test_assign() {
 	ft::vector<int>my_vec;
 	st_vec.assign(10, 42);
 	my_vec.assign(10, 42);
-	if (st_vec.size() != my_vec.size()){
+	if (st_vec.size() != my_vec.size()) {
 		std::cout << FAIL << std::endl;
 		return ;
 	}
-	if (!check_iterator(st_vec, my_vec)){
+	if (!check_iterator(st_vec, my_vec)) {
 		std::cout << FAIL << std::endl;
 		return ;
 	}
@@ -181,13 +153,13 @@ static void test_assign() {
 	ft::vector<int>::iterator it_m = my_vec.begin();
 	st_vec1.assign(it_s, st_vec.end());
 	my_vec1.assign(it_m, my_vec.end());
-	if (st_vec1.size() != my_vec1.size()){
-		 std::cout << FAIL << std::endl;
-		 return ;
+	if (st_vec1.size() != my_vec1.size()) {
+		std::cout << FAIL << std::endl;
+		return ;
 	}
-	if (!check_iterator(st_vec1, my_vec1)){
-		 std::cout << FAIL << std::endl;
-		 return ;
+	if (!check_iterator(st_vec1, my_vec1)) {
+		std::cout << FAIL << std::endl;
+		return ;
 	}
 	std::cout << SUCS << std::endl;
 }
@@ -197,13 +169,13 @@ static void	test_size() {
 	size_t n = 42;
 	std::vector<int>std_vec(n);
 	ft::vector<int>my_vec(n);
-	if (std_vec.size() != my_vec.size()){
+	if (std_vec.size() != my_vec.size()) {
 		std::cout << FAIL << std::endl;
 		return ;
 	}
 	std::vector<int>std_vec1;
 	ft::vector<int>my_vec1;
-	if (std_vec1.size() != my_vec1.size()){
+	if (std_vec1.size() != my_vec1.size()) {
 		std::cout << FAIL << std::endl;
 		return ;
 	}
@@ -224,7 +196,7 @@ static void	test_begin_end() {
 	*it_m1 = 12345;
 	*(--it_s2) = 54321;
 	*(--it_m2) = 54321;
-	if (!check_iterator(std_vec, my_vec)){
+	if (!check_iterator(std_vec, my_vec)) {
 		std::cout << FAIL << std::endl;
 		return ;
 	}
@@ -236,13 +208,13 @@ static void	test_capacity() {
 	size_t n = 142;
 	std::vector<int>std_vec(n);
 	ft::vector<int>my_vec(n);
-	if (std_vec.capacity() != my_vec.capacity()){
+	if (std_vec.capacity() != my_vec.capacity()) {
 		std::cout << FAIL << std::endl;
 		return ;
 	}
 	std::vector<int>std_vec1;
 	ft::vector<int>my_vec1;
-	if (std_vec1.size() != my_vec1.size()){
+	if (std_vec1.size() != my_vec1.size()) {
 		std::cout << FAIL << std::endl;
 		return ;
 	}
@@ -258,12 +230,12 @@ static void	test_at(){
 		std_vec.push_back(i);
 		my_vec.push_back(i);
 	}
-	try{
+	try {
 		std_vec.at(n * 2);
 		std::cout << FAIL << std::endl;
 	}
 	catch (std::exception &e){ }
-	try{
+	try {
 		my_vec.at(n * 2);
 		std::cout << FAIL << std::endl;
 	}
@@ -285,13 +257,13 @@ static void	test_operator(){
 		std_vec.push_back(i + 1);
 		my_vec.push_back(i + 1);
 	}
-	try{
+	try {
 		std_vec[0];
 	}
 	catch(std::out_of_range &ex){
 		count++;
 	}
-	try{
+	try {
 		my_vec[0];
 	}
 	catch(std::out_of_range &ex){
@@ -331,13 +303,13 @@ static void	test_push_back(){
 		std_vec.push_back(i);
 		my_vec.push_back(i);
 	}
-	if (std_vec.size() != my_vec.size()){
+	if (std_vec.size() != my_vec.size()) {
 		std::cout << FAIL << std::endl;
 		return ;
 	}
 	std_vec.push_back(n);
 	my_vec.push_back(n);
-	if (std_vec.size() != my_vec.size()){
+	if (std_vec.size() != my_vec.size()) {
 		std::cout << FAIL << std::endl;
 		return ;
 	}
@@ -354,15 +326,13 @@ static void	test_pop_back(){
 	my_vec.push_back(11);
 	st_vec.push_back(100);
 	my_vec.push_back(100);
-	if (st_vec.size() != my_vec.size())
-	{
+	if (st_vec.size() != my_vec.size()) {
 		std::cout << FAIL << std::endl;
 		return ;
 	}
 	st_vec.pop_back();
 	my_vec.pop_back();
-	if (st_vec.size() != my_vec.size())
-	{
+	if (st_vec.size() != my_vec.size()) {
 		std::cout << FAIL << std::endl;
 		return ;
 	}
@@ -377,11 +347,11 @@ static void	test_insert() {
 	ft::vector<int>::iterator it_my = my_vec.begin();
 	st_vec.insert((it_st + 4), 42);
 	my_vec.insert((it_my + 4), 42);
-	if (st_vec.size() != my_vec.size()){
+	if (st_vec.size() != my_vec.size()) {
 		std::cout << FAIL << std::endl;
 		return ;
 	}
-	if (!check_iterator(st_vec, my_vec)){
+	if (!check_iterator(st_vec, my_vec)) {
 		std::cout << FAIL << std::endl;
 		return ;
 	}
@@ -390,12 +360,12 @@ static void	test_insert() {
 	st_vec.insert(++it_st, 35, 11);
 	my_vec.insert(++it_my, 35, 11);
 	if (st_vec.size() != my_vec.size()){
-		 std::cout << FAIL << std::endl;
-		 return ;
+		std::cout << FAIL << std::endl;
+		return ;
 	}
 	if (!check_iterator(st_vec, my_vec)){
-		 std::cout << FAIL << std::endl;
-		 return ;
+		std::cout << FAIL << std::endl;
+		return ;
 	}
 
 	std::vector<int> st_vec2(5, 100);
@@ -406,11 +376,11 @@ static void	test_insert() {
 	it_m1--;
 	st_vec.insert(it_s1, st_vec2.begin(), st_vec2.end());
 	my_vec.insert(it_m1, my_vec2.begin(), my_vec2.end());
-	if (st_vec.size() != my_vec.size()){
+	if (st_vec.size() != my_vec.size()) {
 		 std::cout << FAIL << std::endl;
 		 return ;
 	}
-	if (!check_iterator(st_vec, my_vec)){
+	if (!check_iterator(st_vec, my_vec)) {
 		 std::cout << FAIL << std::endl;
 		 return ;
 	}
@@ -421,13 +391,13 @@ static void	test_emty() {
 	std::cout << "Empty test:\t\t\t";
 	std::vector<int>st_vec;
 	ft::vector<int>my_vec;
-	if (st_vec.empty() != my_vec.empty()){
+	if (st_vec.empty() != my_vec.empty()) {
 		std::cout << FAIL << std::endl;
 		return ;
 	}
 	std::vector<int>st_vec1(11);
 	ft::vector<int>my_vec1(11);
-	if (st_vec1.empty() != my_vec1.empty()){
+	if (st_vec1.empty() != my_vec1.empty()) {
 		std::cout << FAIL << std::endl;
 		return ;
 	}
@@ -442,21 +412,21 @@ static void	test_erase(){
 	ft::vector<int>::iterator it_my = my_vec.begin();
 	st_vec.erase(++it_st);
 	my_vec.erase(++it_my);
-	if (st_vec.size() != my_vec.size()){
+	if (st_vec.size() != my_vec.size()) {
 		std::cout << FAIL << std::endl;
 		return ;
 	}
-	if (!check_iterator(st_vec, my_vec)){
+	if (!check_iterator(st_vec, my_vec)) {
 		std::cout << FAIL << std::endl;
 		return ;
 	}
 	st_vec.erase(++it_st, st_vec.end());
 	my_vec.erase(++it_my, my_vec.end());
-	if (st_vec.size() != my_vec.size()){
+	if (st_vec.size() != my_vec.size()) {
 		std::cout << FAIL << std::endl;
 		return ;
 	}
-	if (!check_iterator(st_vec, my_vec)){
+	if (!check_iterator(st_vec, my_vec)) {
 		std::cout << FAIL << std::endl;
 		return ;
 	}
@@ -479,19 +449,19 @@ static void	test_swap(){
 	}
 	st_vec.swap(st_vec1);
 	my_vec.swap(my_vec1);
-	if (st_vec.size() != my_vec.size()){
+	if (st_vec.size() != my_vec.size()) {
 		std::cout << FAIL << std::endl;
 		return ;
 	}
-	if (!check_iterator(st_vec, my_vec)){
+	if (!check_iterator(st_vec, my_vec)) {
 		std::cout << FAIL << std::endl;
 		return ;
 	}
-	if (st_vec1.size() != my_vec1.size()){
+	if (st_vec1.size() != my_vec1.size()) {
 		std::cout << FAIL << std::endl;
 		return ;
 	}
-	if (!check_iterator(st_vec1, my_vec1)){
+	if (!check_iterator(st_vec1, my_vec1)) {
 		std::cout << FAIL << std::endl;
 		return ;
 	}
@@ -508,8 +478,7 @@ static void	test_clear() {
 	}
 	my_vec.clear();
 	st_vec.clear();
-	if (st_vec.size() != my_vec.size())
-	{
+	if (st_vec.size() != my_vec.size()) {
 		std::cout << FAIL << std::endl;
 		return ;
 	}
@@ -517,8 +486,7 @@ static void	test_clear() {
 	my_vec.push_back(1);
 	st_vec.push_back(42);
 	my_vec.push_back(42);
-	if (st_vec.size() != my_vec.size())
-	{
+	if (st_vec.size() != my_vec.size()) {
 		std::cout << FAIL << std::endl;
 		return ;
 	}
@@ -539,33 +507,27 @@ static void test_compare() {
 		st_vec1.push_back(i * 3);
 		my_vec1.push_back(i * 3);
 	}
-	if ((my_vec == my_vec1) != (st_vec == st_vec1))
-	{
+	if ((my_vec == my_vec1) != (st_vec == st_vec1)) {
 		std::cout << FAIL << std::endl;
 		return ;
 	}
-	if ((my_vec != my_vec1) != (st_vec != st_vec1))
-	{
+	if ((my_vec != my_vec1) != (st_vec != st_vec1)) {
 		std::cout << FAIL << std::endl;
 		return ;
 	}
-	if ((my_vec > my_vec1) != (st_vec > st_vec1))
-	{
+	if ((my_vec > my_vec1) != (st_vec > st_vec1)) {
 		std::cout << FAIL << std::endl;
 		return ;
 	}
-	if ((my_vec >= my_vec1) != (st_vec >= st_vec1))
-	{
+	if ((my_vec >= my_vec1) != (st_vec >= st_vec1)) {
 		std::cout << FAIL << std::endl;
 		return ;
 	}
-	if ((my_vec < my_vec1) !=  (st_vec < st_vec1))
-	{
+	if ((my_vec < my_vec1) !=  (st_vec < st_vec1)) {
 		std::cout << FAIL << std::endl;
 		return ;
 	}
-	if ((my_vec <= my_vec1) !=  (st_vec <= st_vec1))
-	{
+	if ((my_vec <= my_vec1) !=  (st_vec <= st_vec1)) {
 		std::cout << FAIL << std::endl;
 		return ;
 	}

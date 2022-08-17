@@ -128,7 +128,7 @@ namespace ft
 			}
 
 			iterator insert( iterator hint, const value_type& val ) {
-				(void)hint;		// check another
+				(void)hint;
 				return (this->_tree.insert(val).first); 
 			}
 
@@ -151,8 +151,7 @@ namespace ft
 			}
 
 			void swap( set& other ) {
-				//std::swap(_tree, other._tree);
-				this->_tree.swap(other._tree);
+				std::swap(_tree, other._tree);
 			}
 
 			size_type count( const Key& key ) const {
@@ -199,11 +198,6 @@ namespace ft
 				return (this->_tree.value_comp());
 			}
 
-
-			//for print
-			void PrintTree() {
-				this->_tree.PrintTree();
-			}
     };
 
 	template< class Key, class Compare, class Alloc >

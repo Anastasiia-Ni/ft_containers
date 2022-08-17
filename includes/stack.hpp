@@ -68,7 +68,6 @@ namespace ft
 			return (this->_cont.pop_back());
 		}
 
-	/* no - member functions */ // friend for class T
 		friend bool operator==(const stack<T,Container>& lhs, const stack<T,Container>& rhs) {
 			return (lhs._cont == rhs._cont);
 		}

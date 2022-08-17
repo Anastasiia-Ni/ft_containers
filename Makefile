@@ -2,7 +2,7 @@ NAME = ft_containers
 
 NAME_M = ft_tests
 
-#.SILENT:
+.SILENT:
 
 SRCS = main_test.cpp	tests/test_vector.cpp	tests/test_map.cpp	\
 						tests/test_stack.cpp	tests/test_time.cpp	tests/test_set.cpp
@@ -27,24 +27,20 @@ RM = rm -rf
 
 RESET = "\033[0m"
 BLACK = "\033[1m\033[37m"
-CUT = "\033[K"
-DOWN = "\033[B"
-UP = "\033[A"
-SAVE = "\033[s"
 
 all: $(NAME)
 
 $(NAME) : $(OBJS) $(OBJS_S) $(HEADERS)
 	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME_M)
 	$(CXX) $(CXXFLAGS) $(OBJS_S) -o $(NAME)
-	@echo $(BLACK)-ft_containers compiled 🌏 $(RESET)
+	@echo $(BLACK)ft_containers compiled 🌏 $(RESET)
 
 clean:
 		$(RM) $(NAME) $(NAME_M)
 
 fclean: clean
 		$(RM) $(OBJS) $(OBJS_S)
-		@echo OBJ files removed
+		@echo $(BLACK)OBJ files removed $(RESET)
 
 re: 	fclean all
 

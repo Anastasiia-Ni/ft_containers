@@ -16,15 +16,13 @@ static void empty_test() {
 	std::cout << "Test empty:\t\t\t";
 	std::stack<int, std::vector<int> > std_stack;
 	ft::stack<int, ft::vector<int> > my_stack;
-	if (std_stack.empty() != my_stack.empty())
-	{
+	if (std_stack.empty() != my_stack.empty()) {
 		std::cout << FAIL << std::endl;
 		return ;
 	}
 	std_stack.push(42);
 	my_stack.push(42);
-	if (std_stack.empty() != my_stack.empty())
-	{
+	if (std_stack.empty() != my_stack.empty()) {
 		std::cout << FAIL << std::endl;
 		return ;
 	}
@@ -35,18 +33,15 @@ static void size_test() {
 	std::cout << "Test size:\t\t\t";
 	std::stack<int, std::vector<int> > std_stack;
 	ft::stack<int, ft::vector<int> > my_stack;
-	if (std_stack.size() != my_stack.size())
-	{
+	if (std_stack.size() != my_stack.size()) {
 		std::cout << FAIL << std::endl;
 		return ;
 	}
-	for(int i = 0; i < 10; i++)
-	{
+	for(int i = 0; i < 10; i++) {
 		std_stack.push(11);
 		my_stack.push(11);
 	}
-	if (std_stack.size() != my_stack.size())
-	{
+	if (std_stack.size() != my_stack.size()) {
 		std::cout << FAIL << std::endl;
 		return ;
 	}
@@ -58,15 +53,13 @@ static void top_test() {
 	std::cout << "Test top:\t\t\t";
 	std::stack<int, std::vector<int> > std_stack;
 	ft::stack<int, ft::vector<int> > my_stack;
-	if (std_stack.size() != my_stack.size())
-	{
+	if (std_stack.size() != my_stack.size()) {
 		std::cout << FAIL << std::endl;
 		return ;
 	}
 	std_stack.push(42);
 	my_stack.push(42);
-	if (std_stack.top() != my_stack.top())
-	{
+	if (std_stack.top() != my_stack.top()) {
 		std::cout << FAIL << std::endl;
 		return ;
 	}
@@ -81,8 +74,7 @@ static void pop_test() {
 	my_stack.push(42);
 	std_stack.push(11);
 	my_stack.push(11);
-	if (std_stack.size() != my_stack.size())
-	{
+	if (std_stack.size() != my_stack.size()) {
 		std::cout << FAIL << std::endl;
 		return ;
 	}
@@ -90,8 +82,7 @@ static void pop_test() {
 	std_stack.pop();
 	my_stack.pop();
 	std_stack.pop();
-	if (std_stack.empty() != my_stack.empty())
-	{
+	if (std_stack.empty() != my_stack.empty()) {
 		std::cout << FAIL << std::endl;
 		return ;
 	}
@@ -105,15 +96,13 @@ static void push_test() {
 	ft::stack<int, ft::vector<int> > my_stack;
 	std_stack.push(42);
 	my_stack.push(42);
-	if (std_stack.size() != my_stack.size())
-	{
+	if (std_stack.size() != my_stack.size()) {
 		std::cout << FAIL << std::endl;
 		return ;
 	}
 	std_stack.push(11);
 	my_stack.push(11);
-	if (std_stack.size() != my_stack.size())
-	{
+	if (std_stack.size() != my_stack.size()) {
 		std::cout << FAIL << std::endl;
 		return ;
 	}
@@ -130,33 +119,27 @@ static void compare_test() {
 	std_stack1.push(42);
 	my_stack2.push(11);
 	std_stack2.push(11);
-	if ((my_stack1 == my_stack2) != (std_stack1 == std_stack2))
-	{
+	if ((my_stack1 == my_stack2) != (std_stack1 == std_stack2)) {
 		std::cout << FAIL << std::endl;
 		return ;
 	}
-	if ((my_stack1 != my_stack2) != (std_stack1 != std_stack2))
-	{
+	if ((my_stack1 != my_stack2) != (std_stack1 != std_stack2)) {
 		std::cout << FAIL << std::endl;
 		return ;
 	}
-	if ((my_stack1 > my_stack2) != (std_stack1 > std_stack2))
-	{
+	if ((my_stack1 > my_stack2) != (std_stack1 > std_stack2)) {
 		std::cout << FAIL << std::endl;
 		return ;
 	}
-	if ((my_stack1 >= my_stack2) != (std_stack1 >= std_stack2))
-	{
+	if ((my_stack1 >= my_stack2) != (std_stack1 >= std_stack2)) {
 		std::cout << FAIL << std::endl;
 		return ;
 	}
-	if ((my_stack1 < my_stack2) != (std_stack1 < std_stack2))
-	{
+	if ((my_stack1 < my_stack2) != (std_stack1 < std_stack2)) {
 		std::cout << FAIL << std::endl;
 		return ;
 	}
-	if ((my_stack1 <= my_stack2) != (std_stack1 <= std_stack2))
-	{
+	if ((my_stack1 <= my_stack2) != (std_stack1 <= std_stack2)) {
 		std::cout << FAIL << std::endl;
 		return ;
 	}
@@ -198,7 +181,5 @@ int test_stack () {
 	pop_test();
 	push_test();
 	compare_test();
-
-
 	return (0);
 }

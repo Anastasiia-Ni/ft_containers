@@ -54,7 +54,7 @@ namespace ft
 				return (&_cur_node->_value);
 			}
 
-			tree_iterator&	operator++() {		//pre fix
+			tree_iterator&	operator++() {
 				if (_cur_node->_right != _nill_node)
 					_cur_node = _cur_node->tree_min(_cur_node->_right);
 				else {
@@ -66,10 +66,10 @@ namespace ft
 				return (*this);
 			}
 
-			tree_iterator	operator++(int) {	//post fix
+			tree_iterator	operator++(int) {
 				tree_iterator ret(*this);
 				++(*this);
-				return ret;
+				return (ret);
 			}
 
 			tree_iterator&	operator--() {
@@ -96,19 +96,15 @@ namespace ft
 	};
 
 	template<typename Node_ptr, typename Value>
-	inline bool
-	operator==(const tree_iterator<Node_ptr,Value>& rhs,
-				const tree_iterator<Node_ptr,Value>& lhs)
-	{
-		return rhs.base() == lhs.base();
+	inline bool operator==(const tree_iterator<Node_ptr,Value>& rhs,
+				const tree_iterator<Node_ptr,Value>& lhs) {
+		return (rhs.base() == lhs.base());
 	}
 
 	template<typename Node_ptr, typename Value>
-	inline bool
-	operator!=(const tree_iterator<Node_ptr,Value>& rhs,
-				const tree_iterator<Node_ptr,Value>& lhs)
-	{
-		return rhs.base() != lhs.base();
+	inline bool operator!=(const tree_iterator<Node_ptr,Value>& rhs,
+				const tree_iterator<Node_ptr,Value>& lhs) {
+		return (rhs.base() != lhs.base());
 	}
 
 	template<typename Const_node_ptr, typename Value>
@@ -150,12 +146,6 @@ namespace ft
 				return (&_cur_node->_value);
 			}
 
-			// const_node_ptr const_tree_min(const_node_ptr root) {
-			// 	while (root->_left != nullptr)
-			// 		root = root->_left;
-			// 	return root;
-			// }
-
 			const_tree_iterator&	operator++() {
 				if (_cur_node->_right != _nill_node)
 					_cur_node = _cur_node->const_tree_min(_cur_node->_right);
@@ -171,7 +161,7 @@ namespace ft
 			const_tree_iterator	operator++(int) {
 				const_tree_iterator ret(*this);
 				++(*this);
-				return ret;
+				return (ret);
 			}
 
 			const_tree_iterator&	operator--() {
@@ -198,54 +188,41 @@ namespace ft
 	};
 
 	template<typename Const_node_ptr, typename Value>
-	inline bool
-	operator==(const const_tree_iterator<Const_node_ptr,Value>& rhs,
-				const const_tree_iterator<Const_node_ptr,Value>& lhs)
-	{
-		return rhs.base() == lhs.base();
+	inline bool operator==(const const_tree_iterator<Const_node_ptr,Value>& rhs,
+				const const_tree_iterator<Const_node_ptr,Value>& lhs) {
+		return (rhs.base() == lhs.base());
 	}
 
 	template<typename Const_node_ptr, typename Value>
-	inline bool
-	operator!=(const const_tree_iterator<Const_node_ptr,Value>& rhs,
-				const const_tree_iterator<Const_node_ptr,Value>& lhs)
-	{
-		return rhs.base() != lhs.base();
+	inline bool operator!=(const const_tree_iterator<Const_node_ptr,Value>& rhs,
+				const const_tree_iterator<Const_node_ptr,Value>& lhs) {
+		return (rhs.base() != lhs.base());
 	}
 
 
 	template<typename Const_node_ptr, typename Node_ptr, typename Value>
-	inline bool
-	operator==(const const_tree_iterator<Const_node_ptr,Value>& rhs,
-				const tree_iterator<Node_ptr,Value>& lhs)
-	{
-		return rhs.base() == lhs.base();
+	inline bool operator==(const const_tree_iterator<Const_node_ptr,Value>& rhs,
+				const tree_iterator<Node_ptr,Value>& lhs) {
+		return (rhs.base() == lhs.base());
 	}
 
 	template<typename Const_node_ptr, typename Node_ptr, typename Value>
-	inline bool
-	operator!=(const const_tree_iterator<Const_node_ptr,Value>& rhs,
-				const tree_iterator<Node_ptr,Value>& lhs)
-	{
-		return rhs.base() != lhs.base();
+	inline bool operator!=(const const_tree_iterator<Const_node_ptr,Value>& rhs,
+				const tree_iterator<Node_ptr,Value>& lhs) {
+		return (rhs.base() != lhs.base());
 	}
 
 	template<typename Const_node_ptr, typename Node_ptr, typename Value>
-	inline bool
-	operator==(const tree_iterator<Node_ptr,Value>& rhs,
-				const const_tree_iterator<Const_node_ptr,Value>& lhs)
-	{
-		return rhs.base() == lhs.base();
+	inline bool operator==(const tree_iterator<Node_ptr,Value>& rhs,
+				const const_tree_iterator<Const_node_ptr,Value>& lhs) {
+		return (rhs.base() == lhs.base());
 	}
 
 	template<typename Const_node_ptr, typename Node_ptr, typename Value>
-	inline bool
-	operator!=(const tree_iterator<Node_ptr,Value>& rhs,
-				const const_tree_iterator<Const_node_ptr,Value>& lhs)
-	{
-		return rhs.base() != lhs.base();
+	inline bool operator!=(const tree_iterator<Node_ptr,Value>& rhs,
+				const const_tree_iterator<Const_node_ptr,Value>& lhs) {
+		return (rhs.base() != lhs.base());
 	}
-
 };
 
 #endif

@@ -13,46 +13,10 @@
 #include "../includes/containers.hpp"
 #include "../includes/set.hpp"
 
-
-// int setn()
-// {
-//     std::set<int> mySet;
-
-//     mySet.insert(5);
-//     mySet.insert(1);
-//     mySet.insert(12);
-//     mySet.insert(4);
-//     mySet.insert(-1);
-
-
-//     for (int i = 0; i < 20; i++)
-//     {
-//         mySet.insert(rand() % 20);
-//     }
-
-//     for (auto &item : mySet)
-//     {
-//         std::cout << item << std::endl;
-//     }
-//}
-
 template <typename T>
 bool	check_iterator(std::set<T> &st_set, ft::set<T> &my_set) {
 	typename std::set<T>::iterator it_st = st_set.begin();
 	typename ft::set<T>::iterator it_my = my_set.begin();
-
-	//typename std::set<T>::const_iterator it_st2 = it_st;
-	//typename ft::set<T>::const_iterator it_my2 = it_my;
-	// while (it_st2 != st_set.end()) {
-	// 	std::cout << *it_st2 << " ";
-	// 	++it_st2;
-	// }
-
-	// while (it_my2 != my_set.end()) {
-	// 	std::cout << *it_my2 << " ";
-	// 	++it_my2;
-	//}
-
 	while (it_st != st_set.end()){
 		if (*it_st != *it_my)
 			return false;
@@ -64,48 +28,47 @@ bool	check_iterator(std::set<T> &st_set, ft::set<T> &my_set) {
 
 static void test_constructor() {
 	std::cout << "Default constructor test:\t";
-	//std::cout << "not ready" << std::endl; //DELETE
 	std::set<int> st_set;
 	ft::set<int> my_set;
 	if (st_set.size() != my_set.size()){
-		 std::cout << FAIL << std::endl;
-		 return ;
+		std::cout << FAIL << std::endl;
+		return ;
 	}
 	if (!check_iterator(st_set, my_set)){
-		 std::cout << FAIL << std::endl;
-		 return ;
+		std::cout << FAIL << std::endl;
+		return ;
 	}
 	std::set<std::string> st_set1;
 	ft::set<std::string> my_set1;
 	if (st_set1.size() != my_set1.size()){
-		 std::cout << FAIL << std::endl;
-		 return ;
+		std::cout << FAIL << std::endl;
+		return ;
 	}
 		if (!check_iterator(st_set1, my_set1)){
-		 std::cout << FAIL << std::endl;
-		 return ;
+		std::cout << FAIL << std::endl;
+		return ;
 	}
 	std::set<int> st_set2(st_set.begin(), st_set.end());
 	ft::set<int> my_set2(my_set.begin(), my_set.end());
 	if (st_set2.size() != my_set2.size()){
-		 std::cout << FAIL << std::endl;
-		 return ;
+		std::cout << FAIL << std::endl;
+		return ;
 	}
 	if (!check_iterator(st_set2, my_set2)){
-		 std::cout << FAIL << std::endl;
-		 return ;
+		std::cout << FAIL << std::endl;
+		return ;
 	}
 	std::set<int> st_set3;
 	ft::set<int> my_set3;
 	st_set3 = st_set;
 	my_set3 = my_set;
 	if (st_set3.size() != my_set3.size()){
-		 std::cout << FAIL << std::endl;
-		 return ;
+		std::cout << FAIL << std::endl;
+		return ;
 	}
 	if (!check_iterator(st_set3, my_set3)){
-		 std::cout << FAIL << std::endl;
-		 return ;
+		std::cout << FAIL << std::endl;
+		return ;
 	}
 	std::cout << SUCS << std::endl;
 }
@@ -115,8 +78,8 @@ static void	test_size() {
 	std::set<int> st_set;
 	ft::set<int> my_set;
 	if (st_set.size() != my_set.size()){
-		 std::cout << FAIL << std::endl;
-		 return ;
+		std::cout << FAIL << std::endl;
+		return ;
 	}
 	for (int i = 0; i < 20; i++)
 	{
@@ -124,15 +87,14 @@ static void	test_size() {
 		st_set.insert(i * 10);
 	}
 	if (st_set.size() != my_set.size()){
-		 std::cout << FAIL << std::endl;
-		 return ;
+		std::cout << FAIL << std::endl;
+		return ;
 	}
 	std::cout << SUCS << std::endl;
 }
 
 static void	test_max_size() {
 	std::cout << "Max_size test:\t\t\t";
-	//std::cout << "not ready" << std::endl; //DELETE
 	std::set<int> st_set;
 	ft::set<int> my_set;
 	if (st_set.max_size() != my_set.max_size()){
@@ -179,28 +141,27 @@ static void	test_insert() {
 	std::cout << "Insert test:\t\t\t";
 	std::set<int> st_set;
 	ft::set<int> my_set;
-	for (int i = 5; i < 20; i++)
-	{
+	for (int i = 5; i < 20; i++) {
 		st_set.insert(i);
 		my_set.insert(i);
 	}
 	if (st_set.size() != my_set.size()){
-		 std::cout << FAIL << std::endl;
-		 return ;
+		std::cout << FAIL << std::endl;
+		return ;
 	}
 	if (!check_iterator(st_set, my_set)){
-		 std::cout << FAIL << std::endl;
-		 return ;
+		std::cout << FAIL << std::endl;
+		return ;
 	}
 	st_set.clear();
 	my_set.clear();
 	if (st_set.size() != my_set.size()){
-		 std::cout << FAIL << std::endl;
-		 return ;
+		std::cout << FAIL << std::endl;
+		return ;
 	}
 	if (!check_iterator(st_set, my_set)){
-		 std::cout << FAIL << std::endl;
-		 return ;
+		std::cout << FAIL << std::endl;
+		return ;
 	}
 	std::cout << SUCS << std::endl;
 }
@@ -210,66 +171,65 @@ static void	test_empty() {
 	std::set<int> st_set;
 	ft::set<int> my_set;
 	if (st_set.empty() != my_set.empty()){
-		 std::cout << FAIL << std::endl;
-		 return ;
+		std::cout << FAIL << std::endl;
+		return ;
 	}
 	std::cout << SUCS << std::endl;
 }
 
 static void	test_erase() {
 	std::cout << "Erase test:\t\t\t";
-	//std::cout << "not ready" << std::endl; //DELETE
 	const int arr_size = 8;
 	int arr[arr_size] = {1, 1, 2, 2, 1, 3, 2, 3};
 	std::set<int> st_set(arr, arr + arr_size);
 	ft::set<int> my_set(arr, arr + arr_size);
-	if (st_set.size() != my_set.size()){
+	if (st_set.size() != my_set.size()) {
 		std::cout << FAIL << std::endl;
 		return ;
 	}
-	if (!check_iterator(st_set, my_set)){
+	if (!check_iterator(st_set, my_set)) {
 		std::cout << FAIL << std::endl;
 		return ;
 	}
 	st_set.erase(++st_set.begin());
 	my_set.erase(++my_set.begin());
-	if (st_set.size() != my_set.size()){
+	if (st_set.size() != my_set.size()) {
 		std::cout << FAIL << std::endl;
 		return ;
 	}
-	if (!check_iterator(st_set, my_set)){
+	if (!check_iterator(st_set, my_set)) {
 		std::cout << FAIL << std::endl;
 		return ;
 	}
 	st_set.erase(++st_set.begin(), --st_set.end());
 	my_set.erase(++my_set.begin(), --my_set.end());
-	if (st_set.size() != my_set.size()){
+	if (st_set.size() != my_set.size()) {
 		std::cout << FAIL << std::endl;
 		return ;
 	}
-	if (!check_iterator(st_set, my_set)){
+	if (!check_iterator(st_set, my_set)) {
 		std::cout << FAIL << std::endl;
 		return ;
 	}
 	st_set.erase(1);
 	my_set.erase(1);
-	if (st_set.size() != my_set.size()){
-		 std::cout << FAIL << std::endl;
-		 return ;
+	if (st_set.size() != my_set.size()) {
+		std::cout << FAIL << std::endl;
+		return ;
 	}
-	if (!check_iterator(st_set, my_set)){
-		 std::cout << FAIL << std::endl;
-		 return ;
+	if (!check_iterator(st_set, my_set)){ 
+		std::cout << FAIL << std::endl;
+		return ;
 	}
 	st_set.erase(3);
 	my_set.erase(3);
-	if (st_set.size() != my_set.size()){
-		 std::cout << FAIL << std::endl;
-		 return ;
+	if (st_set.size() != my_set.size()) {
+		std::cout << FAIL << std::endl;
+		return ;
 	}
-	if (!check_iterator(st_set, my_set)){
-		 std::cout << FAIL << std::endl;
-		 return ;
+	if (!check_iterator(st_set, my_set)) {
+		std::cout << FAIL << std::endl;
+		return ;
 	}
 	std::cout << SUCS << std::endl;
 }
@@ -280,57 +240,54 @@ static void	test_swap() {
 	ft::set<int> my_set;
 	std::set<int> st_set1;
 	ft::set<int> my_set1;
-	for (int i = 5; i < 20; i++)
-	{
+	for (int i = 5; i < 20; i++) {
 		st_set.insert(i);
 		my_set.insert(i);
 	}
-	if (st_set.size() != my_set.size()){
-		 std::cout << FAIL << std::endl;
-		 return ;
+	if (st_set.size() != my_set.size()) {
+		std::cout << FAIL << std::endl;
+		return ;
 	}
-	if (!check_iterator(st_set, my_set)){
-		 std::cout << FAIL << std::endl;
-		 return ;
+	if (!check_iterator(st_set, my_set)) {
+		std::cout << FAIL << std::endl;
+		return ;
 	}
 	st_set.swap(st_set1);
 	my_set.swap(my_set1);
-	if (st_set.size() != my_set.size()){
-		 std::cout << FAIL << std::endl;
-		 return ;
+	if (st_set.size() != my_set.size()) {
+		std::cout << FAIL << std::endl;
+		return ;
 	}
-	if (!check_iterator(st_set, my_set)){
-		 std::cout << FAIL << std::endl;
-		 return ;
+	if (!check_iterator(st_set, my_set)) {
+		std::cout << FAIL << std::endl;
+		return ;
 	}
 	std::cout << SUCS << std::endl;
 }
 
 static void	test_clear() {
 	std::cout << "Clear test:\t\t\t";
-	//std::cout << "not ready" << std::endl; //DELETE
 	std::set<int> st_set;
 	ft::set<int> my_set;
-	for (int i = 10; i < 20; i++)
-	{
+	for (int i = 10; i < 20; i++) {
 		st_set.insert(i);
 		my_set.insert(i);
 	}
-	if (st_set.size() != my_set.size()){
+	if (st_set.size() != my_set.size()) {
 		std::cout << FAIL << std::endl;
 		return ;
 	}
-	if (!check_iterator(st_set, my_set)){
+	if (!check_iterator(st_set, my_set)) {
 		std::cout << FAIL << std::endl;
 		return ;
 	}
 	st_set.clear();
 	my_set.clear();
-	if (st_set.size() != my_set.size()){
+	if (st_set.size() != my_set.size()) {
 		std::cout << FAIL << std::endl;
 		return ;
 	}
-	if (!check_iterator(st_set, my_set)){
+	if (!check_iterator(st_set, my_set)) {
 		std::cout << FAIL << std::endl;
 		return ;
 	}
@@ -339,19 +296,17 @@ static void	test_clear() {
 
 static void	test_find() {
 	std::cout << "Find test:\t\t\t";
-	//std::cout << "not ready" << std::endl; //DELETE
 	std::set<int> st_set;
 	ft::set<int> my_set;
 	std::set<int>::iterator its;
 	ft::set<int>::iterator itm;
 	std::set<int>::iterator its1;
 	ft::set<int>::iterator itm1;
-	for (int i = 1; i < 20; i++)
-	{
+	for (int i = 1; i < 20; i++) {
 		st_set.insert(i);
 		my_set.insert(i);
 	}
-	if (st_set.size() != my_set.size()){
+	if (st_set.size() != my_set.size()) {
 		std::cout << FAIL << std::endl;
 		return ;
 	}
@@ -372,11 +327,9 @@ static void	test_find() {
 
 static void	test_count() {
 	std::cout << "Count test:\t\t\t";
-	//std::cout << "not ready" << std::endl; //DELETE
 	std::set<int> st_set;
 	ft::set<int> my_set;
-	for (int i = 1; i < 20; i++)
-	{
+	for (int i = 1; i < 20; i++) {
 		st_set.insert(i);
 		my_set.insert(i);
 	}
@@ -401,23 +354,21 @@ static void	test_count() {
 
 static void	test_bound() {
 	std::cout << "Bound test:\t\t\t";
-	//std::cout << "not ready" << std::endl; //DELETE
 	std::set<int> st_set;
 	ft::set<int> my_set;
 	std::set<int>::iterator its;
 	ft::set<int>::iterator itm;
 	std::set<int>::iterator its1;
 	ft::set<int>::iterator itm1;
-	for (int i = 1; i < 20; i++)
-	{
+	for (int i = 1; i < 20; i++) {
 		st_set.insert(i);
 		my_set.insert(i);
 	}
-	if (st_set.size() != my_set.size()){
+	if (st_set.size() != my_set.size()) {
 		std::cout << FAIL << std::endl;
 		return ;
 	}
-	if (!check_iterator(st_set, my_set)){
+	if (!check_iterator(st_set, my_set)) {
 		std::cout << FAIL << std::endl;
 		return ;
 	}
@@ -438,11 +389,9 @@ static void	test_bound() {
 
 static void	test_equal_range() {
 	std::cout << "Equal range test:\t\t";
-	//std::cout << "not ready" << std::endl; //DELETE
 	std::set<int> st_set;
 	ft::set<int> my_set;
-	for (int i = 1; i < 20; i++)
-	{
+	for (int i = 1; i < 20; i++) {
 		st_set.insert(i);
 		my_set.insert(i);
 	}
@@ -479,54 +428,53 @@ static void	test_equal_range() {
 
 static void	test_compare() {
 	std::cout << "Compare test:\t\t\t";
-	//std::cout << "not ready" << std::endl; //DELETE
 	std::set<int> st_set;
 	ft::set<int> my_set;
 	std::set<int> st_set1;
 	ft::set<int> my_set1;
 	if (st_set.size() != my_set.size()){
-		 std::cout << FAIL << std::endl;
-		 return ;
+		std::cout << FAIL << std::endl;
+		return ;
 	}
 	if (!check_iterator(st_set, my_set)){
-		 std::cout << FAIL << std::endl;
-		 return ;
+		std::cout << FAIL << std::endl;
+		return ;
 	}
 	if (st_set1.size() != my_set1.size()){
-		 std::cout << FAIL << std::endl;
-		 return ;
+		std::cout << FAIL << std::endl;
+		return ;
 	}
 	if (!check_iterator(st_set1, my_set1)){
-		 std::cout << FAIL << std::endl;
-		 return ;
+		std::cout << FAIL << std::endl;
+		return ;
 	}
 	for (int i = 0; i < 20; i++) {
 		st_set.insert(5 + i);
 		my_set.insert(5 + i);
 	}
 	if((st_set == st_set1) != (my_set == my_set1)){
-		 std::cout << FAIL << std::endl;
-		 return ;
+		std::cout << FAIL << std::endl;
+		return ;
 	}
-	if((st_set != st_set1) != (my_set != my_set1)){
-		 std::cout << FAIL << std::endl;
-		 return ;
+	if((st_set != st_set1) != (my_set != my_set1)) {
+		std::cout << FAIL << std::endl;
+		return ;
 	}
-	if((st_set > st_set1) != (my_set > my_set1)){
-		 std::cout << FAIL << std::endl;
-		 return ;
+	if((st_set > st_set1) != (my_set > my_set1)) {
+		std::cout << FAIL << std::endl;
+		return ;
 	}
-	if((st_set >= st_set1) != (my_set >= my_set1)){
-		 std::cout << FAIL << std::endl;
-		 return ;
+	if((st_set >= st_set1) != (my_set >= my_set1)) {
+		std::cout << FAIL << std::endl;
+		return ;
 	}
-	if((st_set < st_set1) != (my_set < my_set1)){
-		 std::cout << FAIL << std::endl;
-		 return ;
+	if((st_set < st_set1) != (my_set < my_set1)) {
+		std::cout << FAIL << std::endl;
+		return ;
 	}
-	if((st_set <= st_set1) != (my_set <= my_set1)){
-		 std::cout << FAIL << std::endl;
-		 return ;
+	if((st_set <= st_set1) != (my_set <= my_set1)) {
+		std::cout << FAIL << std::endl;
+		return ;
 	}
 	std::cout << SUCS << std::endl;
 }

@@ -1,7 +1,6 @@
 #ifndef ITERATORS_TRAITS_HPP
 # define ITERATORS_TRAITS_HPP
 
-//#include <stdbool.h>
 #include <cstddef>
 #include <iostream>
 

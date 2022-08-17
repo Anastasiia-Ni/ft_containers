@@ -32,7 +32,7 @@ namespace ft
 			typedef Compare									key_compare;
  			typedef Alloc									allocator_type;
 
-			class value_compare : public ft::binary_function<value_type, value_type, bool> // in C++98, it is required to inherit binary_function ....
+			class value_compare : public ft::binary_function<value_type, value_type, bool>
 			{
 				friend class map;
 				protected:
@@ -185,8 +185,7 @@ namespace ft
 		}
 
 		void swap(map& other) {
-			//std::swap(_tree, other._tree);
-			this->_tree.swap(other._tree);
+			std::swap(_tree, other._tree);
 		}
 
 		size_type count(const Key& key) const {
@@ -226,7 +225,7 @@ namespace ft
 		}
 
 		key_compare key_comp() const {
-			return key_compare();
+			return (key_compare());
 		}
 
 		value_compare value_comp() const {

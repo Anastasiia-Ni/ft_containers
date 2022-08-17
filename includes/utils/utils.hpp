@@ -91,8 +91,7 @@ namespace ft
 	template <class InputIterator1, class InputIterator2, class Compare>
 	bool lexicographical_compare (InputIterator1 first1, InputIterator1 last1,
 								  InputIterator2 first2, InputIterator2 last2,
-								  Compare comp)
-	{
+								  Compare comp) {
 		while (first1 != last1)
 		{
 			if (first2 == last2 || comp(*first2, *first1))
@@ -106,34 +105,31 @@ namespace ft
 	}
 
 	template <class InputIterator1, class InputIterator2>
-	bool equal (InputIterator1 first1, InputIterator1 last1, InputIterator2 first2  )
-	{
+	bool equal (InputIterator1 first1, InputIterator1 last1, InputIterator2 first2) {
 		while (first1!=last1) {
 			if (!(*first1 == *first2))
-				return false;
+				return (false);
 			++first1; ++first2;
 		}
-		return true;
+		return (true);
 	}
 
 	template <class InputIterator1, class InputIterator2, class BinaryPredicate>
 	bool equal (InputIterator1 first1, InputIterator1 last1, InputIterator2 first2, BinaryPredicate pred) {
 		while (first1 != last1) {
 			if (!pred(*first1, *first2))
-				return false;
+				return (false);
 			++first1;
 			++first2;
 		}
-		return true;
+		return (true);
 	}
 
 	template <class Iterator>
-	typename iterator_traits<Iterator>::difference_type distance (Iterator first, Iterator last)
-	{
+	typename iterator_traits<Iterator>::difference_type distance (Iterator first, Iterator last) {
 		typename iterator_traits<Iterator>::difference_type n;
 		n = 0;
-		while (first != last)
-		{
+		while (first != last) {
 			first++;
 			n++;
 		}

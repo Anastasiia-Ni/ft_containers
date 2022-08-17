@@ -46,7 +46,7 @@ class time_test
 		}
 
 		std::clock_t stop() {
-			return std::clock() - this->_start;
+			return (std::clock() - this->_start);
 		}
 };
 
@@ -66,7 +66,7 @@ std::clock_t vector_insert(size_t count, vector_type vector)
 	vector_type new_vec(vector);
 	(void)tmp;
 	vector.erase(vector.begin(), vector.end());
-	return t.stop();
+	return (t.stop());
 }
 
 template <typename stack_type>
@@ -91,7 +91,7 @@ std::clock_t stack_insert(size_t count, stack_type stack)
 		stack.pop();
 	}
 	(void)tmp;
-	return t.stop();
+	return (t.stop());
 }
 
 template <typename map_type>
@@ -109,7 +109,7 @@ std::clock_t map_insert(size_t count, map_type map)
 		map_type new_map(map);
 	}
 
-	return t.stop();
+	return (t.stop());
 }
 
 template <typename set_type>
@@ -127,7 +127,7 @@ std::clock_t set_insert(size_t count, set_type set)
 		set_type new_set(set);
 	}
 
-	return t.stop();
+	return (t.stop());
 }
 
 void	time_test_vector(int n);
