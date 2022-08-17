@@ -1,4 +1,4 @@
-# ft_containers-42-cursus
+# ft_containers
 
 ## About project:
 Reimplement some containers of the STL (vector, stack, map, set and their iterators, const_iterators, reverse_iterators) [C++98]
