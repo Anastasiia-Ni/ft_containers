@@ -381,26 +381,33 @@ namespace ft
 			}
 
 			iterator erase(iterator pos) {
-				pointer ptr = pos.base();
-				if (pos == this->_end)
-					this->_alloc.destroy(ptr - 1);
-				else {
-					this->_alloc.destroy(ptr);
-					for (pointer tmp = ptr + 1; tmp + 1 <= this->_end; tmp++) {
-						this->_alloc.construct(tmp - 1, *tmp);
-						this->_alloc.destroy(tmp);
-					}
-				}
-				this->_end--;
-				return (pos);
+				if (pos != end()) {
+        			for (iterator it = pos + 1; it != end(); ++it) {
+            			*(it - 1) = *it;
+        			}
+    			}
+    			--this->_end;
+    			this->_alloc.destroy(_end);
+    			return (pos);
 			}
 
 			iterator erase(iterator first, iterator last) {
-				while (first != last) {
-					erase (last);
-					--last;
+				iterator n_end = first;
+				iterator it = last;
+				
+				while (it != end()) {
+					*n_end = *it;
+					++n_end;
+					++it;
 				}
-				return (first);
+				
+				for (iterator it = n_end; it != end(); ++it) {
+					this->_alloc.destroy(it.base());
+				}
+				
+				this->_end = n_end.base();
+				
+				return (first);			
 			}
 
 			void	push_back( const T& value){
