@@ -1,9 +1,9 @@
-# ifndef TREE_ITERATOR_HPP
+#ifndef TREE_ITERATOR_HPP
 #define TREE_ITERATOR_HPP
 
-# include <cstddef>
-# include "iterators_traits.hpp"
-# include "../utils/node.hpp"
+#include <cstddef>
+#include "iterators_traits.hpp"
+#include "../utils/node.hpp"
 
 namespace ft
 {

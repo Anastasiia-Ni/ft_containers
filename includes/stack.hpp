@@ -1,19 +1,6 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   stack.hpp                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: anifanto <anifanto@student.42abudhabi.a    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/11 19:12:10 by anifanto          #+#    #+#             */
-/*   Updated: 2022/07/13 16:09:11 by anifanto         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-# ifndef STACK_HPP
+#ifndef STACK_HPP
 #define STACK_HPP
 
-#include "containers.hpp"
 #include "vector.hpp"
 
 namespace ft
@@ -26,32 +13,35 @@ namespace ft
 		typedef size_t		size_type;
 		typedef Container	container_type;
 
-	private:
-		container_type		_cont;
 
-	public:
+		/* Default Constrctor */
 		explicit stack (const container_type& ctnr = container_type()) : _cont(ctnr) {}
 
+		/* Copy Constrctor */
 		stack(const stack &copy){
 			this->_cont = copy._cont;
 		}
 
+		/*  Destructor */
 		virtual ~stack() {}
 
+		/* Assignment operator overload */
 		stack &operator=(stack const &rhs){
 			if (&rhs != this)
 				this->_cont = rhs._cont;
 			return (*this);
 		}
 
+		/* Element access */
 		value_type& top(void) {
 			return (this->_cont.back());
 		}
 
-		const value_type	& top() const {
+		const value_type& top() const {
 			return (this->_cont.back());
 		}
 
+		/* Capacity */
 		bool empty(void) const {
 			return (this->_cont.empty());
 		}
@@ -60,6 +50,7 @@ namespace ft
 			return (this->_cont.size());
 		}
 
+		/* Modifiers */
 		void push( const value_type& value ) {
 			return (this->_cont.push_back(value));
 		}
@@ -68,6 +59,7 @@ namespace ft
 			return (this->_cont.pop_back());
 		}
 
+		/* Overload functions */
 		friend bool operator==(const stack<T,Container>& lhs, const stack<T,Container>& rhs) {
 			return (lhs._cont == rhs._cont);
 		}
@@ -91,8 +83,12 @@ namespace ft
 		friend bool operator>=(const stack<T,Container>& lhs, const stack<T,Container>& rhs) {
 			return (lhs._cont >= rhs._cont);
 		}
-	};
 
-};
+	private:
+		container_type		_cont;
+
+	}; // end of class stack
+
+};	// end of namespace ft
 
 #endif

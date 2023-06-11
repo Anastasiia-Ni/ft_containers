@@ -11,10 +11,8 @@
 /* ************************************************************************** */
 
 #ifndef NODE_HPP
-# define NODE_HPP
-
-#include "../containers.hpp"
-
+#define NODE_HPP
+#include <cstdlib>
 
 namespace ft
 {

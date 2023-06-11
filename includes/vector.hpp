@@ -1,19 +1,6 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   vector.hpp                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: anifanto <anifanto@student.42abudhabi.a    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/11 19:11:51 by anifanto          #+#    #+#             */
-/*   Updated: 2022/07/12 15:50:21 by anifanto         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-# ifndef VECTOR_HPP
+#ifndef VECTOR_HPP
 #define VECTOR_HPP
 
-#include "containers.hpp"
 #include "iterators/random_access_iterator.hpp"
 #include "iterators/reverse_iterator.hpp"
 #include "utils/utils.hpp"
@@ -32,24 +19,21 @@ namespace ft
 			typedef T*										pointer;
 			typedef	const T*								const_pointer;
 			typedef ptrdiff_t								difference_type;
-			typedef ft::random_access_iterator<T>			iterator;
-			typedef ft::random_access_iterator<const T>		const_iterator;
+			typedef ft::Iterator<T>							iterator;
+			typedef ft::Iterator<const T>					const_iterator;
 			typedef ft::reverse_iterator<iterator>			reverse_iterator;
 			typedef ft::reverse_iterator<const_iterator>	const_reverse_iterator;
-
-		private:
-			allocator_type	_alloc;
-			pointer			_arr;
-			pointer			_end;
-			size_type		_capacity;
-
-		public:
+			
+// ----------------------------- Member Functions  ------------------------------ //			
+					
+			/* Default Constrctor */			
 			explicit vector (const allocator_type& alloc = allocator_type()) :
 				_alloc(alloc),
 				_arr(NULL),
 				_end(NULL),
 				_capacity(0) {}
 
+			/* Fill Constrctor */
 			explicit vector (size_type n, const value_type& value = value_type(),
 						 const allocator_type& alloc = allocator_type()) : _alloc(alloc) {
 				_arr = _alloc.allocate(n);
@@ -59,6 +43,7 @@ namespace ft
 					_alloc.construct(_end, value);
 			}
 
+			/* Range Constrctor */
 			template <class InputIterator>
 			vector (InputIterator first, InputIterator last, const allocator_type& alloc = allocator_type(),
 					typename ft::enable_if<!ft::is_integral<InputIterator>::value, InputIterator>::type* = NULL) {
@@ -74,16 +59,19 @@ namespace ft
 				}
 			}
 
+			/* Copy Constrctor */
+			vector(const vector& src) : _alloc(src._alloc), _arr(NULL), _end(NULL), _capacity(0) {
+				this->operator=(src);
+			}
+
+			/*  Destructor */
 			~vector() {
 				clear();
 				if (this->_arr)
 					_alloc.deallocate(_arr, capacity());
 			}
 
-			vector(const vector& src) : _alloc(src._alloc), _arr(NULL), _end(NULL), _capacity(0) {
-				this->operator=(src);
-			}
-
+			/* Assignment operator overload */
 			vector &operator=(const vector &other) {
 				if (this == &other)
 					return (*this);
@@ -98,6 +86,8 @@ namespace ft
 				return (*this);
 			}
 
+
+			/* Replaces the contents */
 			void assign(size_type count, const T& value) {
 				if (count > max_size()) {
 					throw std::length_error("error max_size");
@@ -137,10 +127,13 @@ namespace ft
 					this->_alloc.construct(this->_end, *first);
 			}
 
+
+			/* Getter associated allocator */
 			allocator_type	get_allocator() const {
 				return (this->_alloc);
 			}
 
+			/* Element access */
 			reference at(size_type pos) {
 				if (pos > size())
 					throw std::out_of_range("index out of range");
@@ -159,14 +152,6 @@ namespace ft
 
 			const_reference operator[] (size_type pos) const {
 				return (*(this->_arr + pos));
-			}
-
-			iterator	begin() {
-				return (iterator(this->_arr));
-			}
-
-			const_iterator begin() const {
-				return (const_iterator(this->_arr));
 			}
 
 			reference front() {
@@ -197,6 +182,15 @@ namespace ft
 				return (this->_arr);
 			}
 
+			/* Iterators */
+			iterator	begin() {
+				return (iterator(this->_arr));
+			}
+
+			const_iterator begin() const {
+				return (const_iterator(this->_arr));
+			}
+
 			iterator end () {
 				return (iterator(this->_end));
 			}
@@ -220,6 +214,7 @@ namespace ft
 				return (const_reverse_iterator(this->_arr));
 			}
 
+			/* Capacity: */
 			bool empty() const {
 				return (size() == 0);
 			}
@@ -260,6 +255,7 @@ namespace ft
 				return (this->_capacity);
 			}
 
+			/* Modifiers: */
 		 	void	clear () {
 				for (pointer i = _arr; i != this->_end; i++)
 					_alloc.destroy(i);
@@ -291,7 +287,7 @@ namespace ft
 						this->_alloc.construct(new_end, *it);
 					this->_alloc.construct(new_end, value);
 					new_end++;
-					for (; it != this->_end; it++, new_end++)
+					for (; it != end(); it++, new_end++)
 						this->_alloc.construct(new_end, *it);
 					clear();
 					this->_alloc.deallocate(this->_arr, capacity());
@@ -325,7 +321,7 @@ namespace ft
 					this->_alloc.construct(new_end, *it);
 				for (size_type i = 0; i != count; i++, new_end++)
 					this->_alloc.construct(new_end, value);
-				for (; it != this->_end; it++, new_end++)
+				for (; it != end(); it++, new_end++)
 					this->_alloc.construct(new_end, *it);
 				clear();
 				this->_alloc.deallocate(this->_arr, capacity());
@@ -370,7 +366,7 @@ namespace ft
 						this->_alloc.construct(new_end, *it);
 					for (;first != last; first++, new_end++)
 						this->_alloc.construct(new_end, *first);
-					for (; it != _end; it++, new_end++)
+					for (; it != end(); it++, new_end++)
 						this->_alloc.construct(new_end, *it);
 					clear();
 					this->_alloc.deallocate(_arr, capacity());
@@ -462,8 +458,16 @@ namespace ft
 				this->_end = end_tmp;
 				this->_capacity = cap_tmp;
 			}
-	};
 
+		private:
+			allocator_type	_alloc;
+			pointer			_arr;
+			pointer			_end;
+			size_type		_capacity;
+
+	}; // end of class vector
+
+  // ----------------------------- Non-member function overloads  ------------------------------ //
 	template <class T, class Alloc>
 	bool operator== (const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs) {
 		if (lhs.size() != rhs.size())
@@ -500,7 +504,7 @@ namespace ft
 	void swap (vector<T,Alloc>& lhs, vector<T,Alloc>& rhs) {
 		lhs.swap(rhs);
 	}
-};
+}; // end of namespace ft
 
 #endif
 

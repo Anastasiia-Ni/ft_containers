@@ -13,7 +13,6 @@
 # ifndef MAP_HPP
 #define MAP_HPP
 
-#include "containers.hpp"
 #include "iterators/tree_iterator.hpp"
 #include "iterators/reverse_iterator.hpp"
 #include "utils/utils.hpp"

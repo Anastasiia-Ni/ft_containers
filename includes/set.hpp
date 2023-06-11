@@ -1,20 +1,6 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   set.hpp                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: anifanto <anifanto@student.42abudhabi.a    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/12 15:51:13 by anifanto          #+#    #+#             */
-/*   Updated: 2022/07/13 20:26:25 by anifanto         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-
 #ifndef SET_HPP
-# define SET_HPP
+#define SET_HPP
 
-#include "containers.hpp"
 #include "utils/red_black_tree.hpp"
 #include "iterators/tree_iterator.hpp"
 #include "iterators/reverse_iterator.hpp"

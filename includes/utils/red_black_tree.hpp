@@ -1,21 +1,10 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   red_black_tree.hpp                                 :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: anifanto <anifanto@student.42abudhabi.a    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/11 19:12:17 by anifanto          #+#    #+#             */
-/*   Updated: 2022/07/14 14:16:03 by anifanto         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #ifndef RED_BLACK_TREE_HPP
-# define RED_BLACK_TREE_HPP
+#define RED_BLACK_TREE_HPP
 
 #include "node.hpp"
 #include "utils.hpp"
-#include "../containers.hpp"
+#include "pair.hpp"
 #include "../iterators/tree_iterator.hpp"
 
 #define RED "\033[31m"

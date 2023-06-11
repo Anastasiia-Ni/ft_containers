@@ -1,19 +1,9 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   utils.hpp                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: anifanto <anifanto@student.42abudhabi.a    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/11 19:11:57 by anifanto          #+#    #+#             */
-/*   Updated: 2022/07/14 13:57:31 by anifanto         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
-#include "../containers.hpp"
-
-# ifndef UTILS_HPP
+#ifndef UTILS_HPP
 #define UTILS_HPP
+
+#include <cstddef>
+#include "../iterators/iterators_traits.hpp"
 
 namespace ft
 {
@@ -24,50 +14,22 @@ namespace ft
 		static const bool value = is_integral;
 	};
 
-	template <typename>
-	struct is_integral_type : public is_integral_res<bool, false> {};
+	template <typename T> 	struct is_integral_type 						: public is_integral_res<bool, false> {};
+	template <>				struct is_integral_type<bool> 					: public is_integral_res<bool, true> {};
+	template <>				struct is_integral_type<char> 					: public is_integral_res<char, true> {};
+	template <>				struct is_integral_type<wchar_t> 				: public is_integral_res<wchar_t, true> {};
+	template <>				struct is_integral_type<signed char> 			: public is_integral_res<signed char, true> {};
+	template <>				struct is_integral_type<short int> 				: public is_integral_res<short int, true> {};
+	template <>				struct is_integral_type<int> 					: public is_integral_res<int, true> {};
+	template <>				struct is_integral_type<long int> 				: public is_integral_res<long int, true> {};
+	template <>				struct is_integral_type<long long int> 			: public is_integral_res<long long int, true> {};
+	template <>				struct is_integral_type<unsigned char> 			: public is_integral_res<unsigned char, true> {};
+	template <>				struct is_integral_type<unsigned short int> 	: public is_integral_res<unsigned short int, true> {};
+	template <>				struct is_integral_type<unsigned int> 			: public is_integral_res<unsigned int, true> {};
+	template <>				struct is_integral_type<unsigned long int> 		: public is_integral_res<unsigned long int, true> {};
+	template <>				struct is_integral_type<unsigned long long int> : public is_integral_res<unsigned long long int, true> {};
+	template<class T>		class is_integral 								: public is_integral_type<T> {};
 
-	template < >
-	struct is_integral_type<bool> : public is_integral_res<bool, true> {};
-
-	template < >
-	struct is_integral_type<char> : public is_integral_res<char, true> {};
-
-	template < >
-	struct is_integral_type<wchar_t> : public is_integral_res<wchar_t, true> {};
-
-	template < >
-	struct is_integral_type<signed char> : public is_integral_res<signed char, true> {};
-
-	template < >
-	struct is_integral_type<short int> : public is_integral_res<short int, true> {};
-
-	template < >
-	struct is_integral_type<int> : public is_integral_res<int, true> {};
-
-	template < >
-	struct is_integral_type<long int> : public is_integral_res<long int, true> {};
-
-	template < >
-	struct is_integral_type<long long int> : public is_integral_res<long long int, true> {};
-
-	template < >
-	struct is_integral_type<unsigned char> : public is_integral_res<unsigned char, true> {};
-
-	template < >
-	struct is_integral_type<unsigned short int> : public is_integral_res<unsigned short int, true> {};
-
-	template < >
-	struct is_integral_type<unsigned int> : public is_integral_res<unsigned int, true> {};
-
-	template < >
-	struct is_integral_type<unsigned long int> : public is_integral_res<unsigned long int, true> {};
-
-	template < >
-	struct is_integral_type<unsigned long long int> : public is_integral_res<unsigned long long int, true> {};
-
-	template<class T>
-	class is_integral : public is_integral_type<T> {};
 
 	template<bool Cond, class T = void> struct enable_if {};
 	template<class T> struct enable_if<true, T> { typedef T type; };
@@ -135,6 +97,18 @@ namespace ft
 		}
 		return (n);
 	}
+
+	// template <class Iterator>
+	// size_t distance (Iterator first, Iterator last) {
+	// 	size_t n = 0;
+	// 	while (first != last) {
+	// 		first++;
+	// 		n++;
+	// 	}
+	// 	return (n);
+	// }
+
+
 }
 
 #endif
