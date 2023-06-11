@@ -1,17 +1,6 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   test_set.cpp                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: anifanto <anifanto@student.42abudhabi.a    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/12 15:51:21 by anifanto          #+#    #+#             */
-/*   Updated: 2022/07/12 20:20:31 by anifanto         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include "../includes/containers.hpp"
 #include "../includes/set.hpp"
+#include "headers/containers.hpp"
+#include <set>
 
 template <typename T>
 bool	check_iterator(std::set<T> &st_set, ft::set<T> &my_set) {

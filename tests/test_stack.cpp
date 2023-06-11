@@ -1,16 +1,9 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   test_stack.cpp                                     :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: anifanto <anifanto@student.42abudhabi.a    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/11 19:11:10 by anifanto          #+#    #+#             */
-/*   Updated: 2022/06/12 09:27:07 by anifanto         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+#include "../includes/stack.hpp"
+#include "headers/containers.hpp"
 
-#include "../includes/containers.hpp"
+#include <iostream>
+#include <stack>
+#include <vector>
 
 static void empty_test() {
 	std::cout << "Test empty:\t\t\t";

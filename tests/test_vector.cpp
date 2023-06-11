@@ -11,7 +11,8 @@
 /* ************************************************************************** */
 
 
-#include "../includes/containers.hpp"
+#include "../includes/vector.hpp"
+#include "headers/containers.hpp"
 
 template <typename T>
 static bool check_iterator(std::vector<T> &std_vec, ft::vector<T> &my_vec) {
@@ -19,7 +20,7 @@ static bool check_iterator(std::vector<T> &std_vec, ft::vector<T> &my_vec) {
 	typename std::vector<T>::iterator it_st2 = std_vec.end();
 	typename ft::vector<T>::iterator it_my1 = my_vec.begin();
 	typename ft::vector<T>::iterator it_my2 = my_vec.end();
-	while (it_st1 != it_st2)
+	while (it_st1 != it_st2 && it_my1 != it_my2)
 	{
 		if (*it_st1 != *it_my1)
 			return false;
@@ -30,15 +31,15 @@ static bool check_iterator(std::vector<T> &std_vec, ft::vector<T> &my_vec) {
 	typename std::vector<T>::reverse_iterator it_rst2 = std_vec.rend();
 	typename ft::vector<T>::reverse_iterator it_rmy1 = my_vec.rbegin();
 	typename ft::vector<T>::reverse_iterator it_rmy2 = my_vec.rend();
-	while (it_rst1 != it_rst2)
+	while (it_rst1 != it_rst2 && it_rmy1 != it_rmy2)
 	{
-		 if (*it_rst1 != *it_rmy1)
+		if (*it_rst1 != *it_rmy1)
 		{
 			std::cout  << *it_rst1 << "\n" << *it_rmy1 << std::endl;
-			 return false;
+			return false;
 		}
-		 ++it_rst1;
-		 ++it_rmy1;
+		++it_rst1;
+		++it_rmy1;
 	}
 	return true;
 }
@@ -129,7 +130,7 @@ static void	test_iterator() {
 		std::cout << FAIL << std::endl;
 		return ;
 	}
-	ft::vector<int>::iterator it6 = my_vec1.begin() + 1;
+	// ft::vector<int>::iterator it6 = my_vec1.begin() + 1;
 	std::cout << SUCS << std::endl;
 }
 

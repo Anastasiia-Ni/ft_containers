@@ -10,10 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
-#include "includes/containers.hpp"
-#include "includes/utils/time_test.hpp"
+#include <iostream>
 #include <unistd.h>
+
+#include "tests/headers/containers.hpp"
+#include "tests/headers/time_test.hpp"
 
 int main(void)
 {
@@ -27,35 +28,35 @@ int main(void)
 	while (1){
 		if (input == "VECTOR"){
 			test_vector();
-			time_test_vector(1);
+			// time_test_vector(1);
 			break ;
 		}
 		else if (input == "STACK"){
 			test_stack();
-			time_test_stack(1);
+			// time_test_stack(1);
 			break ;
 		}
-		else if (input == "SET"){
-			test_set();
-			time_test_set(1);
-			break ;
-		}
+		// else if (input == "SET"){
+		// 	test_set();
+		// 	// time_test_set(1);
+		// 	break ;
+		// }
 		else if (input == "MAP"){
 			test_map();
-			time_test_map(1);
+			// time_test_map(1);
 			break ;
 		}
-		else if (input == "ALL"){
-			test_vector();
-			test_stack();
-			test_map();
-			test_set();
-			time_test_vector(0);
-			time_test_stack(0);
-			time_test_map(0);
-			time_test_set(0);
-			break ;
-		}
+		// else if (input == "ALL"){
+		// 	test_vector();
+		// 	test_stack();
+		// 	test_map();
+		// 	test_set();
+		// 	time_test_vector(0);
+		// 	time_test_stack(0);
+		// 	time_test_map(0);
+		// 	time_test_set(0);
+		// 	break ;
+		// }
 		else{
 			std::cout << RED << "ERROR COMMAND" << RESET << std::endl;
 			break ;
