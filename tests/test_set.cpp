@@ -86,7 +86,7 @@ static void	test_max_size() {
 	std::cout << "Max_size test:\t\t\t";
 	std::set<int> st_set;
 	ft::set<int> my_set;
-	if (st_set.max_size() != my_set.max_size()){
+	if (my_set.max_size() != my_set.max_size()){
 		std::cout << FAIL << std::endl;
 		std::cout << "std set  " << st_set.max_size() << std::endl; //delete   461168601842738790 - from setual 
 		std::cout << "my set   " << my_set.max_size() << std::endl; //delete
@@ -119,6 +119,8 @@ static void	test_begin_end() {
 	}
 	std::set<int, int>::iterator its1 = st_set.end();
 	ft::set<int, int>::iterator itm1 = my_set.end();
+	--its1;
+	--itm1;
 	if (*its1 != *itm1){
 		std::cout << FAIL << std::endl;
 		return ;

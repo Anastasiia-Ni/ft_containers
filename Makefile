@@ -8,7 +8,8 @@ SRCS = 	main_test.cpp	\
 		tests/test_vector.cpp	\
 		tests/test_stack.cpp	\
 		tests/test_map.cpp		\
-
+		tests/test_set.cpp		\
+		tests/test_time.cpp
 
 SRCS_S = main.cpp
 

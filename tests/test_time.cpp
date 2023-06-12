@@ -10,8 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/containers.hpp"
-#include "../includes/utils/time_test.hpp"
+#include "headers/containers.hpp"
+#include "headers/time_test.hpp"
+#include "../includes/vector.hpp"
+#include "../includes/stack.hpp"
+#include "../includes/map.hpp"
+#include "../includes/set.hpp"
 
 void	time_test_vector(int n) {
 	if (!n)

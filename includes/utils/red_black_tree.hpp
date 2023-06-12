@@ -6,9 +6,7 @@
 #include "utils.hpp"
 #include "pair.hpp"
 #include "../iterators/tree_iterator.hpp"
-
-#define RED "\033[31m"
-#define BLACK "\033[30m"
+#include "../iterators/tree_reverse_iterator.hpp"
 
 namespace ft {
 
@@ -32,8 +30,8 @@ namespace ft {
 
 			typedef ft::tree_iterator<node_ptr,value_type>						iterator;
 			typedef ft::const_tree_iterator<const_node_ptr,value_type>			const_iterator;
-			typedef ft::reverse_iterator<iterator>								reverse_iterator;
-			typedef ft::reverse_iterator<const_iterator>						const_reverse_iterator;
+			typedef ft::tree_reverse_iterator<iterator>							reverse_iterator;
+			typedef ft::tree_reverse_iterator<const_iterator>					const_reverse_iterator;
 
 	 	private:
 			size_type			_size;

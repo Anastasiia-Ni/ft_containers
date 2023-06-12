@@ -101,8 +101,8 @@ namespace ft
 			}
 
 			size_type max_size() const {
-				//return (std::numeric_limits<size_type>::max() / sizeof(ft::RBnode<key_type>));
-				return (this->_tree.max_size()); // check witn original
+				return (std::numeric_limits<size_type>::max() / sizeof(ft::RBnode<key_type>));
+				// return (this->_tree.max_size()); // check witn original
 			}
 
 			void clear() {

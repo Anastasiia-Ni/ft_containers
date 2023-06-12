@@ -1,20 +1,8 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   map.hpp                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: anifanto <anifanto@student.42abudhabi.a    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/11 19:12:26 by anifanto          #+#    #+#             */
-/*   Updated: 2022/07/14 14:07:23 by anifanto         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-# ifndef MAP_HPP
+#ifndef MAP_HPP
 #define MAP_HPP
 
 #include "iterators/tree_iterator.hpp"
-#include "iterators/reverse_iterator.hpp"
+#include "iterators/tree_reverse_iterator.hpp"
 #include "utils/utils.hpp"
 #include "utils/pair.hpp"
 #include "utils/red_black_tree.hpp"
